@@ -1,0 +1,20 @@
+on: [push, pull_request]
+
+name: Lint
+
+jobs:
+  lint:
+    name: tex-fmt check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Copy files from repo
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt install make cargo
+          cargo install tex-fmt
+      
+      - name: Run lint
+        run: find . -type f -name "*.tex" | xargs -r -I {} ~/.cargo/bin/tex-fmt --check {} || exit 1
