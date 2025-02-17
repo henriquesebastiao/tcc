@@ -13,7 +13,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          sudo apt install make cargo
+          sudo apt install cargo
           cargo install tex-fmt
       
       - name: Run lint
