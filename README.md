@@ -1,8 +1,5 @@
 # Trabalho de Curso - Ciência da Computação
 
-[![Lint](https://github.com/henriquesebastiao/tcc/actions/workflows/lint.yml/badge.svg)](https://github.com/henriquesebastiao/tcc/actions/workflows/lint.yml)
-[![LaTeX](https://img.shields.io/badge/LaTeX-008080?style=flat&logo=latex&logoColor=white)](https://www.latex-project.org/)
-
 Projeto de TCC para a graduação em Ciência da Computação.
 
 ### Links úteis ao trabalhar com LaTeX
