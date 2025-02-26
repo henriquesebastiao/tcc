@@ -5,10 +5,9 @@ title: >-
 message: >-
   If you use this software, please cite it using the
   metadata from this file.
-type: software
 authors:
   - given-names: Henrique Sebastião
-    family-names: da Silva Rosa
+    family-names: Silva Rosa
     email: contato@henriquesebastiao.com
     orcid: 'https://orcid.org/0009-0000-7393-6211'
 abstract: >-
@@ -19,3 +18,21 @@ keywords:
   - encryption
   - security
   - communication
+preferred-citation:
+  type: article
+  title: >-
+    Development of a Communication System with
+    End-to-End Encryption
+  abstract: >-
+    A adição de um resumo (descrição curta) ajuda os usuários
+    possíveis a conhecer rapidamente se este trabalho é o que
+    eles estão procurando.
+  keywords:
+    - encryption
+    - security
+    - communication
+  authors:
+    - given-names: Henrique Sebastião
+      family-names: Silva Rosa
+      email: contato@henriquesebastiao.com
+      orcid: 'https://orcid.org/0009-0000-7393-6211'
