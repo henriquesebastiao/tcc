@@ -9,6 +9,7 @@
 \usepackage{changepage}
 \usepackage[none]{hyphenat}
 \usepackage{tocloft}
+\usepackage{hyperref}
 
 % TODO: Isso deve ser removido com o tempo,
 % sendo usado apenas para fins de teste de formatação
@@ -20,6 +21,14 @@
 
 % Adiciona linhas com pontos ao sumário
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
 
 \begin{document}
 
