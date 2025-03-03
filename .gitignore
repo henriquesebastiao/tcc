@@ -316,3 +316,5 @@ TSWLatexianTemp*
 # Generated using ignr.py - github.com/Antrikshy/ignr.py
 
 *.pdf
+
+.vscode
