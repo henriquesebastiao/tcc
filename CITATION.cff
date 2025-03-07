@@ -6,6 +6,9 @@ message: >-
   If you use this software, please cite it using the
   metadata from this file.
 authors:
+  - given-names: Emanuel Chagas
+    family-names: Pinheiro Mattos
+    email: pinheiroemanuel192@gmail.com
   - given-names: Henrique Sebastião
     family-names: Silva Rosa
     email: contato@henriquesebastiao.com
@@ -32,6 +35,9 @@ preferred-citation:
     - security
     - communication
   authors:
+    - given-names: Emanuel Chagas
+      family-names: Pinheiro Mattos
+      email: pinheiroemanuel192@gmail.com
     - given-names: Henrique Sebastião
       family-names: Silva Rosa
       email: contato@henriquesebastiao.com
