@@ -13,6 +13,9 @@ authors:
     family-names: Silva Rosa
     email: contato@henriquesebastiao.com
     orcid: 'https://orcid.org/0009-0000-7393-6211'
+  - given-names: Wanderson
+    family-names: Amorim Pinheiro
+    email: wandersonfla100@hotmail.com
 abstract: >-
   A adição de um resumo (descrição curta) ajuda os usuários
   possíveis a conhecer rapidamente se este trabalho é o que
@@ -42,3 +45,6 @@ preferred-citation:
       family-names: Silva Rosa
       email: contato@henriquesebastiao.com
       orcid: 'https://orcid.org/0009-0000-7393-6211'
+    - given-names: Wanderson
+      family-names: Amorim Pinheiro
+      email: wandersonfla100@hotmail.com
