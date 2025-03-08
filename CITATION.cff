@@ -13,6 +13,11 @@ authors:
     family-names: Silva Rosa
     email: contato@henriquesebastiao.com
     orcid: 'https://orcid.org/0009-0000-7393-6211'
+  - given-names: Lucas
+    family-names: Souza de Deus
+  - given-names: Valério
+    family-names: Gonçalves Vieira Junior
+    email: valeriogoncalvesdev@gmail.com
   - given-names: Wanderson
     family-names: Amorim Pinheiro
     email: wandersonfla100@hotmail.com
@@ -45,6 +50,11 @@ preferred-citation:
       family-names: Silva Rosa
       email: contato@henriquesebastiao.com
       orcid: 'https://orcid.org/0009-0000-7393-6211'
+    - given-names: Lucas
+      family-names: Souza de Deus
+    - given-names: Valério
+      family-names: Gonçalves Vieira Junior
+      email: valeriogoncalvesdev@gmail.com
     - given-names: Wanderson
       family-names: Amorim Pinheiro
       email: wandersonfla100@hotmail.com
