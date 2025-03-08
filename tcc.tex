@@ -6,6 +6,7 @@
 \usepackage[a4paper, left=3cm, right=2.5cm, top=3cm, bottom=2cm]{geometry}
 \usepackage{hyperref}
 \usepackage[none]{hyphenat}
+\usepackage{microtype}
 \usepackage{indentfirst}
 \usepackage[utf8]{inputenc}
 \usepackage{sectsty}
@@ -44,15 +45,17 @@
 }
 
 \begin{document}
+\begin{sloppy}
 
-\input{comandos.tex}
+  \input{comandos.tex}
 
-\input{pre-textuais/capa.tex}
-\input{pre-textuais/folha-de-rosto.tex}
-\input{pre-textuais/folha-de-aprovacao.tex}
-% \input{pre-textuais/resumo.tex}
-% \input{pre-textuais/abstract.tex}
-\input{pre-textuais/sumario.tex}
-\input{textuais/introducao.tex}
+  \input{pre-textuais/capa.tex}
+  \input{pre-textuais/folha-de-rosto.tex}
+  \input{pre-textuais/folha-de-aprovacao.tex}
+  % \input{pre-textuais/resumo.tex}
+  % \input{pre-textuais/abstract.tex}
+  \input{pre-textuais/sumario.tex}
+  \input{textuais/introducao.tex}
 
+\end{sloppy}
 \end{document}
