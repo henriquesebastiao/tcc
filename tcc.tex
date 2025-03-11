@@ -21,7 +21,13 @@
 \usepackage{lipsum}
 
 % Configurações
-\setmainfont{Times New Roman}
+\setmainfont{times-new-roman}[
+  Path = ./fontes/,
+  UprightFont = *-regular,
+  BoldFont = *-bold,
+  ItalicFont = *-italic,
+  BoldItalicFont = *-bolditalic,
+]
 \setstretch{1.5}
 \setlength{\parindent}{1.25cm}
 \pagestyle{myheadings}

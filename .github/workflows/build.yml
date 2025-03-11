@@ -18,6 +18,8 @@ jobs:
         uses: xu-cheng/latex-action@v3
         with:
           root_file: tcc.tex
+          extra_fonts: |
+            ./fontes/*.ttf
           latexmk_use_xelatex: true
 
       - name: Upload PDF file
