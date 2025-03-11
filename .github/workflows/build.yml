@@ -45,7 +45,7 @@ jobs:
 
       - name: Generate Changelog
         run: |
-          latest_tag=$(git describe --tags `git rev-list --tags --max-count=1`)
+          latest_tag=$(git describe --tags --abbrev=0)
           github_changelog_generator -u henriquesebastiao -p tcc --since-tag $latest_tag
         env:
           CHANGELOG_GITHUB_TOKEN: ${{ secrets.CHANGELOG_GITHUB_TOKEN }}
@@ -88,6 +88,8 @@ jobs:
           tag_name: ${{ format('{0}-{1}-{2}-{3}', format('{0:yyyy}', github.event.created_at), format('{0:MM}', github.event.created_at), format('{0:dd}', github.event.created_at), steps.get_commit.outputs.commit_hash) }}
           release_name: ${{ format('{0}-{1}-{2}-{3}', format('{0:yyyy}', github.event.created_at), format('{0:MM}', github.event.created_at), format('{0:dd}', github.event.created_at), steps.get_commit.outputs.commit_hash) }}
           body_path: ./CHANGELOG.md
+          draft: false
+          prerelease: false
 
       - name: Upload PDF to Release
         uses: actions/upload-release-asset@v1
