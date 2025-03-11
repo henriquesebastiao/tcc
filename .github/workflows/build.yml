@@ -44,7 +44,9 @@ jobs:
         run: gem install github_changelog_generator
 
       - name: Generate Changelog
-        run: github_changelog_generator -u henriquesebastiao -p tcc --since-tag $(git describe --tags `git rev-list --tags --max-count=1`)
+        run: |
+          latest_tag=$(git describe --tags `git rev-list --tags --max-count=1`)
+          github_changelog_generator -u henriquesebastiao -p tcc --since-tag $latest_tag
         env:
           CHANGELOG_GITHUB_TOKEN: ${{ secrets.CHANGELOG_GITHUB_TOKEN }}
       
@@ -55,7 +57,7 @@ jobs:
           path: CHANGELOG.md
 
   create_release:
-    needs: build_latex
+    needs: generate_changelog
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
