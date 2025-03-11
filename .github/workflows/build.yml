@@ -79,9 +79,11 @@ jobs:
           name: CHANGELOG
           path: .
 
-      - name: Get commit hash
-        id: get_commit
-        run: echo "::set-output name=commit_hash::$(git rev-parse --short HEAD)"
+      - name: Set date and commit hash
+        id: set_vars
+        run: |
+          echo "DATE=$(date +'%Y-%m-%d')" >> "$GITHUB_ENV"
+          echo "COMMIT_HASH=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
 
       - name: Create Release
         id: create_release
@@ -89,8 +91,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ format('{0}-{1}-{2}-{3}', format('{0:yyyy}', github.event.created_at), format('{0:MM}', github.event.created_at), format('{0:dd}', github.event.created_at), steps.get_commit.outputs.commit_hash) }}
-          release_name: ${{ format('{0}-{1}-{2}-{3}', format('{0:yyyy}', github.event.created_at), format('{0:MM}', github.event.created_at), format('{0:dd}', github.event.created_at), steps.get_commit.outputs.commit_hash) }}
+          tag_name: ${{ env.DATE }}-${{ env.COMMIT_HASH }}
+          release_name: ${{ env.DATE }}-${{ env.COMMIT_HASH }}
           body_path: ./CHANGELOG.md
           draft: false
           prerelease: false
