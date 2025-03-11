@@ -1,0 +1,27 @@
+name: Deploy PDF to GitHub Pages
+
+on:
+  workflow_run:
+    workflows: ["Build LaTeX document"]
+    types: [completed]
+    branches:
+      - 'main'
+
+jobs:
+  deploy_pdf:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Download PDF artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: PDF
+          path: ./public
+
+      - name: Deploy PDF to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
