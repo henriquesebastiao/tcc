@@ -2,6 +2,7 @@
 
 \usepackage[brazil]{babel}
 \usepackage{changepage}
+\usepackage{csquotes}
 \usepackage{fontspec}
 \usepackage[a4paper, left=3cm, right=2.5cm, top=3cm, bottom=2cm]{geometry}
 \usepackage{hyperref}
@@ -12,6 +13,8 @@
 \usepackage{sectsty}
 \usepackage{setspace}
 \usepackage{tocloft}
+\usepackage[alf]{abntex2cite}
+\usepackage[nottoc,notlot,notlof]{tocbibind}
 
 % TODO: Isso deve ser removido com o tempo,
 % sendo usado apenas para fins de teste de formatação
@@ -56,6 +59,8 @@
   % \input{pre-textuais/abstract.tex}
   \input{pre-textuais/sumario.tex}
   \input{textuais/introducao.tex}
+
+  \bibliography{bibliografia}
 
 \end{sloppy}
 \end{document}

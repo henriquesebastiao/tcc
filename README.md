@@ -17,6 +17,7 @@ Uma breve explicação do que faz cada pacote adicionado ao arquivo `tcc.tex` e 
 
 - [babel](https://br.mirrors.cicku.me/ctan/macros/latex/required/babel/base/babel-code.pdf) - define o idioma do documento.
 - [changepage](https://br.mirrors.cicku.me/ctan/macros/latex/contrib/changepage/changepage.pdf) - permite alterar a largura das margens de partes específicas do texto.
+- [csquotes](https://br.mirrors.cicku.me/ctan/macros/latex/contrib/csquotes/csquotes.pdf) - para colocar texto entre aspas corretamente.
 - [fontspec](https://linorg.usp.br/CTAN/macros/unicodetex/latex/fontspec/fontspec.pdf) - permite utilizar fontes customizadas (fontes do sistema).
 - [geometry](https://linorg.usp.br/CTAN/macros/latex/contrib/geometry/geometry.pdf) - permite ajustar o layout do documento, definindo as dimensões das margens.
 - [hyperref](https://linorg.usp.br/CTAN/macros/latex/contrib/hyperref/doc/hyperref-doc.pdf) - permite criar links clicáveis no documento.
@@ -27,6 +28,8 @@ Uma breve explicação do que faz cada pacote adicionado ao arquivo `tcc.tex` e 
 - [sectsty](https://br.mirrors.cicku.me/ctan/macros/latex/contrib/sectsty/sectsty.pdf) - usado para definir tamanho 12 para os títulos de seções.
 - [setspace](https://br.mirrors.cicku.me/ctan/macros/latex/contrib/setspace/setspace-doc.pdf) - define o espaçamento entre linhas.
 - [tocloft](https://br.mirrors.cicku.me/ctan/macros/latex/contrib/tocloft/tocloft.pdf) - permite personalizar a aparência do sumário.
+- [abntex2cite](https://tug.ctan.org/macros/latex/contrib/abntex2/doc/abntex2cite.pdf) - formata citações e referências de acordo com a ABNT.
+- [tocbibind](https://br.mirrors.cicku.me/ctan/macros/latex/contrib/tocbibind/tocbibind.pdf) - para adicionar as referências ao sumário.
 
 ## 🛠️ Ferramentas auxiliares
 
