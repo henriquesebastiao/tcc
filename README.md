@@ -8,8 +8,25 @@ Projeto de TCC para a graduação em Ciência da Computação.
 - [Fórum TEX](https://tex.stackexchange.com/)
 - [Documentação do Overleaf](https://www.overleaf.com/learn)
 - [Guia de LaTeX](https://latex-tutorial.com/tutorials/)
-- [Template TCC FGA-UnB](https://github.com/fga-unb/template-latex-tcc) - Provavelmente nosso trabalho se parecerá com isso :) .
+- [Template TCC FGA-UnB](https://github.com/fga-unb/template-latex-tcc) - provavelmente nosso trabalho se parecerá com isso :) .
 - [Vídeo de como instalar o LaTeX no Windows](https://youtu.be/EYVUYopYgyA).
+
+### 📦 Pacotes LaTeX usados
+
+Uma breve explicação do que faz cada pacote adicionado ao arquivo `tcc.tex` e os links de referência para a documentação oficial do pacote:
+
+- [babel](https://br.mirrors.cicku.me/ctan/macros/latex/required/babel/base/babel-code.pdf) - define o idioma do documento.
+- [changepage](https://br.mirrors.cicku.me/ctan/macros/latex/contrib/changepage/changepage.pdf) - permite alterar a largura das margens de partes específicas do texto.
+- [fontspec](https://linorg.usp.br/CTAN/macros/unicodetex/latex/fontspec/fontspec.pdf) - permite utilizar fontes customizadas (fontes do sistema).
+- [geometry](https://linorg.usp.br/CTAN/macros/latex/contrib/geometry/geometry.pdf) - permite ajustar o layout do documento, definindo as dimensões das margens.
+- [hyperref](https://linorg.usp.br/CTAN/macros/latex/contrib/hyperref/doc/hyperref-doc.pdf) - permite criar links clicáveis no documento.
+- [hyphenat](https://linorg.usp.br/CTAN/macros/latex/contrib/hyphenat/hyphenat.pdf) - impede a hifenização automática das palavras no texto.
+- [microtype](https://br.mirrors.cicku.me/ctan/macros/latex/contrib/microtype/microtype.pdf) - para melhorias de justificação do texto.
+- [indentfirst](https://linorg.usp.br/CTAN/macros/latex/required/tools/indentfirst.pdf) - indenta o primeiro parágrafo de cada seção.
+- [inputenc](https://br.mirrors.cicku.me/ctan/macros/latex/base/inputenc.pdf) - codificacao do documento (conversão automática dos acentos).
+- [sectsty](https://br.mirrors.cicku.me/ctan/macros/latex/contrib/sectsty/sectsty.pdf) - usado para definir tamanho 12 para os títulos de seções.
+- [setspace](https://br.mirrors.cicku.me/ctan/macros/latex/contrib/setspace/setspace-doc.pdf) - define o espaçamento entre linhas.
+- [tocloft](https://br.mirrors.cicku.me/ctan/macros/latex/contrib/tocloft/tocloft.pdf) - permite personalizar a aparência do sumário.
 
 ## 🛠️ Ferramentas auxiliares
 
