@@ -1,4 +1,4 @@
-name: Compilar documento LaTeX
+name: Build LaTeX document
 
 on:
   workflow_run:
@@ -27,3 +27,25 @@ jobs:
         with:
           name: PDF
           path: tcc.pdf
+        
+      - name: Set up Git configuration
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+  
+      - name: Deploy PDF to GitHub Pages
+        run: |
+          mkdir gh-pages
+          mv tcc.pdf gh-pages/
+          cd gh-pages
+          git init
+          git add .
+          git commit -m "build: Deploy do PDF via GitHub Pages"
+          git branch -M main
+          git remote add origin https://github.com/${{ github.repository }}.git
+          git push -f origin main:gh-pages
+  
+      - name: Clean up
+        run: |
+          rm -rf gh-pages
+            
