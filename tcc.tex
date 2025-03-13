@@ -17,6 +17,8 @@
 \usepackage[alf, abnt-full-initials=yes, abnt-emphasize=bf]{abntex2cite}
 \usepackage[nottoc,notlot,notlof]{tocbibind}
 \usepackage{etaremune}
+\usepackage[xindy, toc, section=section]{glossaries}
+\usepackage{enumitem}
 
 % TODO: Isso deve ser removido com o tempo,
 % sendo usado apenas para fins de teste de formatação
@@ -58,6 +60,11 @@
   urlcolor=black
 }
 
+\makeglossaries
+\loadglsentries{glossario}
+\setglossarystyle{list}
+\setlist[description]{leftmargin=0pt}
+
 \begin{document}
 \begin{sloppy}
 
@@ -72,6 +79,9 @@
   \input{textuais/introducao.tex}
 
   \bibliography{bibliografia}
+
+  \newpage
+  \printglossary[title={\hfil GLOSSÁRIO}, nonumberlist]
 
 \end{sloppy}
 \end{document}
