@@ -8,7 +8,7 @@ mecanismos que possibilitem o compartilhamento e preservação de
 informações, seja a curto ou longo prazo, de modo a partilhar os
 conhecimentos adquiridos com seus sucessores.
 
-Desde a era pré-histórica a humanidade vem desenvolvendo e
+Desde a era pré-histórica a humanidade tem desenvolvido e
 aperfeiçoando tecnologias que viabilizem a comunicação entre as
 pessoas, de modo a superar as barreiras geográficas existentes.
 Quanto a tecnologia, \citeonline[p.~4]{perles2007}
@@ -43,8 +43,8 @@ certo é que em 1896 Marconi patenteou o primeiro dispositivo de
 transmissão sem fios, como observa \citeonline{perles2007}.
 Marconi iniciou seus experimentos por volta de 1894, quando
 conseguira enviar sinais fracos a cerca de 100 metros de distância.
-Porém, antes que o cientista italiano êxito em suas experiências, o
-padre Roberto Landell de Moura já havia transmitido voz por meio de
+Porém, antes que o cientista italiano tivesse êxito em suas experiências, o
+padre brasileiro Roberto Landell de Moura já havia transmitido voz por meio de
 ondas eletromagnéticas. \citeonline[p.~77]{grecco2006}
 afirma que “Há registros de que as primeiras experiências do padre
 Landell com transmissões de ondas portando a voz humana teriam
@@ -66,7 +66,7 @@ tecnologia que moldaria não apenas a maneira como transmitimos
 informação, mas a maneira como vivemos. Como que em paralelo com a
 invenção do computador, surge também a Arpanet em 1969, a primeira
 rede de computadores, com o objetivo de servir aos objetivos
-militares dos Estado Unidos durante a guerra fria, no final da qual a
+militares dos Estado Unidos durante a Guerra Fria, no final da qual a
 Arpanet, agora denominada Internet, se tornou acessível por
 cientistas e professores universitários para troca de pensamentos e
 mensagens nos Estados Unidos. A partir desse ponto vimos a
@@ -118,26 +118,27 @@ liberdade de expressão e pensamento e propicie, enfim, uma interface
 segura de comunicação e troca de informações entre seus usuários?
 
 Observando esta problemática sob a ótica do tráfego de pacotes em
-rede, podemos visualizar o modelo de redes redes computadores, que
+rede, podemos visualizar o modelo de redes de computadores, que
 conhecemos como Modelo OSI, cuja finalidade é nortear como os pacotes
-são criados em baixo nível trafegados até chegarem ao nível mais
+são criados em baixo nível e trafegados até chegarem ao nível mais
 superior para o usuário, temos as sequências então:
 
 \begin{etaremune}
-\item Aplicação, Camada de tratamento mais próxima ao usuário e os
+\renewcommand\labelenumi{\bfseries\theenumi.}
+\item Aplicação: camada de tratamento mais próxima ao usuário e os
   protocolos de software.
-\item Apresentação, camada destinada a conversão da mensagem para
+\item Apresentação: camada destinada a conversão da mensagem para
   entrega em modelo entendível tanto para linguagem da máquina quanto
   à humana(dependendo do direcionamento do pacote em questão).
-\item Sessão, camada destinada a manusear o controle de sessão do usuário.
-\item Transporte, camada destinada a gerenciar o tipo de protocolo
+\item Sessão: camada destinada a manusear o controle de sessão do usuário.
+\item Transporte: camada destinada a gerenciar o tipo de protocolo
   para envio da comunicação TCP/UDP.
-\item Rede, camada destinada a separar os hosts de origem e destino
+\item Rede: camada destinada a separar os hosts de origem e destino
   da nossa comunicação.
-\item Enlace de Dados, camada destinada ao controle de erros
+\item Enlace de Dados: camada destinada ao controle de erros
   conhecidos como checksum e aprendizagem de endereço físico entre
   dispositivos local conhecidos como MAC.
-\item Físico, esta camada é a mais baixa onde trata como o pacote
+\item Físico: esta camada é a mais baixa onde trata como o pacote
   será transformado para envio no meio físico, seja elétrico ou sem fio.
 \end{etaremune}
 
@@ -157,7 +158,7 @@ comunicações atuais, em paralelo com as vulnerabilidades cibernéticas
 que se mostram cada vez mais evidentes, mesmo com a implementação de
 medidas de proteção de dados nos meios de comunicação, chega-se a
 conclusão de que o desenvolvimento de um sistema de comunicação com
-criptografia de ponta a ponta e open source, utilizando de uma
+criptografia de ponta a ponta e \textit{open source}, utilizando de uma
 abordagem de criptografia híbrida, viabiliza a inviolabilidade da
 comunicação, assim como sua autenticidade. Ademais, por ser de código
 aberto, qualquer usuário ou pessoa que tenha interesse em auditar o
@@ -179,10 +180,10 @@ verificação das mensagens para garantir sua autenticidade.
 \subsubsection{Objetivos Específicos}
 
 \begin{itemize}
-  \item Desenvolvimento da aplicação de back-end  usando Python, com
+  \item Desenvolvimento da aplicação de \textit{back-end}  usando Python, com
     o auxílio de bibliotecas ou frameworks como por exemplo, Flask,
     Cryptography, Typer, dentre outras.
-  \item Desenvolvimento de uma interface de front-end que seja
+  \item Desenvolvimento de uma interface de \textit{front-end} que seja
     amigável ao usuário, utilizando tecnologias como por exemplo,
     HTML, CSS, JavaScript, dentre outras.
   \item Uso de algoritmos de criptografia simétrica e assimétrica
