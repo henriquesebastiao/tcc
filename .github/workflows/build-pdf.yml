@@ -1,4 +1,4 @@
-name: Build LaTeX document and publish release
+name: Build PDF
 
 on:
   workflow_run:

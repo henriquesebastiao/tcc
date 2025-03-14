@@ -1,0 +1,9 @@
+services:
+  latex:
+    container_name: tcc-latex
+    build:
+      context: .
+    volumes:
+        - .:/home/latex
+    user: "1000:1000"
+    command: bash -c 'make'

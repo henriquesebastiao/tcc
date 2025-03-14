@@ -70,12 +70,27 @@ Vamos utilizar a extensão [LaTeX Workshop](https://github.com/James-Yu/LaTeX-Wo
 > [!IMPORTANT]
 > Como vamos gerar um PDF com fontes customizadas pela extensão no VS Code, precisamos configurar a variável [`latex-workshop.latex.recipes`](https://github.com/James-Yu/LaTeX-Workshop/wiki/Compile#latex-recipes) no arquivo JSON de configuração do VS Code para usar o compilador compatível com fontes customizadas, como no seguinte exemplo:
 > ```json
-> "latex-workshop.latex.recipes": [
->   {
->     "name": "latexmk (xelatex)",
->     "tools": [
->       "xelatexmk"
->     ]
->   }
-> ]
+>"latex-workshop.latex.tools": [
+>        {
+>            "name": "latexmk",
+>            "command": "latexmk",
+>            "args": [
+>              "-synctex=1",
+>              "-interaction=nonstopmode",
+>              "-file-line-error",
+>              "-pdfxe",
+>              "-outdir=%OUTDIR%",
+>              "%DOC%"
+>            ],
+>            "env": {}
+>          },
+>    ],
+>    "latex-workshop.latex.recipes": [
+>        {
+>            "name": "latexmk (xelatex)",
+>            "tools": [
+>                "latexmk"
+>            ]
+>        },
+>    ],
 >```
