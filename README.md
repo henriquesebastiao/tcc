@@ -33,6 +33,7 @@ Uma breve explicação do que faz cada pacote adicionado ao arquivo `tcc.tex` e 
 - [etaremune](https://br.mirrors.cicku.me/ctan/macros/latex/contrib/etaremune/etaremune.pdf) - possibilita criar listas enumeradas decescentes.
 - [glossaries](https://linorg.usp.br/CTAN/macros/latex/contrib/glossaries/glossaries-user.pdf) - para adicionar glossário.
 - [enumitem](https://br.mirrors.cicku.me/ctan/macros/latex/contrib/enumitem/enumitem.pdf) - para remover identação de descrições no sumário.
+- [acronym](https://linorg.usp.br/CTAN/macros/latex/contrib/acronym/acronym.pdf) - para gerar lista de acrônimos.
 
 ## 🛠️ Ferramentas auxiliares
 

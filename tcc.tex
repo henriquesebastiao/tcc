@@ -19,6 +19,7 @@
 \usepackage{etaremune}
 \usepackage[xindy, toc, section=section]{glossaries}
 \usepackage{enumitem}
+\usepackage[printonlyused, withpage]{acronym}
 
 % TODO: Isso deve ser removido com o tempo,
 % sendo usado apenas para fins de teste de formatação
@@ -60,6 +61,7 @@
   urlcolor=black
 }
 
+% Carrega e configura glossário
 \makeglossaries
 \loadglsentries{glossario}
 \setglossarystyle{list}
@@ -75,6 +77,7 @@
   \input{pre-textuais/folha-de-aprovacao.tex}
   % \input{pre-textuais/resumo.tex}
   % \input{pre-textuais/abstract.tex}
+  \input{pre-textuais/lista-de-acronimos.tex}
   \input{pre-textuais/sumario.tex}
   \input{textuais/introducao.tex}
 

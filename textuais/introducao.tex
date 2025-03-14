@@ -101,8 +101,8 @@ grandes corporações. Um exemplo disso é o ataque conhecido como o
 empresa EquiFax dos Estados Unidos, em 2017, noticiado pelo Portal
 \citeonline{equifax2017}, tratando-se da exfiltração de quase 150
 milhões de dados categorizados como no
-ambiente de Segurança da Informação por Personally Identifiable
-Information (PII). Estas informações incluem: contatos de clientes,
+ambiente de Segurança da Informação por \acfi{PII}.
+Estas informações incluem: contatos de clientes,
 números de cartões de créditos, endereços, datas de nascimento e
 números de carteiras de motoristas. Portanto, devemos sempre nos
 perguntar como nossos dados estão sendo tratados no mundo digital, a
@@ -119,20 +119,20 @@ segura de comunicação e troca de informações entre seus usuários?
 
 Observando esta problemática sob a ótica do tráfego de pacotes em
 rede, podemos visualizar o modelo de redes de computadores, que
-conhecemos como Modelo OSI, cuja finalidade é nortear como os pacotes
+conhecemos como Modelo \acs{OSI}, cuja finalidade é nortear como os pacotes
 são criados em baixo nível e trafegados até chegarem ao nível mais
 superior para o usuário, logo temos a seguinte sequência:
 
 \begin{etaremune}
-\renewcommand\labelenumi{\bfseries\theenumi.}
+  \renewcommand\labelenumi{\bfseries\theenumi.}
 \item Aplicação: camada de tratamento mais próxima ao usuário e os
   protocolos de software.
 \item Apresentação: camada destinada a conversão da mensagem para
-  entrega em modelo entendível tanto para linguagem da máquina quanto
+  entrega em modelo entendível tanto para linguagem de máquina quanto
   à humana(dependendo do direcionamento do pacote em questão).
 \item Sessão: camada destinada a manusear o controle de sessão do usuário.
 \item Transporte: camada destinada a gerenciar o tipo de protocolo
-  para envio da comunicação TCP/UDP.
+  para envio da comunicação \acs{TCP}/\acs{UDP}.
 \item Rede: camada destinada a separar os hosts de origem e destino
   da nossa comunicação.
 \item Enlace de Dados: camada destinada ao controle de erros
@@ -186,7 +186,7 @@ verificação das mensagens para garantir sua autenticidade.
     Cryptography, Typer, dentre outras.
   \item Desenvolvimento de uma interface de \textit{front-end} que seja
     amigável ao usuário, utilizando tecnologias como por exemplo,
-    HTML, CSS, JavaScript, dentre outras.
+    \acs{HTML}, \acs{CSS}, JavaScript, dentre outras.
   \item Uso de algoritmos de criptografia simétrica e assimétrica
     para implementação de metodologias criptográficas de ponta.
   \item Implementação de uma modo de assinaturas das mensagens,
