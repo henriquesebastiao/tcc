@@ -1,11 +1,11 @@
 name: Build PDF
 
 on:
-  workflow_run:
-    workflows: ["Lint"]
-    types: [completed]
+  pull_request:
     branches:
       - 'main'
+    types:
+      - closed
   
 permissions:
   contents: write
