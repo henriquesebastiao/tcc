@@ -1,9 +1,7 @@
 name: Build and Push Docker Image of Builder
 
 on:
-  workflow_run:
-    workflows: ["Build PDF"]
-    types: [completed]
+  push:
     branches:
       - 'main'
 
