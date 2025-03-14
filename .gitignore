@@ -318,3 +318,5 @@ TSWLatexianTemp*
 *.pdf
 
 .vscode
+*.ist
+authors.txt

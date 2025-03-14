@@ -30,6 +30,11 @@ Uma breve explicação do que faz cada pacote adicionado ao arquivo `tcc.tex` e 
 - [tocloft](https://br.mirrors.cicku.me/ctan/macros/latex/contrib/tocloft/tocloft.pdf) - permite personalizar a aparência do sumário.
 - [abntex2cite](https://tug.ctan.org/macros/latex/contrib/abntex2/doc/abntex2cite.pdf) - formata citações e referências de acordo com a ABNT.
 - [tocbibind](https://br.mirrors.cicku.me/ctan/macros/latex/contrib/tocbibind/tocbibind.pdf) - para adicionar as referências ao sumário.
+- [etaremune](https://br.mirrors.cicku.me/ctan/macros/latex/contrib/etaremune/etaremune.pdf) - possibilita criar listas enumeradas decescentes.
+- [glossaries](https://linorg.usp.br/CTAN/macros/latex/contrib/glossaries/glossaries-user.pdf) - para adicionar glossário.
+- [enumitem](https://br.mirrors.cicku.me/ctan/macros/latex/contrib/enumitem/enumitem.pdf) - para remover identação de descrições no sumário.
+- [acronym](https://linorg.usp.br/CTAN/macros/latex/contrib/acronym/acronym.pdf) - para gerar lista de acrônimos.
+- [titlesec](https://linorg.usp.br/CTAN/macros/latex/contrib/titlesec/titlesec.pdf) - permite alterar tamanho da fonte e o espaçamentro dos títulos e subtítulos.
 
 ## 🛠️ Ferramentas auxiliares
 
