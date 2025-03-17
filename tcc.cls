@@ -1,3 +1,30 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{tcc}
+
+\LoadClass[12pt]{article}
+
+\RequirePackage[brazil]{babel}
+\RequirePackage{changepage}
+\RequirePackage{csquotes}
+\RequirePackage{fontspec}
+\RequirePackage[a4paper, left=3cm, right=2.5cm, top=3cm, bottom=2cm]{geometry}
+\RequirePackage[hyphens]{url}
+\RequirePackage{hyperref}
+\RequirePackage[none]{hyphenat}
+\RequirePackage{indentfirst}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{microtype}
+\RequirePackage{sectsty}
+\RequirePackage{setspace}
+\RequirePackage{tocloft}
+\RequirePackage[xindy, toc, section=section]{glossaries}
+\RequirePackage[alf, abnt-full-initials=yes, abnt-emphasize=bf]{abntex2cite}
+\RequirePackage[nottoc,notlot,notlof]{tocbibind}
+\RequirePackage{etaremune}
+\RequirePackage{enumitem}
+\RequirePackage[printonlyused, withpage]{acronym}
+\RequirePackage{titlesec}
+
 % Configurações
 \setmainfont{times-new-roman}[
   Path = ./fontes/,
