@@ -9,7 +9,23 @@
 \RequirePackage{fontspec}
 \RequirePackage[a4paper, left=3cm, right=2.5cm, top=3cm, bottom=2cm]{geometry}
 \RequirePackage[hyphens]{url}
-\RequirePackage{hyperref}
+\RequirePackage[
+  pdfauthor={
+    Emanuel Chagas Pinheiro Mattos,
+    Henrique Sebastião da Silva Rosa,
+    Lucas Sousa de Deus,
+    Valério Gonçalves Vieira Jr.,
+    Wanderson Amorim Pinheiro,
+  },
+  pdftitle={Desenvolvimento De Um Sistema De Comunicação Com
+  Criptografia De Ponta A Ponta},
+  pdfsubject={Trabalho de Curso para obtenção do título de graduação
+  em Ciência da Computação apresentado à Universidade Paulista},
+  pdfkeywords={criptografia, comunicação, privacidade,
+  desenvolvimento, software},
+  pdfproducer={Latex with hyperref},
+  pdfcreator={xelatex},
+]{hyperref}
 \RequirePackage[none]{hyphenat}
 \RequirePackage{indentfirst}
 \RequirePackage[utf8]{inputenc}
