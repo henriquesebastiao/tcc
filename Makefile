@@ -7,7 +7,7 @@ lint:
 	find . -type f -name "*.tex" -exec tex-fmt --check {} \;
 
 format:
-	find . -type f -name "*.tex" -exec tex-fmt {} \;
+	find . -type f \( -name "*.tex" -o -name "*.cls" -o -name "*.bib" \) -exec tex-fmt {} \;
 
 build:
 	latexmk -pdfxe tcc.tex
