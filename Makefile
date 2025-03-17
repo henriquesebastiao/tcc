@@ -12,4 +12,7 @@ format:
 build:
 	latexmk -pdfxe tcc.tex
 
-.PHONY: all clean build lint format
+md:
+	pandoc -s tcc.tex -o tcc.md
+
+.PHONY: all clean build lint format md
