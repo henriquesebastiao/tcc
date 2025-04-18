@@ -40,6 +40,7 @@
 \RequirePackage{enumitem}
 \RequirePackage[printonlyused, withpage]{acronym}
 \RequirePackage{titlesec}
+\RequirePackage[flushmargin]{footmisc}
 
 % Configurações
 \setmainfont{times-new-roman}[
@@ -78,6 +79,8 @@
 
 % Adiciona linhas com pontos ao sumário
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+
+\addtolength{\footnotesep}{2mm}
 
 \hypersetup{
   colorlinks,
