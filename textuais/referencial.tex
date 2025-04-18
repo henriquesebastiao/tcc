@@ -3,9 +3,9 @@
 \subsection{Criptografia de mensagens}
 
 Há muitos anos, a informação é uma ferramenta crucial pra se obter
-vantagens sobre seus concorrentes. Criptografá-la para o não acesso
-por terceiro, se tornou necessário para a confiabilidade da
-transmissão da informação e da privacidade dos indivíduos. Assim como
+vantagens sobre seus concorrentes. Criptografá-la para impedir acesso
+por terceiros, se tornou necessário para a confiabilidade da
+transmissão das informações e da privacidade dos indivíduos. Assim como
 \citeonline[p.~1]{carvalho2021} dizem que “Proteger mensagens e
 informações sigilosas é uma prática que remota aos primórdios da
 humanidade, principalmente em contexto de guerra e diplomacia”.
@@ -45,7 +45,7 @@ segurança, eles podem não ser adequados para criptografar grandes
 volumes de dados, como ressalta \citeonline{alenezi2020}. Isso ocorre
 porque a velocidade é lenta em comparação com os sistemas baseados em
 chaves simétricas e eles também apresentam uma maior taxa de
-utilização da CPU. A figura abaixo ilustra o processo de criptografia
+utilização da \acs{CPU}. A figura abaixo ilustra o processo de criptografia
 assimétrica.
 
 \subsection{Camada 7 com confiabilidade}
@@ -59,7 +59,7 @@ camada se torna um alvo recorrente para ataques que buscam capturar,
 manipular ou redirecionar informações sensíveis.
 
 Em ambientes abertos e descentralizados, como é o caso de aplicações
-com criptografia ponto a ponto (P2P), os riscos são amplificados. A
+com criptografia ponto a ponto (\acs{P2P}), os riscos são amplificados. A
 segurança da aplicação não pode depender exclusivamente de mecanismos
 criptográficos isolados. É fundamental que o protocolo de comunicação
 utilizado seja projetado para resistir a ataques mesmo sob as piores
@@ -75,7 +75,7 @@ Em um cenário cada vez mais conectado, a comunicação digital segura
 se tornou uma necessidade central para garantir a integridade e a
 privacidade das informações trocadas entre usuários. Aplicações de
 mensagens instantâneas, especialmente aquelas que operam em
-estruturas descentralizadas ou ponto a ponto (P2P), enfrentam
+estruturas descentralizadas ou ponto a ponto (\acs{P2P}), enfrentam
 desafios significativos quanto à proteção de dados sensíveis.
 
 A confidencialidade das mensagens e a identidade dos participantes
@@ -95,8 +95,8 @@ de que a segurança da infraestrutura digital não é apenas um
 requisito técnico, mas também um compromisso ético e legal, sobretudo
 quando se trata da troca de mensagens pessoais ou confidenciais.
 
-Portanto, o uso de criptografia de ponta a ponta (end-to-end
-encryption) aliada à validação formal dos protocolos utilizados se
+Portanto, o uso de criptografia de ponta a ponta (\textit{end-to-end
+encryption}) aliada à validação formal dos protocolos utilizados se
 mostra indispensável. Ferramentas como o AVISPA Tool são
 relevantes neste cenário, por permitirem uma análise automatizada e
 profunda de falhas em protocolos, incluindo casos em que a
@@ -116,13 +116,13 @@ confidencialidade seja preservada, mas também que se garanta a
 autenticidade da origem da mensagem, sua integridade, e, em
 muitos casos, o não repúdio — ou seja, que o emissor não possa
 negar posteriormente a autoria da mensagem enviada. Em sistemas
-descentralizados ou ponto a ponto (P2P), onde não há um servidor
+descentralizados ou ponto a ponto (\acs{P2P}), onde não há um servidor
 central responsável por intermediar ou validar o tráfego, essa
 responsabilidade recai sobre mecanismos criptográficos robustos e
 cuidadosamente implementados.
 
-A aplicação desenvolvida neste trabalho adota a arquitetura P2P com
-criptografia de ponta a ponta (E2EE), o que garante que apenas os
+A aplicação desenvolvida neste trabalho adota a arquitetura \acs{P2P} com
+criptografia de ponta a ponta (\acs{E2EE}), o que garante que apenas os
 dispositivos dos usuários tenham acesso ao conteúdo das mensagens.
 Entretanto, a ausência de um intermediário confiável exige o uso de
 assinaturas digitais como mecanismo de validação direta entre as
@@ -142,8 +142,7 @@ não retêm cópias das mensagens para verificação posterior.
 
 Além disso, o uso de criptografia e assinatura digital contribui para
 a minimização de dados, um dos pilares da proteção de dados
-moderna segundo legislações como a LGPD (Lei Geral de Proteção de
-Dados). Em vez de armazenar o conteúdo das mensagens, o sistema
+moderna segundo legislações como a \acf{LGPD}. Em vez de armazenar o conteúdo das mensagens, o sistema
 limita seu papel ao registro temporário da chave criptográfica
 pública, garantindo que nenhuma informação sensível permaneça no
 ambiente do servidor após o encerramento da sessão. Isso não só
@@ -161,22 +160,22 @@ respeitosos à privacidade.
 
 \subsection{\textit{Networking}}
 
-A utilização de criptografia fim a fim (E2EE) se destaca por sua
+A utilização de criptografia fim a fim (\acs{E2EE}) se destaca por sua
 capacidade de eliminar o acesso do provedor ao conteúdo das
 mensagens, promovendo um novo paradigma de segurança digital. Em
 aplicações tradicionais, os servidores intermediários desempenham um
 papel ativo no processamento das mensagens, o que os torna pontos
 vulneráveis a vazamentos, acesso indevido ou mesmo requisições
-judiciais de conteúdo. No entanto, a arquitetura E2EE rompe com
+judiciais de conteúdo. No entanto, a arquitetura \acs{E2EE} rompe com
 essa lógica, garantindo que nem mesmo o provedor tenha acesso às
 mensagens trocadas entre os usuários.
 
 De acordo com \citeonline[p.~4, tradução nossa]{knodel2024}, “A
-criptografia de ponta a ponta (E2EE) é um padrão de segurança para
+criptografia de ponta a ponta (\acs{E2EE}) é um padrão de segurança para
 comunicação no qual apenas o remetente e o destinatário pretendido
 podem ler as mensagens entre eles. Em particular, mesmo a plataforma
 não consegue ler essas comunicações, apesar de ainda atuar como
-intermediária”\footnote{End-to-end encryption (E2EE) is a standard
+intermediária”\footnote{\acfi{E2EE} is a standard
   of security for communication in which only the sender and an
   intended recipient can read communications between them. In
   particular, even the platform cannot read these communications
@@ -198,7 +197,7 @@ ser acessado ou reconstruído.
 
 Essa abordagem está em conformidade com as práticas modernas de
 segurança digital, que reconhecem o risco crescente do chamado
-"problema do intermediário confiável". Na prática, E2EE
+"problema do intermediário confiável". Na prática, \acs{E2EE}
 transforma os servidores em meros “retransmissores cegos”,
 incapazes de interpretar ou manipular o conteúdo que transportam.
 Essa é uma característica fundamental para garantir não apenas a
@@ -213,20 +212,20 @@ comunicação são componentes adicionais que reforçam a
 confidencialidade e reduzem a superfície de ataque do sistema.
 
 No contexto legal, esse modelo também se alinha com os princípios
-estabelecidos por regulamentações como a LGPD (Lei nº
-13.709/2018) no Brasil e o Regulamento Geral de Proteção de Dados
-(GDPR) da União Europeia. Ambas as legislações reforçam o conceito
+estabelecidos por regulamentações como a \acs{LGPD} (Lei nº
+13.709/2018) no Brasil e o \acfi{GDPR} da União Europeia.
+Ambas as legislações reforçam o conceito
 de minimização de dados, exigindo que apenas os dados
 estritamente necessários sejam coletados e tratados, além de garantir
 transparência, finalidade específica e segurança da informação.
 
-A criptografia E2EE, ao garantir que os dados em trânsito sejam
+A criptografia \acs{E2EE}, ao garantir que os dados em trânsito sejam
 inacessíveis mesmo para o controlador, mitiga riscos regulatórios e
 reduz a responsabilidade legal da aplicação, principalmente no que
 diz respeito à guarda e exposição de dados pessoais. Como apontado
 por \citeonline[p.~4, tradução nossa]{knodel2024}, “[...]
 funcionalidades de IA ou análise de
-dados em sistemas E2EE devem ser sempre opcionais e precedidas de
+dados em sistemas \acs{E2EE} devem ser sempre opcionais e precedidas de
 consentimento explícito, dada a sensibilidade e os riscos legais envolvidos”.
 
 Nesse sentido, o sistema proposto neste trabalho também implementa
