@@ -41,6 +41,8 @@
 \RequirePackage[printonlyused, withpage]{acronym}
 \RequirePackage{titlesec}
 \RequirePackage[flushmargin]{footmisc}
+\RequirePackage{graphicx}
+\RequirePackage{float}
 
 % Configurações
 \setmainfont{times-new-roman}[
@@ -61,6 +63,9 @@
 
 % Renomeia e formata o título da seção de referências
 \addto\captionsbrazil{\renewcommand{\refname}{\hfil REFERÊNCIAS}}
+
+% Renomeia e formata o título da seção de lista de figuras
+\addto\captionsbrazil{\renewcommand\listfigurename{\hfil LISTA DE FIGURAS}}
 
 % Configura identação dos itens do sumário
 \cftsetindents{section}{0em}{3em}

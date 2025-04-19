@@ -31,6 +31,14 @@ o destinatário, de modo a garantir que nenhuma pessoa não autorizada
 possa obter a chave. A figura abaixo ilustra o processo de
 criptografia simétrica.
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\linewidth]{imagens/criptografia-simetrica.png}
+  \caption[Processo de criptografia simétrica]{Processo de
+  criptografia simétrica}
+  \label{fig:fig1}
+\end{figure}
+
 \subsubsection{Criptografia assimétrica}
 
 Já na criptografia assimétrica duas chaves são necessárias: uma é a
@@ -47,6 +55,14 @@ porque a velocidade é lenta em comparação com os sistemas baseados em
 chaves simétricas e eles também apresentam uma maior taxa de
 utilização da \acs{CPU}. A figura abaixo ilustra o processo de criptografia
 assimétrica.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\linewidth]{imagens/criptografia-assimetrica.png}
+  \caption[Processo de criptografia assimétrica]{Processo de
+  criptografia assimétrica}
+  \label{fig:fig2}
+\end{figure}
 
 \subsection{Camada 7 com confiabilidade}
 
@@ -142,7 +158,8 @@ não retêm cópias das mensagens para verificação posterior.
 
 Além disso, o uso de criptografia e assinatura digital contribui para
 a minimização de dados, um dos pilares da proteção de dados
-moderna segundo legislações como a \acf{LGPD}. Em vez de armazenar o conteúdo das mensagens, o sistema
+moderna segundo legislações como a \acf{LGPD}. Em vez de armazenar o
+conteúdo das mensagens, o sistema
 limita seu papel ao registro temporário da chave criptográfica
 pública, garantindo que nenhuma informação sensível permaneça no
 ambiente do servidor após o encerramento da sessão. Isso não só
@@ -226,7 +243,10 @@ diz respeito à guarda e exposição de dados pessoais. Como apontado
 por \citeonline[p.~4, tradução nossa]{knodel2024}, “[...]
 funcionalidades de IA ou análise de
 dados em sistemas \acs{E2EE} devem ser sempre opcionais e precedidas de
-consentimento explícito, dada a sensibilidade e os riscos legais envolvidos”.
+consentimento explícito, dada a sensibilidade e os riscos legais
+envolvidos”\footnote{AI assistant features, if offered in \acs{E2EE}
+  systems, should generally be off by default
+and only activated via opt-in consent}.
 
 Nesse sentido, o sistema proposto neste trabalho também implementa
 princípios de \textit{privacy by design} e \textit{privacy by default},
