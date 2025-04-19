@@ -65,7 +65,13 @@
 \addto\captionsbrazil{\renewcommand{\refname}{\hfil REFERÊNCIAS}}
 
 % Renomeia e formata o título da seção de lista de figuras
-\addto\captionsbrazil{\renewcommand\listfigurename{\hfil LISTA DE FIGURAS}}
+\addto\captionsbrazil{\renewcommand{\listfigurename}{\large\hfil
+LISTA DE FIGURAS}}
+
+% Configurações da numeração, referência e listagem de figuras
+\setlength{\cftfigindent}{0pt}
+\counterwithin{figure}{section}
+\newcommand\figref{\ref}
 
 % Configura identação dos itens do sumário
 \cftsetindents{section}{0em}{3em}

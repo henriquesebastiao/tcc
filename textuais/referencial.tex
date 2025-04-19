@@ -28,15 +28,15 @@ descriptografia são feitas com base em uma única chave chamada de
 chave privada, também podendo ser chamada de chave secreta. Um canal
 seguro é necessário para compartilhar essa chave entre o remetente e
 o destinatário, de modo a garantir que nenhuma pessoa não autorizada
-possa obter a chave. A figura abaixo ilustra o processo de
-criptografia simétrica.
+possa obter a chave. A figura \figref{fig:criptografia-simetrica}
+ilustra o processo de criptografia simétrica.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.6\linewidth]{imagens/criptografia-simetrica.png}
   \caption[Processo de criptografia simétrica]{Processo de
   criptografia simétrica}
-  \label{fig:fig1}
+  \label{fig:criptografia-simetrica}
 \end{figure}
 
 \subsubsection{Criptografia assimétrica}
@@ -53,21 +53,21 @@ segurança, eles podem não ser adequados para criptografar grandes
 volumes de dados, como ressalta \citeonline{alenezi2020}. Isso ocorre
 porque a velocidade é lenta em comparação com os sistemas baseados em
 chaves simétricas e eles também apresentam uma maior taxa de
-utilização da \acs{CPU}. A figura abaixo ilustra o processo de criptografia
-assimétrica.
+utilização da \acs{CPU}. A figura \figref{fig:criptografia-assimetrica}
+ilustra o processo de criptografia assimétrica.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.6\linewidth]{imagens/criptografia-assimetrica.png}
   \caption[Processo de criptografia assimétrica]{Processo de
   criptografia assimétrica}
-  \label{fig:fig2}
+  \label{fig:criptografia-assimetrica}
 \end{figure}
 
 \subsection{Camada 7 com confiabilidade}
 
 Tendo em vista que, em redes, compete a camada de aplicação garantir
-a segurança das informações trafegadas pelas camadas inferiores, umas
+a segurança das informações trafegadas pelas camadas inferiores, uma
 vez que esta, seja a principal no objetivo de comunicar com a outra
 parte, onde é gerado todo o conteúdo que será lido pelo usuário de
 destino. Por ser o ponto final de consumo e envio de dados, essa
@@ -91,7 +91,7 @@ Em um cenário cada vez mais conectado, a comunicação digital segura
 se tornou uma necessidade central para garantir a integridade e a
 privacidade das informações trocadas entre usuários. Aplicações de
 mensagens instantâneas, especialmente aquelas que operam em
-estruturas descentralizadas ou ponto a ponto (\acs{P2P}), enfrentam
+estruturas descentralizadas ou \acs{P2P}, enfrentam
 desafios significativos quanto à proteção de dados sensíveis.
 
 A confidencialidade das mensagens e a identidade dos participantes
@@ -121,7 +121,7 @@ explorada por agentes mal-intencionados.
 
 A proteção de dados em uma aplicação de comunicação segura, como a
 proposta neste trabalho, deve ser tratada desde a concepção do
-sistema, incorporando práticas como \textit{privacy by design} e
+sistema, incorporando práticas como \textit{gls{privacybydesign}} e
 validação automatizada, de forma a garantir não apenas a
 funcionalidade da comunicação, mas também a confiança de seus usuários.
 
@@ -132,7 +132,7 @@ confidencialidade seja preservada, mas também que se garanta a
 autenticidade da origem da mensagem, sua integridade, e, em
 muitos casos, o não repúdio — ou seja, que o emissor não possa
 negar posteriormente a autoria da mensagem enviada. Em sistemas
-descentralizados ou ponto a ponto (\acs{P2P}), onde não há um servidor
+descentralizados ou \acs{P2P}, onde não há um servidor
 central responsável por intermediar ou validar o tráfego, essa
 responsabilidade recai sobre mecanismos criptográficos robustos e
 cuidadosamente implementados.
@@ -220,7 +220,7 @@ incapazes de interpretar ou manipular o conteúdo que transportam.
 Essa é uma característica fundamental para garantir não apenas a
 segurança das informações, mas também a confiança do usuário no sistema.
 
-Além disso, esse modelo fortalece o princípio do \textit{privacy by design},
+Além disso, esse modelo fortalece o princípio do \textit{\gls{privacybydesign}},
 ao considerar a privacidade como um requisito estrutural da
 arquitetura do sistema, e não como uma camada superficial ou
 opcional. O mínimo armazenamento de dados sensíveis e a exclusão
@@ -249,7 +249,7 @@ envolvidos”\footnote{AI assistant features, if offered in \acs{E2EE}
 and only activated via opt-in consent}.
 
 Nesse sentido, o sistema proposto neste trabalho também implementa
-princípios de \textit{privacy by design} e \textit{privacy by default},
+princípios de \textit{\gls{privacybydesign}} e \textit{\gls{privacybydefault}},
 promovendo a privacidade como um requisito estrutural da arquitetura
 e não como uma funcionalidade opcional ou complementar. Ao limitar o
 armazenamento de dados sensíveis, adotar criptografia robusta, e
