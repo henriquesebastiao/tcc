@@ -1,0 +1,302 @@
+\section{REFERENCIAL TEÓRICO}
+
+\subsection{Criptografia de mensagens}
+
+Há muitos anos, a informação é uma ferramenta crucial pra se obter
+vantagens sobre seus concorrentes. Criptografá-la para impedir acesso
+por terceiros, se tornou necessário para a confiabilidade da
+transmissão das informações e da privacidade dos indivíduos. Assim como
+\citeonline[p.~1]{carvalho2021} dizem que “Proteger mensagens e
+informações sigilosas é uma prática que remota aos primórdios da
+humanidade, principalmente em contexto de guerra e diplomacia”.
+
+Ao tratarmos de comunicação por meios digitais, transportando-a por
+intermédio de redes públicas de computadores, como é o caso da
+internet, torna-se imprescindível garantir a segurança dessa
+comunicação, de modo a garantir os fundamentos da segurança da
+informação, sendo eles, disponibilidade, integridade, controle de
+acesso, autenticidade, não-repudiação e privacidade, como aborda
+\citeonline{oliveira2012}. Mostra-se necessária a implementação de
+técnicas computacionais que visam atender os requisitos para a
+proteção da comunicação. Nessa conjuntura, dois tipos de criptografia
+se mostram bastante promissores: a simétrica e a assimétrica.
+
+\subsubsection{Criptografia simétrica}
+
+No método de chave simétrica, tanto a criptografia dos dados quanto a
+descriptografia são feitas com base em uma única chave chamada de
+chave privada, também podendo ser chamada de chave secreta. Um canal
+seguro é necessário para compartilhar essa chave entre o remetente e
+o destinatário, de modo a garantir que nenhuma pessoa não autorizada
+possa obter a chave. A figura \figref{fig:criptografia-simetrica}
+ilustra o processo de criptografia simétrica.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\linewidth]{imagens/criptografia-simetrica.png}
+  \caption[Processo de criptografia simétrica]{Processo de
+  criptografia simétrica}
+  \label{fig:criptografia-simetrica}
+\end{figure}
+
+\subsubsection{Criptografia assimétrica}
+
+Já na criptografia assimétrica duas chaves são necessárias: uma é a
+chave privada que deve ser mantida em segredo e a outra é a chave
+pública. A criptografia é realizada usando a chave pública, já a
+chave secreta é usada para descriptografar o conteúdo cifrado. Ambas
+as chaves são matematicamente relacionadas entre si. É importante
+ressaltar ainda, que não é possível descriptografar o texto com a
+chave pública, logo esta pode ser conhecida por pessoas terceiras.
+Mesmo que os sistemas assimétricos possibilitem um nível maior de
+segurança, eles podem não ser adequados para criptografar grandes
+volumes de dados, como ressalta \citeonline{alenezi2020}. Isso ocorre
+porque a velocidade é lenta em comparação com os sistemas baseados em
+chaves simétricas e eles também apresentam uma maior taxa de
+utilização da \acs{CPU}. A figura \figref{fig:criptografia-assimetrica}
+ilustra o processo de criptografia assimétrica.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\linewidth]{imagens/criptografia-assimetrica.png}
+  \caption[Processo de criptografia assimétrica]{Processo de
+  criptografia assimétrica}
+  \label{fig:criptografia-assimetrica}
+\end{figure}
+
+\subsection{Camada 7 com confiabilidade}
+
+Tendo em vista que, em redes, compete a camada de aplicação garantir
+a segurança das informações trafegadas pelas camadas inferiores, uma
+vez que esta, seja a principal no objetivo de comunicar com a outra
+parte, onde é gerado todo o conteúdo que será lido pelo usuário de
+destino. Por ser o ponto final de consumo e envio de dados, essa
+camada se torna um alvo recorrente para ataques que buscam capturar,
+manipular ou redirecionar informações sensíveis.
+
+Em ambientes abertos e descentralizados, como é o caso de aplicações
+com criptografia ponto a ponto (\acs{P2P}), os riscos são amplificados. A
+segurança da aplicação não pode depender exclusivamente de mecanismos
+criptográficos isolados. É fundamental que o protocolo de comunicação
+utilizado seja projetado para resistir a ataques mesmo sob as piores
+condições, como destaca \citeonline[p.~2, tradução
+nossa]{vigano2006}, “Em redes abertas como a Internet, protocolos
+devem funcionar mesmo sob suposições de pior caso, como interceptação
+ou modificação de mensagens por invasores” \footnote{In open
+  networks, such as the Internet, protocols should work even under
+  worst-case assumptions, e.g., that messages may be eavesdropped or
+tampered with by an intruder.}.
+
+Em um cenário cada vez mais conectado, a comunicação digital segura
+se tornou uma necessidade central para garantir a integridade e a
+privacidade das informações trocadas entre usuários. Aplicações de
+mensagens instantâneas, especialmente aquelas que operam em
+estruturas descentralizadas ou \acs{P2P}, enfrentam
+desafios significativos quanto à proteção de dados sensíveis.
+
+A confidencialidade das mensagens e a identidade dos participantes
+são aspectos críticos nesse contexto. A ausência de um controle
+centralizador expõe os usuários a um risco maior de interceptações,
+falsificações e ataques de engenharia social. Assim, a adoção de
+protocolos seguros e validados é essencial para resguardar os
+direitos fundamentais dos usuários, como o direito à privacidade.
+
+Segundo \citeonline[p.~2, tradução nossa]{vigano2006}, “[...]
+usuários dessas tecnologias dependem de uma infraestrutura segura
+para garantir direitos e liberdades, como o direito à privacidade”
+\footnote{It is also a problem for users of these technologies whose
+  rights and freedoms, such as the right to privacy of personal data,
+depend on a secure infrastructure.}. Essa afirmação reforça a ideia
+de que a segurança da infraestrutura digital não é apenas um
+requisito técnico, mas também um compromisso ético e legal, sobretudo
+quando se trata da troca de mensagens pessoais ou confidenciais.
+
+Portanto, o uso de criptografia de ponta a ponta (\textit{end-to-end
+encryption}) aliada à validação formal dos protocolos utilizados se
+mostra indispensável. Ferramentas como o \gls{avispatool} são
+relevantes neste cenário, por permitirem uma análise automatizada e
+profunda de falhas em protocolos, incluindo casos em que a
+criptografia permanece intacta, mas a lógica do protocolo pode ser
+explorada por agentes mal-intencionados.
+
+A proteção de dados em uma aplicação de comunicação segura, como a
+proposta neste trabalho, deve ser tratada desde a concepção do
+sistema, incorporando práticas como \textit{gls{privacybydesign}} e
+validação automatizada, de forma a garantir não apenas a
+funcionalidade da comunicação, mas também a confiança de seus usuários.
+
+\subsection{Assinatura digital}
+
+A segurança em comunicações digitais exige que não apenas a
+confidencialidade seja preservada, mas também que se garanta a
+autenticidade da origem da mensagem, sua integridade, e, em
+muitos casos, o não repúdio — ou seja, que o emissor não possa
+negar posteriormente a autoria da mensagem enviada. Em sistemas
+descentralizados ou \acs{P2P}, onde não há um servidor
+central responsável por intermediar ou validar o tráfego, essa
+responsabilidade recai sobre mecanismos criptográficos robustos e
+cuidadosamente implementados.
+
+A aplicação desenvolvida neste trabalho adota a arquitetura \acs{P2P} com
+criptografia de ponta a ponta (\acs{E2EE}), o que garante que apenas os
+dispositivos dos usuários tenham acesso ao conteúdo das mensagens.
+Entretanto, a ausência de um intermediário confiável exige o uso de
+assinaturas digitais como mecanismo de validação direta entre as
+partes, assegurando que o conteúdo recebido não foi alterado
+durante o tráfego e, mais ainda, que foi gerado pelo remetente legítimo.
+
+Conforme apresentado por \citeonline[p.~2, tradução
+nossa]{rahim2018}, “[...] as assinaturas digitais permitem ao
+destinatário verificar a autenticidade e a integridade da mensagem, e
+ao mesmo tempo, oferecem serviços de não repúdio”\footnote{Also,
+  digital signatures also provide nonrepudiation services, which means
+  protecting the sender from a claim stating that he or she has sent
+information when there is no data transmission.}. Esse conceito é
+essencial em ambientes onde a troca de informações sensíveis pode
+acarretar consequências legais ou operacionais, e onde os servidores
+não retêm cópias das mensagens para verificação posterior.
+
+Além disso, o uso de criptografia e assinatura digital contribui para
+a minimização de dados, um dos pilares da proteção de dados
+moderna segundo legislações como a \acf{LGPD}. Em vez de armazenar o
+conteúdo das mensagens, o sistema
+limita seu papel ao registro temporário da chave criptográfica
+pública, garantindo que nenhuma informação sensível permaneça no
+ambiente do servidor após o encerramento da sessão. Isso não só
+reduz drasticamente a superfície de ataque do sistema, como
+também fortalece sua conformidade com princípios legais de privacidade.
+
+Ao incorporar práticas como assinaturas digitais baseadas em
+esquemas robustos (como Ong-Schnorr-Shamir), a aplicação demonstra
+que é possível manter a integridade da comunicação e responsabilizar
+os envolvidos, sem comprometer a privacidade dos usuários ou criar
+pontos centrais de vulnerabilidade. Trata-se de um equilíbrio
+técnico e ético entre segurança, autonomia e responsabilidade, que se
+alinha diretamente com as demandas atuais de sistemas distribuídos e
+respeitosos à privacidade.
+
+\subsection{\textit{Networking}}
+
+A utilização de criptografia fim a fim (\acs{E2EE}) se destaca por sua
+capacidade de eliminar o acesso do provedor ao conteúdo das
+mensagens, promovendo um novo paradigma de segurança digital. Em
+aplicações tradicionais, os servidores intermediários desempenham um
+papel ativo no processamento das mensagens, o que os torna pontos
+vulneráveis a vazamentos, acesso indevido ou mesmo requisições
+judiciais de conteúdo. No entanto, a arquitetura \acs{E2EE} rompe com
+essa lógica, garantindo que nem mesmo o provedor tenha acesso às
+mensagens trocadas entre os usuários.
+
+De acordo com \citeonline[p.~4, tradução nossa]{knodel2024}, “A
+criptografia de ponta a ponta (\acs{E2EE}) é um padrão de segurança para
+comunicação no qual apenas o remetente e o destinatário pretendido
+podem ler as mensagens entre eles. Em particular, mesmo a plataforma
+não consegue ler essas comunicações, apesar de ainda atuar como
+intermediária”\footnote{\acfi{E2EE} is a standard
+  of security for communication in which only the sender and an
+  intended recipient can read communications between them. In
+  particular, even the platform cannot read these communications
+despite still acting as the intermediary for communication.}. Esse
+modelo descentraliza o controle da informação, deslocando a
+responsabilidade da proteção para as extremidades — ou seja, os
+próprios dispositivos dos usuários, que são os únicos com acesso às
+chaves de decriptação.
+
+A aplicação proposta neste trabalho adota esse princípio ao extremo,
+utilizando apenas as chaves criptográficas de cada usuário na
+sessão, sendo excluídas ao término da comunicação e renovadas ao
+início de uma nova sessão, assim como o endereço ou identificador do
+usuário com o qual se deseja comunicar. O conteúdo da mensagem, por
+sua vez, nunca transita em texto claro pelo servidor, nem tampouco
+é armazenado. Isso garante que, mesmo em caso de invasão ou
+interceptação de dados do servidor, nenhum conteúdo sensível possa
+ser acessado ou reconstruído.
+
+Essa abordagem está em conformidade com as práticas modernas de
+segurança digital, que reconhecem o risco crescente do chamado
+"problema do intermediário confiável". Na prática, \acs{E2EE}
+transforma os servidores em meros “retransmissores cegos”,
+incapazes de interpretar ou manipular o conteúdo que transportam.
+Essa é uma característica fundamental para garantir não apenas a
+segurança das informações, mas também a confiança do usuário no sistema.
+
+Além disso, esse modelo fortalece o princípio do \textit{\gls{privacybydesign}},
+ao considerar a privacidade como um requisito estrutural da
+arquitetura do sistema, e não como uma camada superficial ou
+opcional. O mínimo armazenamento de dados sensíveis e a exclusão
+automática de informações auxiliares após a finalização da sessão de
+comunicação são componentes adicionais que reforçam a
+confidencialidade e reduzem a superfície de ataque do sistema.
+
+No contexto legal, esse modelo também se alinha com os princípios
+estabelecidos por regulamentações como a \acs{LGPD} (Lei nº
+13.709/2018) no Brasil e o \acfi{GDPR} da União Europeia.
+Ambas as legislações reforçam o conceito
+de minimização de dados, exigindo que apenas os dados
+estritamente necessários sejam coletados e tratados, além de garantir
+transparência, finalidade específica e segurança da informação.
+
+A criptografia \acs{E2EE}, ao garantir que os dados em trânsito sejam
+inacessíveis mesmo para o controlador, mitiga riscos regulatórios e
+reduz a responsabilidade legal da aplicação, principalmente no que
+diz respeito à guarda e exposição de dados pessoais. Como apontado
+por \citeonline[p.~4, tradução nossa]{knodel2024}, “[...]
+funcionalidades de IA ou análise de
+dados em sistemas \acs{E2EE} devem ser sempre opcionais e precedidas de
+consentimento explícito, dada a sensibilidade e os riscos legais
+envolvidos”\footnote{AI assistant features, if offered in \acs{E2EE}
+  systems, should generally be off by default
+and only activated via opt-in consent}.
+
+Nesse sentido, o sistema proposto neste trabalho também implementa
+princípios de \textit{\gls{privacybydesign}} e \textit{\gls{privacybydefault}},
+promovendo a privacidade como um requisito estrutural da arquitetura
+e não como uma funcionalidade opcional ou complementar. Ao limitar o
+armazenamento de dados sensíveis, adotar criptografia robusta, e
+evitar qualquer exposição desnecessária do conteúdo ao servidor, o
+sistema fortalece tanto sua segurança técnica quanto sua conformidade legal.
+
+\subsection{Comunicação}
+
+As comunicações digitais transformaram radicalmente a maneira como as
+pessoas interagem, compartilham informações e constroem
+relacionamentos. Essa transformação só foram possíveis graças ao
+avanço das tecnologias que permitiram a troca de dados por meio de
+dispositivos conectados. Em vez de depender exclusivamente de
+encontros presenciais ou arquivos físicos, atualmente é possível
+transmitir mensagens instantaneamente entre pontos distantes, de uma
+forma quase imperceptível \citeonline{castells2002}.
+
+As informações trafegam de maneira organizada, segura e eficiente,
+graças a comunicação moderna. Para garantir que as mensagens cheguem
+ao destino correto, os dados percorrem uma série de camadas que se
+encarregam de endereçar, embalar e redirecionar os pacotes ao longo
+do caminho, como afirma \citeonline{kurose2013}. Esses processos criam uma rede
+no qual dispositivos, servidores e usuários trocam informações em
+tempo real, de forma quase transparente ao usuário final, mas
+altamente complexa em seu funcionamento interno.
+
+Nesse contexto, \citeonline{stallings2014} aborda sobre como a preocupação com a
+segurança se tornou um fator essencial por intermédio do aumento do
+volume de dados e da sensibilidade das informações transmitidas,
+assim como, a necessidade de garantir que apenas os envolvidos em uma
+conversa tenham acesso ao conteúdo trocado. Esses métodos  de
+proteção impedem o acesso indevido, mesmo em um ambiente de rede
+sujeito a riscos e interferências, é possível manter a
+confidencialidade e a integridade da comunicação.
+
+Além da segurança, um aspecto igualmente essencial na comunicação
+digital contemporânea é a capacidade de interatividade em tempo quase
+real. A troca contínua de informações entre sistemas e usuários
+permite que interações provem de maneira natural, como em conversas
+instantâneas ou em ambientes colaborativos online. Para viabilizar
+essa dinâmica, torna-se necessário adotar arquiteturas de comunicação
+que possibilitem conexões estáveis, bidirecionais e eficientes, mesmo
+diante de variações na infraestrutura da rede. Essa característica
+não apenas aprimora a experiência do usuário final, como também
+amplia significativamente as possibilidades de aplicação dessas
+tecnologias em diversos contextos, incluindo plataformas
+educacionais, serviços de atendimento ao cliente e sistemas
+interativos de missão crítica \citeonline{tenenbaum2011}.
+
+\newpage

@@ -40,6 +40,9 @@
 \RequirePackage{enumitem}
 \RequirePackage[printonlyused, withpage]{acronym}
 \RequirePackage{titlesec}
+\RequirePackage[flushmargin]{footmisc}
+\RequirePackage{graphicx}
+\RequirePackage{float}
 
 % Configurações
 \setmainfont{times-new-roman}[
@@ -61,6 +64,15 @@
 % Renomeia e formata o título da seção de referências
 \addto\captionsbrazil{\renewcommand{\refname}{\hfil REFERÊNCIAS}}
 
+% Renomeia e formata o título da seção de lista de figuras
+\addto\captionsbrazil{\renewcommand{\listfigurename}{\large\hfil
+LISTA DE FIGURAS}}
+
+% Configurações da numeração, referência e listagem de figuras
+\setlength{\cftfigindent}{0pt}
+\counterwithin{figure}{section}
+\newcommand\figref{\ref}
+
 % Configura identação dos itens do sumário
 \cftsetindents{section}{0em}{3em}
 \cftsetindents{subsection}{0em}{3em}
@@ -78,6 +90,8 @@
 
 % Adiciona linhas com pontos ao sumário
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+
+\addtolength{\footnotesep}{2mm}
 
 \hypersetup{
   colorlinks,
