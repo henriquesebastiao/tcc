@@ -299,4 +299,169 @@ tecnologias em diversos contextos, incluindo plataformas
 educacionais, serviços de atendimento ao cliente e sistemas
 interativos de missão crítica \citeonline{tenenbaum2011}.
 
+\subsection{Protocolo Websocket}
+
+O protocolo Websocket, documentado na RFC 6455 em 2011 pela
+\acfi{IETF}, foi desenvolvido para substituir
+tecnologias de comunicação bidirecional baseadas em \acs{HTTP}. O protocolo
+permite que aplicações web se comuniquem com o servidor utilizando o
+protocolo \acs{TCP} na camada de transporte. Embora projetado
+principalmente para navegadores web, o Websocket também pode ser
+utilizado para diferentes finalidades.
+
+O protocolo possibilita a transmissão de mensagens contendo texto em
+codificação UTF-8 ou dados binários. Seu cabeçalho foi projetado para
+ser conciso, resultando em menor overhead e reduzindo o consumo de
+largura de banda. Tais características, fazem com que o protocolo
+seja de grande valia para o desenvolvimento da aplicação proposta
+neste trabalho.
+
+O protocolo funciona estabelecendo inicialmente uma conexão entre
+cliente e servidor usando cabeçalho \acs{HTTP} sobre um único socket \acs{TCP}.
+Após estabelecida a conexão, o cabeçalho \acs{HTTP} é substituído pelo
+cabeçalho Websocket, permitindo a troca simultânea de mensagens em
+ambas as direções através de uma conexão persistente e dedicada. Isso
+possibilita que o servidor envie mensagens ao cliente a qualquer
+momento. A confiabilidade da comunicação é assegurada por
+mecanismos próprios do protocolo. A figura \figref{fig:websocket}
+demonstra o processo de comunicação do protocolo Websocket.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\linewidth]{imagens/websocket.png}
+  \caption[Demonstração da comunicação com protocolo
+  Websocket]{Demonstração da comunicação com protocolo Websocket}
+  \label{fig:websocket}
+\end{figure}
+
+\subsection{Python}
+
+O Python, principal linguagem de programação utilizada no
+desenvolvimento deste projeto, é uma linguagem de alto nível,
+interpretada e multiparadigma, criada por Guido van Rossum e lançada
+em 1991. Com uma sintaxe simples e legível, o Python foi projetado
+para priorizar a clareza do código e a produtividade do
+desenvolvedor, o que a torna uma excelente escolha tanto para
+iniciantes quanto para profissionais experientes.
+
+Ao longo dos anos, o Python consolidou-se como uma das linguagens
+mais populares do mundo, sendo amplamente adotada em áreas como
+desenvolvimento web, automação de tarefas, análise de dados,
+inteligência artificial, ciência de dados e desenvolvimento de
+sistemas embarcados. Possui uma vasta biblioteca padrão e um rico
+ecossistema de bibliotecas e \textit{frameworks} de terceiros, que facilitam a
+implementação rápida de funcionalidades complexas.
+
+O Python adota recursos modernos como tipagem dinâmica, gerenciamento
+automático de memória (garbage collection), programação orientada a
+objetos e suporte nativo a programação assíncrona (async/await).
+Essas características, combinadas com a simplicidade de uso e uma
+comunidade ativa e colaborativa, contribuíram para o seu crescimento
+contínuo e adoção em larga escala por empresas e instituições de ensino.
+
+Uma análise realizada por \citeonline{foster2014}
+comparou o desempenho e a produtividade das linguagens Python, Java e
+C++ em tarefas computacionais diversas. O estudo concluiu que, embora
+Python apresente desempenho inferior em termos de tempo de execução,
+sua simplicidade e velocidade de desenvolvimento oferecem vantagens
+significativas, especialmente em projetos com foco em prototipação
+rápida e manutenção facilitada. Esses fatores juntamente com o fato
+da linguagem oferecer suporte nativo ao protocolo Websocket, reforçam
+a escolha do Python como linguagem principal adotada neste projeto.
+
+\subsection{Bibliotecas e \textit{Frameworks}}
+
+O desenvolvimento da aplicação proposta exigiu a utilização de
+bibliotecas e \textit{frameworks} que oferecessem tanto robustez quanto
+simplicidade na implementação das funcionalidades necessárias. A
+escolha das tecnologias levou em consideração critérios como
+segurança, desempenho, facilidade de integração, suporte a padrões
+modernos e ampla adoção na comunidade de desenvolvimento. Dentre as
+diversas opções disponíveis no ecossistema Python, foram selecionadas
+ferramentas consolidadas e bem documentadas, capazes de atender aos
+requisitos técnicos do projeto com eficiência. A seguir, serão
+apresentadas duas dessas tecnologias essenciais: a biblioteca
+cryptography, utilizada para os mecanismos de criptografia e proteção
+de dados, e o \textit{framework} FastAPI, responsável pela criação do servidor
+intermediário baseado em Websocket.
+
+\subsubsection{Cryptography}
+
+Para a implementação das funcionalidades de segurança e proteção dos
+dados trafegados e armazenados na aplicação, foi utilizada a
+biblioteca Cryptography, amplamente reconhecida na comunidade Python
+por sua robustez e conformidade com padrões modernos de criptografia.
+Desenvolvida com foco em simplicidade, desempenho e segurança, a
+biblioteca fornece uma interface de alto nível para algoritmos
+criptográficos amplamente utilizados, além de acesso a construções de
+baixo nível para casos mais avançados.
+
+No contexto deste projeto, a biblioteca foi empregada para realizar
+tanto criptografia simétrica quanto assimétrica. A criptografia
+simétrica foi implementada utilizando o algoritmo \acs{AES}
+(\acl{AES}) com chave de 256 bits, conhecido como AES-256, que
+oferece alto grau de segurança e eficiência na codificação e
+decodificação de dados com uma única chave secreta. Já para a
+criptografia assimétrica, foi utilizado o algoritmo \acs{RSA}, permitindo a
+troca segura de informações por meio de um par de chaves pública e
+privada, garantindo confidencialidade e autenticação. Essa combinação
+permite à aplicação proteger tanto os dados em repouso quanto os em
+trânsito, mantendo a integridade e a confidencialidade das
+comunicações entre os usuários.
+
+A adoção da biblioteca Cryptography, aliada a boas práticas de
+geração e armazenamento seguro de chaves, contribuiu
+significativamente para o fortalecimento dos mecanismos de segurança
+da aplicação, alinhando-se às diretrizes de proteção de dados
+sensíveis exigidas em contextos de comunicação segura.
+
+\subsubsection{FastAPI}
+
+O FastAPI foi a tecnologia escolhida para o desenvolvimento do
+servidor responsável por intermediar a comunicação entre remetente e
+destinatário, por meio de conexões Websocket. Criado por Sebastián
+Ramírez e lançado em 2018, o FastAPI é um \textit{framework} moderno para
+construção de \acsp{API} web em Python, baseado no padrão \acs{ASGI}
+(\acl{ASGI}). Ele se destaca por sua
+performance comparável a \textit{frameworks} escritos em linguagens
+compiladas, como Node.js e Go, além de oferecer tipagem forte com
+validação automática via Pydantic, documentação interativa gerada
+automaticamente e suporte nativo a programação assíncrona com async/await.
+
+No contexto desta aplicação, o FastAPI será utilizado para manter
+sessões Websocket persistentes entre os pares, funcionando como um
+servidor de sinalização e retransmissão. Essa arquitetura permite
+contornar restrições impostas por \acsp{NAT} simétricos e \acsp{CGNAT}
+(\acl{CGNAT}), situações comuns em redes residenciais e móveis,
+onde conexões diretas entre dois dispositivos são inviabilizadas. O
+servidor, portanto, atua como um ponto central de intermediação das
+mensagens, mantendo a comunicação fluida, segura e em tempo real,
+mesmo quando os usuários não possuem endereço \acs{IP} público
+acessível. A escolha
+pelo FastAPI se justifica pela sua leveza, escalabilidade e excelente
+suporte para aplicações em tempo real, características essenciais
+para o funcionamento estável e responsivo do sistema proposto.
+
+\subsection{Docker}
+
+Para facilitar o processo de implantação do servidor FastAPI e tornar
+a aplicação acessível mesmo a usuários sem experiência prévia em
+desenvolvimento ou configuração de ambientes, foi adotada a
+ferramenta Docker. Lançado em 2013, o Docker é uma plataforma de
+virtualização leve baseada em contêineres, que permite empacotar uma
+aplicação juntamente com todas as suas dependências, bibliotecas e
+configurações em uma imagem padronizada. Isso garante que o sistema
+possa ser executado de forma consistente em diferentes ambientes,
+eliminando problemas comuns de incompatibilidade entre sistemas
+operacionais e versões de pacotes.
+
+No contexto deste projeto, o Docker é utilizado para distribuir a
+aplicação em um formato pronto para uso, permitindo que qualquer
+usuário possa executar o servidor localmente ou em um \acs{VPS} com um
+único comando, sem a necessidade de lidar com configurações
+complexas. Essa abordagem reforça o caráter \textit{self-hosted} da solução,
+oferecendo controle total ao usuário sobre sua instância do serviço,
+ao mesmo tempo em que promove a portabilidade, a segurança e a
+facilidade de atualização da aplicação.
+
 \newpage
