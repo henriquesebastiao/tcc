@@ -68,9 +68,10 @@
 \addto\captionsbrazil{\renewcommand{\listfigurename}{\large\hfil
 LISTA DE FIGURAS}}
 
-% Configurações da numeração, referência e listagem de figuras
+% Configurações da numeração, referência e listagem de figuras e tabelas
 \setlength{\cftfigindent}{0pt}
 \counterwithin{figure}{section}
+\counterwithin{table}{section}
 \newcommand\figref{\ref}
 
 % Configura identação dos itens do sumário
@@ -90,6 +91,15 @@ LISTA DE FIGURAS}}
 
 % Adiciona linhas com pontos ao sumário
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+
+\newcommand{\fakesection}[1]{
+  \begin{center}
+    \large\textbf{#1}
+  \end{center}
+  \par\refstepcounter{section}  % Increase section counter
+  \sectionmark{#1}  % Add section mark (header)
+  \addcontentsline{toc}{section}{#1}  % Add section to ToC
+}
 
 \addtolength{\footnotesep}{2mm}
 
