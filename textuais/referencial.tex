@@ -137,13 +137,13 @@ central responsável por intermediar ou validar o tráfego, essa
 responsabilidade recai sobre mecanismos criptográficos robustos e
 cuidadosamente implementados.
 
-A aplicação desenvolvida neste trabalho adota a arquitetura \acs{P2P} com
-criptografia de ponta a ponta (\acs{E2EE}), o que garante que apenas os
-dispositivos dos usuários tenham acesso ao conteúdo das mensagens.
-Entretanto, a ausência de um intermediário confiável exige o uso de
-assinaturas digitais como mecanismo de validação direta entre as
-partes, assegurando que o conteúdo recebido não foi alterado
-durante o tráfego e, mais ainda, que foi gerado pelo remetente legítimo.
+Aplicações de ponta adotam a arquitetura \acs{P2P} com criptografia de
+ponta a ponta (\acs{E2EE}), o que garante que apenas os dispositivos dos
+usuários tenham acesso ao conteúdo das mensagens. Entretanto, a
+ausência de um intermediário confiável exige o uso de assinaturas
+digitais como mecanismo de validação direta entre as partes,
+assegurando que o conteúdo recebido não foi alterado durante o
+tráfego e, mais ainda, que foi gerado pelo remetente legítimo.
 
 Conforme apresentado por \citeonline[p.~2, tradução
 nossa]{rahim2018}, “[...] as assinaturas digitais permitem ao
@@ -248,13 +248,18 @@ envolvidos”\footnote{AI assistant features, if offered in \acs{E2EE}
   systems, should generally be off by default
 and only activated via opt-in consent}.
 
-Nesse sentido, o sistema proposto neste trabalho também implementa
-princípios de \textit{\gls{privacybydesign}} e \textit{\gls{privacybydefault}},
-promovendo a privacidade como um requisito estrutural da arquitetura
-e não como uma funcionalidade opcional ou complementar. Ao limitar o
-armazenamento de dados sensíveis, adotar criptografia robusta, e
-evitar qualquer exposição desnecessária do conteúdo ao servidor, o
-sistema fortalece tanto sua segurança técnica quanto sua conformidade legal.
+A proteção de dados em uma aplicação de comunicação segura, como a
+proposta neste trabalho, deve ser tratada desde a concepção do
+sistema, incorporando práticas como \textit{\gls{privacybydesign}} e
+\textit{\gls{privacybydefault}}, promovendo a privacidade como um
+requisito estrutural da
+arquitetura, e não como uma funcionalidade opcional ou complementar.
+Nesse contexto, o sistema implementa validações automatizadas, limita
+o armazenamento de dados sensíveis, adota criptografia robusta e
+evita qualquer exposição desnecessária do conteúdo ao servidor,
+garantindo não apenas a funcionalidade da comunicação, mas também a
+confiança dos usuários, o fortalecimento da segurança técnica e a
+conformidade legal.
 
 \subsection{Comunicação}
 
