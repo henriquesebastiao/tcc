@@ -111,6 +111,9 @@ LISTA DE FIGURAS}}
   urlcolor=black
 }
 
+% Comando para adicionar link sem os sinais de < e >
+\newcommand{\link}[1]{{\href{#1}{#1}}}
+
 % Carrega e configura glossário
 \makeglossaries
 \loadglsentries{glossario}
