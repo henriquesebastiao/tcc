@@ -1,8 +1,34 @@
 \begin{center}
-  \textbf{ABSTRACT}
+  \large\textbf{ABSTRACT}
 \end{center}
 
-% Write abstract here
+The following document has the objective of developing a digital
+communication system that utilizes cryptography end to end (\acs{E2EE}) to
+guarantee the security and privacy of messages exchanged between
+users. In a environment where worrying about your personal data is
+increasingly common, solutions that assure the confidentiality of our
+communication are becoming ever more relevant. The research touched
+on the fundamentals of symmetric and asymmetric cryptography, as well
+as the protocols used in secure and modern communication systems.
+
+The system was developed using technologies that are widely utilized
+in the ecosystem, such as WebSockets for real time communication, and
+libraries such as \acs{RSA} and \acs{AES}. The system’s architecture
+was designed to minimize data exposure, with emphasis on hiding the
+communication keys and on making it harder for third party members to
+intervene, including the server’s administrators.
+
+During the development process, some challenges related to network
+configuration, \acsp{NAT} and persistent network management arose.  The
+solution applied involved the use of a intermediary server to
+establish an initial connection, followed by the exchange of
+cryptographed messages between the users.
+
+The results show that it is possible to build a secure and functional
+platform for exchanging messages, even with limited resources, given
+that the security guidelines are followed from the beginning. This
+work contributes to the wider knowledge of cryptography and
+reinforces the importance of protecting privacy in communication systems.
 
 \thispagestyle{empty}
 \newpage
