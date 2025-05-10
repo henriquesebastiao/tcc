@@ -90,8 +90,16 @@ práticas do projeto. A partir dessa ambientação visual, foi possível
 ajustar funcionalidades e alinhar as decisões de design às metas de
 confiabilidade e usabilidade do sistema. Este levantamento está
 parelelo com os princípios da metodologia ágil, ao unir interações
-rápidas e feedback contínuo, promovendo um processo de
+rápidas e \textit{feedback} contínuo, promovendo um processo de
 desenvolvimento centrado no usuário e tecnicamente fundamentado.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\linewidth]{imagens/prototipo.png}
+  \caption[Protótipo inicial de baixa fidelidade da
+  aplicação]{Protótipo inicial de baixa fidelidade da aplicação.}
+  \label{fig:prototipo}
+\end{figure}
 
 \subsection{Especificação de Requisitos}
 
@@ -99,12 +107,6 @@ A especificação dos requisitos da aplicação representa uma etapa
 essencial no planejamento e desenvolvimento de sistemas,
 especialmente em projetos que envolvem múltiplas camadas de interação
 e preocupação com segurança, como o proposto nesta aplicação.
-
-Os requisitos funcionais descrevem as ações que o sistema deve ser capaz
-de realizar. Já os casos de uso têm o papel de ilustrar, de forma
-prática e contextualizada, como essas funcionalidades serão acionadas
-pelos usuários em diferentes cenários, auxiliando na visualização do
-comportamento esperado do sistema.
 
 A definição clara e antecipada
 desses elementos contribui para a organização do desenvolvimento,
@@ -116,6 +118,12 @@ conceitual, capaz de alinhar a implementação com as reais
 necessidades dos usuários.
 
 \subsubsection{Requisitos Funcionais}
+
+Os requisitos funcionais descrevem as ações que o sistema deve ser capaz
+de realizar. Já os casos de uso têm o papel de ilustrar, de forma
+prática e contextualizada, como essas funcionalidades serão acionadas
+pelos usuários em diferentes cenários, auxiliando na visualização do
+comportamento esperado do sistema.
 
 Os requisitos funcionais descritos na Tabela
 \ref{table:requisitos_funcionais} têm o objetivo de especificar as
@@ -177,5 +185,77 @@ requisitos funcionais descritos na Tabela \ref{table:requisitos_funcionais}.
 \end{table}
 
 % tex-fmt: on
+
+\subsection{Metodologias Ágeis}
+
+Para manter um ambiente organizado entre todos os participantes do
+projeto e garantir um bom fluxo de trabalho, a equipe concordou em
+utilizar uma metodologia ágil. Metodologias ágeis são um grupo de
+abordagens iterativas e incrementais focadas na colaboração, que têm
+tido um aumento de popularidade nos últimos anos. A Capterra\footnote{Capterra:
+\link{https://www.capterra.com/resources/agile-project-management-statistics-for-2018/}}
+afirma que 71\% das organizações relatam utilizar abordagens ágeis.
+
+\subsubsection{Scrumban}
+
+O Scrumban é um híbrido entre dois \textit{frameworks} ágeis que combina a
+estrutura do Scrum com o sistema flexível do Kanban. Originalmente, o
+Scrumban foi projetado para ajudar as equipes a migrar do Kanban para
+o Scrum. No entanto, à medida que as equipes perceberam a
+flexibilidade e a capacidade de entregar continuamente usando esse
+método, decidiram mantê-lo, aumentando assim sua popularidade.
+
+Do Scrum, usaremos funções, organização de \textit{backlogs}, revisões
+regulares e perspectivas. Já do Kanban, usaremos o quadro visual,
+conforme ilustrado abaixo, um sistema de tarefas baseado em pulls e
+fluxo de código contínuo.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\linewidth]{imagens/scrumban.png}
+  \caption[Representação de um quadro de desenvolvimento com o
+  \textit{framework} Kanban]{Representação de um quadro de desenvolvimento com
+  o \textit{framework} Kanban.}
+  \label{fig:scrumban}
+\end{figure}
+
+O quadro é dividido em colunas que podem ser adaptadas às nossas
+necessidades. Mas normalmente são utilizadas três:
+
+\begin{enumerate}
+    \renewcommand\labelenumi{\bfseries\theenumi.}
+  \item \textbf{To do}: Tarefas pendentes.
+  \item \textbf{Doing}: Tarefas em andamento.
+  \item \textbf{Done}: Tarefas concluídas.
+\end{enumerate}
+
+A seguir, apresenta-se uma demonstração do quadro de atividades do
+projeto, gerenciado por meio da plataforma GitHub Projects.
+Essa ferramenta foi selecionada por sua capacidade de
+integração com \textit{issues} e \textit{pull requests}, o que
+permite acompanhar o
+andamento das tarefas de maneira estruturada e eficiente,
+contribuindo significativamente para o planejamento e a organização
+das atividades do grupo ao longo do desenvolvimento do projeto.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\linewidth]{imagens/github-project.png}
+  \caption[Quadro de atividades do projeto Github Projects]{Quadro de
+  atividades do projeto Github Projects.}
+  \label{fig:github-project}
+\end{figure}
+
+A adoção do Scrumban neste projeto visa equilibrar a disciplina e
+organização oferecidas pelo Scrum com a flexibilidade e fluidez do
+Kanban, proporcionando um ambiente de desenvolvimento mais adaptável
+e visualmente claro. Essa abordagem facilita a priorização e o
+acompanhamento das tarefas, promove a entrega contínua de
+funcionalidades e permite rápidas adaptações às mudanças de escopo, o
+que é especialmente útil em projetos acadêmicos com tempo limitado e
+objetivos bem definidos. Com o uso combinado dessas práticas ágeis,
+espera-se uma melhor gestão do fluxo de trabalho, maior transparência
+nas etapas de desenvolvimento e um aumento na eficiência da equipe
+durante toda a execução do projeto.
 
 \newpage
