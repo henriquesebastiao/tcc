@@ -1,8 +1,43 @@
 \begin{center}
-  \textbf{RESUMO}
+  \large\textbf{RESUMO}
 \end{center}
 
-% Escreva aqui o resumo
+O presente trabalho tem como objetivo o desenvolvimento de um sistema
+de comunicação digital que utiliza criptografia de ponta a ponta
+(\acs{E2EE}) para garantir a privacidade e a segurança das mensagens
+trocadas entre os usuários. Em um cenário marcado por crescentes
+preocupações com a proteção de dados pessoais e a vigilância digital,
+soluções que asseguram a confidencialidade das comunicações tornam-se
+cada vez mais relevantes. A pesquisa abordou os fundamentos da
+criptografia simétrica e assimétrica, bem como os protocolos
+utilizados em sistemas modernos de comunicação segura.
+
+O sistema proposto foi desenvolvido utilizando tecnologias amplamente
+adotadas no mercado, como Websockets para comunicação em tempo real,
+e bibliotecas de criptografia como \acs{RSA} e \acs{AES}. A arquitetura do
+sistema foi pensada para minimizar a exposição dos dados, com ênfase
+na descentralização das chaves e na impossibilidade de interceptação
+por terceiros, inclusive por administradores do servidor.
+
+Durante o processo de desenvolvimento, foram enfrentados desafios
+relacionados à configuração de redes, \acsp{NAT} e gerenciamento de
+conexões persistentes. A solução adotada envolveu o uso de um
+servidor intermediário para o estabelecimento inicial da conexão,
+seguida da troca direta de mensagens criptografadas entre os usuários.
+
+Os resultados demonstram que é possível construir uma plataforma
+segura e funcional de troca de mensagens, mesmo com recursos
+limitados, contanto que sejam adotadas práticas de segurança desde as
+etapas iniciais do projeto. Este trabalho contribui para a
+disseminação do conhecimento sobre criptografia aplicada e reforça a
+importância da proteção da privacidade em sistemas de comunicação.
+
+\vspace{0.7cm}
+
+{\setlength{\parindent}{0cm}
+  \textbf{Palavras-chave:} Comunicação, Criptografia, Privacidade,
+  Segurança, Desenvolvimento de Software, Python.
+}
 
 \thispagestyle{empty}
 \newpage

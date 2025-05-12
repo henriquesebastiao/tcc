@@ -28,7 +28,7 @@ descriptografia são feitas com base em uma única chave chamada de
 chave privada, também podendo ser chamada de chave secreta. Um canal
 seguro é necessário para compartilhar essa chave entre o remetente e
 o destinatário, de modo a garantir que nenhuma pessoa não autorizada
-possa obter a chave. A figura \figref{fig:criptografia-simetrica}
+possa obter a chave. A Figura \figref{fig:criptografia-simetrica}
 ilustra o processo de criptografia simétrica.
 
 \begin{figure}[H]
@@ -53,7 +53,7 @@ segurança, eles podem não ser adequados para criptografar grandes
 volumes de dados, como ressalta \citeonline{alenezi2020}. Isso ocorre
 porque a velocidade é lenta em comparação com os sistemas baseados em
 chaves simétricas e eles também apresentam uma maior taxa de
-utilização da \acs{CPU}. A figura \figref{fig:criptografia-assimetrica}
+utilização da \acs{CPU}. A Figura \figref{fig:criptografia-assimetrica}
 ilustra o processo de criptografia assimétrica.
 
 \begin{figure}[H]
@@ -137,13 +137,13 @@ central responsável por intermediar ou validar o tráfego, essa
 responsabilidade recai sobre mecanismos criptográficos robustos e
 cuidadosamente implementados.
 
-A aplicação desenvolvida neste trabalho adota a arquitetura \acs{P2P} com
-criptografia de ponta a ponta (\acs{E2EE}), o que garante que apenas os
-dispositivos dos usuários tenham acesso ao conteúdo das mensagens.
-Entretanto, a ausência de um intermediário confiável exige o uso de
-assinaturas digitais como mecanismo de validação direta entre as
-partes, assegurando que o conteúdo recebido não foi alterado
-durante o tráfego e, mais ainda, que foi gerado pelo remetente legítimo.
+Aplicações de ponta adotam a arquitetura \acs{P2P} com criptografia de
+ponta a ponta (\acs{E2EE}), o que garante que apenas os dispositivos dos
+usuários tenham acesso ao conteúdo das mensagens. Entretanto, a
+ausência de um intermediário confiável exige o uso de assinaturas
+digitais como mecanismo de validação direta entre as partes,
+assegurando que o conteúdo recebido não foi alterado durante o
+tráfego e, mais ainda, que foi gerado pelo remetente legítimo.
 
 Conforme apresentado por \citeonline[p.~2, tradução
 nossa]{rahim2018}, “[...] as assinaturas digitais permitem ao
@@ -248,13 +248,18 @@ envolvidos”\footnote{AI assistant features, if offered in \acs{E2EE}
   systems, should generally be off by default
 and only activated via opt-in consent}.
 
-Nesse sentido, o sistema proposto neste trabalho também implementa
-princípios de \textit{\gls{privacybydesign}} e \textit{\gls{privacybydefault}},
-promovendo a privacidade como um requisito estrutural da arquitetura
-e não como uma funcionalidade opcional ou complementar. Ao limitar o
-armazenamento de dados sensíveis, adotar criptografia robusta, e
-evitar qualquer exposição desnecessária do conteúdo ao servidor, o
-sistema fortalece tanto sua segurança técnica quanto sua conformidade legal.
+A proteção de dados em uma aplicação de comunicação segura, como a
+proposta neste trabalho, deve ser tratada desde a concepção do
+sistema, incorporando práticas como \textit{\gls{privacybydesign}} e
+\textit{\gls{privacybydefault}}, promovendo a privacidade como um
+requisito estrutural da
+arquitetura, e não como uma funcionalidade opcional ou complementar.
+Nesse contexto, o sistema implementa validações automatizadas, limita
+o armazenamento de dados sensíveis, adota criptografia robusta e
+evita qualquer exposição desnecessária do conteúdo ao servidor,
+garantindo não apenas a funcionalidade da comunicação, mas também a
+confiança dos usuários, o fortalecimento da segurança técnica e a
+conformidade legal.
 
 \subsection{Comunicação}
 
@@ -323,7 +328,7 @@ cabeçalho Websocket, permitindo a troca simultânea de mensagens em
 ambas as direções através de uma conexão persistente e dedicada. Isso
 possibilita que o servidor envie mensagens ao cliente a qualquer
 momento. A confiabilidade da comunicação é assegurada por
-mecanismos próprios do protocolo. A figura \figref{fig:websocket}
+mecanismos próprios do protocolo. A Figura \figref{fig:websocket}
 demonstra o processo de comunicação do protocolo Websocket.
 
 \begin{figure}[H]
@@ -336,7 +341,8 @@ demonstra o processo de comunicação do protocolo Websocket.
 
 \subsection{Python}
 
-O Python, principal linguagem de programação utilizada no
+O Python\footnote{Python: \link{https://www.python.org/}}, principal
+linguagem de programação utilizada no
 desenvolvimento deste projeto, é uma linguagem de alto nível,
 interpretada e multiparadigma, criada por Guido van Rossum e lançada
 em 1991. Com uma sintaxe simples e legível, o Python foi projetado
@@ -389,7 +395,9 @@ intermediário baseado em Websocket.
 
 Para a implementação das funcionalidades de segurança e proteção dos
 dados trafegados e armazenados na aplicação, foi utilizada a
-biblioteca Cryptography, amplamente reconhecida na comunidade Python
+biblioteca Cryptography\footnote{Cryptography:
+\link{https://cryptography.io/en/latest/}}, amplamente reconhecida na
+comunidade Python
 por sua robustez e conformidade com padrões modernos de criptografia.
 Desenvolvida com foco em simplicidade, desempenho e segurança, a
 biblioteca fornece uma interface de alto nível para algoritmos
@@ -417,7 +425,8 @@ sensíveis exigidas em contextos de comunicação segura.
 
 \subsubsection{FastAPI}
 
-O FastAPI foi a tecnologia escolhida para o desenvolvimento do
+O FastAPI\footnote{FastAPI: \link{https://fastapi.tiangolo.com/}} foi
+a tecnologia escolhida para o desenvolvimento do
 servidor responsável por intermediar a comunicação entre remetente e
 destinatário, por meio de conexões Websocket. Criado por Sebastián
 Ramírez e lançado em 2018, o FastAPI é um \textit{framework} moderno para
@@ -425,7 +434,8 @@ construção de \acsp{API} web em Python, baseado no padrão \acs{ASGI}
 (\acl{ASGI}). Ele se destaca por sua
 performance comparável a \textit{frameworks} escritos em linguagens
 compiladas, como Node.js e Go, além de oferecer tipagem forte com
-validação automática via Pydantic, documentação interativa gerada
+validação automática via Pydantic\footnote{Pydantic:
+\link{https://docs.pydantic.dev/latest/}}, documentação interativa gerada
 automaticamente e suporte nativo a programação assíncrona com async/await.
 
 No contexto desta aplicação, o FastAPI será utilizado para manter
@@ -447,7 +457,8 @@ para o funcionamento estável e responsivo do sistema proposto.
 Para facilitar o processo de implantação do servidor FastAPI e tornar
 a aplicação acessível mesmo a usuários sem experiência prévia em
 desenvolvimento ou configuração de ambientes, foi adotada a
-ferramenta Docker. Lançado em 2013, o Docker é uma plataforma de
+ferramenta Docker\footnote{Docker: \link{https://www.docker.com/}}.
+Lançado em 2013, o Docker é uma plataforma de
 virtualização leve baseada em contêineres, que permite empacotar uma
 aplicação juntamente com todas as suas dependências, bibliotecas e
 configurações em uma imagem padronizada. Isso garante que o sistema
@@ -459,7 +470,8 @@ No contexto deste projeto, o Docker é utilizado para distribuir a
 aplicação em um formato pronto para uso, permitindo que qualquer
 usuário possa executar o servidor localmente ou em um \acs{VPS} com um
 único comando, sem a necessidade de lidar com configurações
-complexas. Essa abordagem reforça o caráter \textit{self-hosted} da solução,
+complexas. Essa abordagem reforça o caráter
+\textit{\gls{self-hosted}} da solução,
 oferecendo controle total ao usuário sobre sua instância do serviço,
 ao mesmo tempo em que promove a portabilidade, a segurança e a
 facilidade de atualização da aplicação.

@@ -1,0 +1,261 @@
+\section{METODOLOGIA DE PESQUISA}
+
+Neste capítulo foi feita uma abordagem sobre como atender as
+necessidades do usuário, identificando, analisando e deliberando a cerca da
+causa raiz do problema. Foram examinadas as diversas etapas da
+elaboração do sistema, para de fato atender o objetivo do projeto com
+a finalidade de assegurar uma comunicação segura e eficiente.
+
+Para tal objetivo, o desenvolvimento do sistema foi encaminhado em fases
+que envolvem tanto aspectos visuais quanto estruturais. Buscou-se,
+inicialmente, idealizar uma interface gráfica que facilitasse a
+interação do usuário, ao mesmo tempo em que se projetava a estrutura
+técnica responsável pela comunicação segura, sendo esta a proposta
+central do projeto.
+
+\subsection{Arquitetura de Comunicação}
+
+Apresentando nosso servidor e aplicação que oferecem uma solução robusta
+e eficiente para a comunicação segura entre clientes, mostraremos
+como as aplicações de mercado deveriam se comportar no nível superior
+aos cuidados de segurança da informação. A estrutura da nossa
+aplicação é composta por duas etapas fundamentais que garantem um
+processo de conexão transparente e seguro. Inicialmente, os clientes
+solicitam o endereço \acs{IP} externo de forma transparente, enquanto o
+servidor cuida da gestão dessa informação por meio de uma chave
+aleatória gerada e armazenada no \textit{\gls{back-end}}.
+
+A função da chave é armazenar o identificador do destino de forma
+segura, uma vez que o endereço \acs{IP} do cliente não é visível
+diretamente ao usuário, sua confidencialidade é preservada.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\linewidth]{imagens/arquitetura-etapa1.png}
+  \caption[Primeira etapa da conexão com o servidor, onde o
+    cliente solicita ao servidor que o conecte com o usuário de
+  destino]{O cliente solicita ao servidor que o conecte com o usuário
+  de destino.}
+  \label{fig:arquitetura_etapa1}
+\end{figure}
+
+O cliente tendo a chave em mãos, tentará estabelecer uma conexão
+com o destino. Se este estiver online, o servidor atua como um
+identificador exclusivo, assegurando que a comunicação seja iniciada
+de maneira controlada e segura.
+
+À medida que as mensagens são trocadas, elas transitam exclusivamente
+pelo servidor, que se torna o meio principal para a interface com o
+destinatário. Importante destacar que toda comunicação realizada
+através do sistema é criptografada. Isso significa que os dados
+não são armazenados pelo servidor durante sua transferência, em vez
+disso, ele simplesmente transporta a informação até a outra ponta de
+forma ágil e segura.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\linewidth]{imagens/arquitetura-etapa2.png}
+  \caption[Segunda etapa da conexão com o servidor, a comunicação é
+  estabelecida com sucesso entre ambos os usuários]{A comunicação é
+  estabelecida com sucesso entre ambos os usuários.}
+  \label{fig:arquitetura_etapa2}
+\end{figure}
+
+No encerramento da comunicação na 3ª etapa, a aplicação informa ao
+servidor para iniciar a contagem de 12 horas para exclusão da chave e
+do \acs{IP} externo do usuário, caso não haja interação durante esse
+período pós fechamento da aplicação.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\linewidth]{imagens/arquitetura-etapa3.png}
+  \caption[Terceira etapa da conexão com o servidor, os usuários são
+  desconectados após 12 horas de inatividade]{Os usuários são
+  desconectados após 12 horas de inatividade.}
+  \label{fig:arquitetura_etapa3}
+\end{figure}
+
+\subsection{Prototipagem da Interface Gráfica}
+
+Como parte do processo metodológico, esta fase foi construída com o
+intuito de antecipar a interação entre o usuário e o sistema. Esta
+etapa permitiu visualizar e validar, de maneira preliminar, a
+estruturação dos elementos visuais, fluxos de navegação e
+funcionalidades básicas, antes da formação definitiva da aplicação.
+
+A prototipagem contribui diretamente para a identificação de
+melhorias na experiência do usuário, da comunicação entre os
+integrantes da equipe e como ferramenta de análise das necessidades
+práticas do projeto. A partir dessa ambientação visual, foi possível
+ajustar funcionalidades e alinhar as decisões de design às metas de
+confiabilidade e usabilidade do sistema. Este levantamento está
+parelelo com os princípios da metodologia ágil, ao unir interações
+rápidas e \textit{feedback} contínuo, promovendo um processo de
+desenvolvimento centrado no usuário e tecnicamente fundamentado.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\linewidth]{imagens/prototipo.png}
+  \caption[Protótipo inicial de baixa fidelidade da
+  aplicação]{Protótipo inicial de baixa fidelidade da aplicação.}
+  \label{fig:prototipo}
+\end{figure}
+
+\subsection{Especificação de Requisitos}
+
+A especificação dos requisitos da aplicação representa uma etapa
+essencial no planejamento e desenvolvimento de sistemas,
+especialmente em projetos que envolvem múltiplas camadas de interação
+e preocupação com segurança, como o proposto nesta aplicação.
+
+A definição clara e antecipada
+desses elementos contribui para a organização do desenvolvimento,
+evitando ambiguidades e mudanças frequentes de escopo. Além disso,
+serve como base para a validação da aplicação, garantindo que os
+objetivos propostos sejam efetivamente alcançados. Dessa forma, os
+requisitos e os casos de uso funcionam como um guia técnico e
+conceitual, capaz de alinhar a implementação com as reais
+necessidades dos usuários.
+
+\subsubsection{Requisitos Funcionais}
+
+Os requisitos funcionais descrevem as ações que o sistema deve ser capaz
+de realizar. Já os casos de uso têm o papel de ilustrar, de forma
+prática e contextualizada, como essas funcionalidades serão acionadas
+pelos usuários em diferentes cenários, auxiliando na visualização do
+comportamento esperado do sistema.
+
+Os requisitos funcionais descritos na Tabela
+\ref{table:requisitos_funcionais} têm o objetivo de especificar as
+funcionalidades que a aplicação proposta deve oferecer.
+
+Desta forma, os requisitos funcionais da aplicação foram definidos e
+especificados como mostra a tabela a seguir.
+
+% tex-fmt: off
+
+\begin{table}[H]
+    \centering
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|l|l|}
+    \hline
+    \textbf{Código} & \textbf{Descrição} \\ \hline
+    \textbf{RF01}   & O usuário deve ser capaz de se conectar ao servidor \\ \hline
+    \textbf{RF02}   & O usuário deve ser capaz de criar um nome de usuário válido e único no servidor \\ \hline
+    \textbf{RF03}   & \vtop{\hbox{\strut O servidor deve ser capaz de estabelecer uma conexão bidirecional ligando}\hbox{\strut ambos os usuários que desejam se comunicar}} \\ \hline
+    \textbf{RF04}   & O usuário deve ser capaz de enviar uma mensagem para o destinatário \\ \hline
+    \textbf{RF05}   & \vtop{\hbox{\strut A mensagem deve ser criptografada com a chave pública do destinatário}\hbox{\strut antes de ser enviada}} \\ \hline
+    \textbf{RF06}   & O usuário deve ser capaz de receber uma mensagem enviada pelo destinatário \\ \hline
+    \textbf{RF07}   & A mensagem recebida deve ser descriptografada com a chave privada do usuário \\ \hline
+    \textbf{RF08}   & O usuário deve ser capaz de visualizar a mensagem recebida \\ \hline
+    \textbf{RF09}   & O usuário deve ser capaz de enviar arquivos binários (imagens, PDFs, etc.). \\ \hline
+    \textbf{RF10}   & \vtop{\hbox{\strut Os arquivos binários convertidos para Base64 devem ser criptografados}\hbox{\strut antes do envio}} \\ \hline
+    \textbf{RF11}   & \vtop{\hbox{\strut As mensagens em Base64 recebidas pelo usuário devem ser convertidas de volta}\hbox{\strut para o formato de arquivo correto e salvas no dispositivo}} \\ \hline
+    \textbf{RF12}   & O usuário deve ser capaz de se desconectar do servidor \\ \hline
+    \textbf{RF13}   & \vtop{\hbox{\strut Após um usuário se desconectar, o usuário de destino deve ser avisado e sua}\hbox{\strut conexão também deve ser fechada}} \\ \hline
+    \end{tabular}%
+    }
+    \caption{Descrição dos requisitos funcionais do sistema.}
+    \label{table:requisitos_funcionais}
+\end{table}
+
+\subsubsection{Casos de Uso}
+
+% tex-fmt: on
+
+Foi elaborado um conjunto de casos de uso do sistema, demonstrado na
+Tabela \ref{table:casos_de_uso}, com o objetivo de centrar os
+requisitos funcionais descritos na Tabela \ref{table:requisitos_funcionais}.
+
+% tex-fmt: off
+
+\begin{table}[H]
+    \centering
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|l|l|l|l|}
+    \hline
+    \textbf{Código} & \textbf{Descrição} & \textbf{\vtop{\hbox{\strut Requisitos funcionais}\hbox{\strut contemplados}}}\\ \hline
+    \textbf{UC01} & Estabelecer conexão com o servidor & RF01, RF02 e RF03 \\ \hline
+    \textbf{UC02} & Realizar comunicação entre usuários & \vtop{\hbox{\strut RF04, RF05, RF06, RF07, RF08, RF09,}\hbox{\strut RF10 e RF11}} \\ \hline
+    \textbf{UC03} & Se desconectar do servidor & RF12 e RF13 \\ \hline
+    \end{tabular}
+    }
+    \caption{Casos de Uso do sistema.}
+    \label{table:casos_de_uso}
+\end{table}
+
+% tex-fmt: on
+
+\subsection{Metodologias Ágeis}
+
+Para manter um ambiente organizado entre todos os participantes do
+projeto e garantir um bom fluxo de trabalho, a equipe concordou em
+utilizar uma metodologia ágil. Metodologias ágeis são um grupo de
+abordagens iterativas e incrementais focadas na colaboração, que têm
+tido um aumento de popularidade nos últimos anos. A Capterra\footnote{Capterra:
+\link{https://www.capterra.com/resources/agile-project-management-statistics-for-2018/}}
+afirma que 71\% das organizações relatam utilizar abordagens ágeis.
+
+\subsubsection{Scrumban}
+
+O Scrumban é um híbrido entre dois \textit{frameworks} ágeis que combina a
+estrutura do Scrum com o sistema flexível do Kanban. Originalmente, o
+Scrumban foi projetado para ajudar as equipes a migrar do Kanban para
+o Scrum. No entanto, à medida que as equipes perceberam a
+flexibilidade e a capacidade de entregar continuamente usando esse
+método, decidiram mantê-lo, aumentando assim sua popularidade.
+
+Do Scrum, usaremos funções, organização de \textit{backlogs}, revisões
+regulares e perspectivas. Já do Kanban, usaremos o quadro visual,
+conforme ilustrado abaixo, um sistema de tarefas baseado em pulls e
+fluxo de código contínuo.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\linewidth]{imagens/scrumban.png}
+  \caption[Representação de um quadro de desenvolvimento com o
+  \textit{framework} Scrumban]{Representação de um quadro de desenvolvimento com
+  o \textit{framework} Scrumban.}
+  \label{fig:scrumban}
+\end{figure}
+
+O quadro é dividido em colunas que podem ser adaptadas às nossas
+necessidades. Mas normalmente são utilizadas três:
+
+\begin{enumerate}
+    \renewcommand\labelenumi{\bfseries\theenumi.}
+  \item \textbf{To do}: Tarefas pendentes.
+  \item \textbf{Doing}: Tarefas em andamento.
+  \item \textbf{Done}: Tarefas concluídas.
+\end{enumerate}
+
+A seguir, apresenta-se uma demonstração do quadro de atividades do
+projeto, gerenciado por meio da plataforma GitHub Projects.
+Essa ferramenta foi selecionada por sua capacidade de
+integração com \textit{issues} e \textit{pull requests}, o que
+permite acompanhar o
+andamento das tarefas de maneira estruturada e eficiente,
+contribuindo significativamente para o planejamento e a organização
+das atividades do grupo ao longo do desenvolvimento do projeto.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\linewidth]{imagens/github-project.png}
+  \caption[Quadro de atividades do projeto no Github Projects]{Quadro de
+  atividades do projeto no Github Projects.}
+  \label{fig:github-project}
+\end{figure}
+
+A adoção do Scrumban neste projeto visa equilibrar a disciplina e
+organização oferecidas pelo Scrum com a flexibilidade e fluidez do
+Kanban, proporcionando um ambiente de desenvolvimento mais adaptável
+e visualmente claro. Essa abordagem facilita a priorização e o
+acompanhamento das tarefas, promove a entrega contínua de
+funcionalidades e permite rápidas adaptações às mudanças de escopo, o
+que é especialmente útil em projetos acadêmicos com tempo limitado e
+objetivos bem definidos. Com o uso combinado dessas práticas ágeis,
+espera-se uma melhor gestão do fluxo de trabalho, maior transparência
+nas etapas de desenvolvimento e um aumento na eficiência da equipe
+durante toda a execução do projeto.
+
+\newpage
