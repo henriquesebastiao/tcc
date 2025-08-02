@@ -1,5 +1,10 @@
 # Trabalho de Curso - Ciência da Computação
 
+[![Build PDF](https://github.com/henriquesebastiao/tcc/actions/workflows/build-pdf.yml/badge.svg)](https://github.com/henriquesebastiao/tcc/actions/workflows/build-pdf.yml)
+[![Lint](https://github.com/henriquesebastiao/tcc/actions/workflows/lint.yml/badge.svg)](https://github.com/henriquesebastiao/tcc/actions/workflows/lint.yml)
+[![GitHub License](https://img.shields.io/github/license/henriquesebastiao/tcc?color=blue)](https://github.com/henriquesebastiao/tcc/blob/main/LICENSE)
+[![Visitors](https://api.visitorbadge.io/api/visitors?path=henriquesebastiao%2Ftcc&label=repository%20visits&countColor=%231182c3&style=flat)](https://github.com/henriquesebastiao/tcc)
+
 Projeto de TCC para a graduação em Ciência da Computação.
 
 ### Links úteis ao trabalhar com LaTeX
