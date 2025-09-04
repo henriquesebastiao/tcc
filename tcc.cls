@@ -43,6 +43,9 @@
 \RequirePackage[flushmargin]{footmisc}
 \RequirePackage{graphicx}
 \RequirePackage{float}
+\RequirePackage{listings}
+\RequirePackage[dvipsnames]{xcolor}
+\RequirePackage[titletoc,toc,page]{appendix}
 
 % Configurações
 \setmainfont{times-new-roman}[
@@ -67,6 +70,15 @@
 % Renomeia e formata o título da seção de lista de figuras
 \addto\captionsbrazil{\renewcommand{\listfigurename}{\large\hfil
 LISTA DE FIGURAS}}
+
+% Renomeia e formata o título da seção de apêndices
+\renewcommand{\appendixtocname}{APÊNDICE}
+\renewcommand{\appendixpagename}{
+  \begin{center}\large\textbf{APÊNDICE}
+\end{center}}
+
+% Redefine \texttt para aplicar cor vermelha
+\renewcommand{\texttt}[1]{\textcolor{BrickRed}{\ttfamily #1}}
 
 % Configurações da numeração, referência e listagem de figuras e tabelas
 \setlength{\cftfigindent}{0pt}
@@ -113,6 +125,26 @@ LISTA DE FIGURAS}}
 
 % Comando para adicionar link sem os sinais de < e >
 \newcommand{\link}[1]{{\href{#1}{#1}}}
+
+\lstset{ %
+  extendedchars=\true,
+  keepspaces=true,
+  basicstyle=\ttfamily,
+  columns=flexible,
+  backgroundcolor=\color{white},
+  commentstyle=\color{codegreen},
+  keywordstyle=\color{magenta},
+  numberstyle=\color{codegray},
+  stringstyle=\color{olive},
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  numbersep=5pt,
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  tabsize=4
+}
 
 % Carrega e configura glossário
 \makeglossaries
