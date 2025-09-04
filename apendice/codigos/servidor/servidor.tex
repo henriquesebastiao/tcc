@@ -1,0 +1,54 @@
+\section{Códigos do servidor}\label{ch:codigos-servidor}
+
+\subsection{Código do \textit{schema} do endpoint de
+status}\label{schema:codigo-schema-status}
+\begin{lstlisting}[language=python]
+from pydantic import BaseModel
+
+class CpuFreq(BaseModel):
+    current: float
+    min: float
+    max: float
+
+class Memory(BaseModel):
+    total: int
+    available: int
+    percent: float
+    used: int
+    free: int
+    active: int
+    inactive: int
+    buffers: int
+    cached: int
+    shared: int
+    slab: int
+
+class StatusPerCore(BaseModel):
+    cpu_frequency: CpuFreq
+    cpu_percent: float
+
+class StatusSchema(BaseModel):
+    number_of_cores: int
+    cpu_frequency: CpuFreq
+    cpu_percent: float
+    status_per_core: list[StatusPerCore]
+    memory: Memory
+\end{lstlisting}
+
+\subsection{Código que carrega variáveis de ambiente
+automaticamente}\label{schema:codigo-load-env}
+\begin{lstlisting}[language=python]
+from functools import lru_cache
+
+from pydantic_settings import BaseSettings, SettingsConfigDict
+
+class Settings(BaseSettings):
+    model_config = SettingsConfigDict(env_file='.env', env_file_encoding='utf-8', extra='ignore')
+
+    REDIS_HOST: str = 'localhost'
+    REDIS_PORT: int = 6379
+
+@lru_cache
+def get_settings():
+    return Settings()
+\end{lstlisting}
