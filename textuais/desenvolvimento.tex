@@ -36,7 +36,169 @@ identificados na análise do problema:
   \item Transparência através de código fonte aberto para auditoria.
 \end{itemize}
 
-\subsection{Arquitetura Implementada}
+O processo de planejamento inicial do projeto foi marcado por
+desafios significativos, especialmente na escolha das funcionalidades
+a serem incorporadas, dada a vasta gama de recursos disponíveis no
+mercado. Essa etapa crítica de definição de escopo foi fundamental
+para direcionar o desenvolvimento e garantir um caminho claro para a
+execução. Para prototipar as ideias e testar conceitos de interface e
+funcionalidade, optou-se pelo uso da biblioteca Tkinter para a
+criação do frontend, permitindo uma visualização rápida da interface
+gráfica da aplicação e seguir com os testes de funcionalidade das mensagens.
+
+Concomitantemente, a segurança foi um pilar central desde o início. A
+implementação do backend focou em garantir a confidencialidade das
+comunicações. Para isso, foi utilizada a biblioteca Cryptography, com
+ênfase na implementação do algoritmo de criptografia \acs{RSA}, um método
+de criptografia assimétrica. Essa abordagem manual de criptografia,
+em vez de depender de protocolos de segurança de transporte como o
+\acs{HTTPS}, oferece maior controle sobre a gestão de chaves e o processo
+de autenticação, adaptando-se perfeitamente aos requisitos
+específicos do nosso sistema e garantindo uma comunicação segura e
+privada entre os usuários, conquanto que a nossa aplicação transmite
+as mensagens de ponto a ponto reforça a transparência para o
+servidor, cujo a função é apenas entregar as mensagens de um lado para o outro.
+
+O desenvolvimento da aplicação foi um processo colaborativo e
+estruturado. Para garantir o progresso contínuo e a coesão da equipe,
+foram realizadas reuniões semanais. Nesses encontros, discutimos os
+desafios e progressos, além de dividir as tarefas entre os
+integrantes, o que permitiu um fluxo de trabalho eficiente e a
+construção simultânea de diferentes componentes do sistema.
+
+A partir dos protótipos iniciais criados com Tkinter, que nos
+ajudaram a validar as ideias de interface, tomamos a decisão de
+migrar para uma ferramenta mais robusta e moderna. A escolha final
+foi a biblioteca PySide6, que ofereceu funcionalidades mais avançadas
+para a construção de uma interface gráfica completa e visualmente
+agradável. Essa transição foi fundamental para elevar a qualidade do
+produto final, garantindo um design mais polido e uma experiência de
+usuário aprimorada, alinhada com as expectativas de uma aplicação de
+comunicação contemporânea.
+
+\subsection{Metodologia de desenvolvimento e gestão de \textit{sprints}}
+
+Como foi explicado na contextualização do projeto, o desenvolvimento
+seguiu a metodologia Scrumban, que combina elementos do Scrum e do
+Kanban, muitas vezes referenciada por profissionais como uma
+abordagem híbrida que aproveita os benefícios de ambos os frameworks.
+Portanto, o desenvolvimento da aplicação foi dividido em sprints,
+houve um acordo entre a equipe sobre a flexibilidade das mesmas,
+visto que todos os envolvidos teriam que alinhar seus horários para a
+conclusão do projeto, ponderando entre sua vida acadêmica e
+profissional, o que acarretou em reuniões semanais mais dinâmicas,
+mas não em menor desempenho ou qualidade, assim, possibilitando
+manter uma cadência regular sem comprometer a qualidade das entregas
+como sugerido pelo framework Scrum.
+
+Como o uso do Kanban também estava presente, para cada sprint ser
+iniciada havia requisitos claros: as atividades deveriam ser puxadas
+conforme sua prioridade e importância para o sistema de comunicação
+segura, portanto, com base na relevância dos componentes, tendo como
+foco inicial a conclusão dos módulos de criptografia e comunicação
+básica. Logo que a aplicação atingiu os requisitos mínimos de
+segurança esperados, com a implementação completa da criptografia RSA
+e do servidor de mensagens, foi possível realizar testes internos
+entre os membros da equipe, a fim de obter feedbacks sobre a
+usabilidade e eficácia do sistema.
+
+\subsubsection{Organização do fluxo de trabalho}
+
+O fluxo de trabalho seguiu uma estrutura baseada em quadro Kanban
+adaptado para as necessidades do projeto, com as seguintes colunas principais:
+
+\begin{itemize}
+  \item \textbf{A Fazer}: Tarefas priorizadas e prontas para desenvolvimento;
+  \item \textbf{Em Andamento}: Atividades em execução pelos membros da equipe;
+  \item \textbf{Em Teste}: Componentes em fase de revisão e testes;
+  \item \textbf{Concluído}: Funcionalidades concluídas e integradas.
+\end{itemize}
+
+\subsubsection{Características de reuniões semanais}
+
+As reuniões semanais estruturavam-se em torno dos seguintes elementos:
+
+\begin{itemize}
+  \item \textbf{Sprint Review}: Apresentação dos progressos
+    alcançados na semana anterior, com demonstrações práticas das
+    funcionalidades implementadas, especialmente relacionadas aos
+    avanços na criptografia e interface gráfica.
+  \item \textbf{Identificação de Impedimentos}: Discussão
+    colaborativa dos desafios técnicos encontrados, particularmente
+    aqueles relacionados à integração entre os componentes de
+    segurança, servidor e cliente.
+  \item \textbf{Planejamento da Próxima Sprint}: Seleção das tarefas
+    prioritárias do backlog, considerando as dependências entre
+    componentes e a disponibilidade dos membros da equipe.
+  \item \textbf{Retrospectiva}: Avaliação do processo de
+    desenvolvimento, identificando oportunidades de melhoria na
+    metodologia aplicada e nos fluxos de comunicação da equipe.
+\end{itemize}
+
+\subsubsection{Adaptações metodológicas}
+
+O projeto exigiu algumas adaptações específicas da metodologia
+Scrumban para atender às necessidades particulares do desenvolvimento
+de um sistema de comunicação segura. As sprints mantiveram duração de
+uma semana, mas com flexibilidade para estender discussões técnicas
+quando necessário, especialmente durante decisões críticas sobre a
+arquitetura de segurança e implementação dos protocolos de
+criptografia. Esta flexibilidade temporal mostrou-se essencial para
+garantir que questões complexas relacionadas à segurança fossem
+adequadamente discutidas e resolvidas.
+
+O \textit{backlog} foi constantemente refinado para refletir as descobertas
+técnicas e os requisitos emergentes do sistema de criptografia,
+permitindo ajustes de prioridade sem comprometer o cronograma geral.
+Essa priorização dinâmica revelou-se fundamental durante a transição
+de Tkinter para PySide6 e nas decisões sobre a implementação manual
+da criptografia \acs{RSA}, onde novas necessidades técnicas emergiram e
+demandaram reajustes nas prioridades estabelecidas.
+
+A abordagem Kanban facilitou a integração contínua dos componentes
+desenvolvidos paralelamente, essencial para um sistema onde \textit{back-end}, \
+\textit{front-end} e criptografia precisavam funcionar harmoniosamente. O fluxo
+contínuo de trabalho permitiu que ajustes em um componente fossem
+rapidamente comunicados e integrados aos demais, mantendo a
+consistência arquitetural e evitando retrabalhos significativos.
+
+\subsubsection{Acompanhamento de progresso e métricas}
+
+Para o gerenciamento eficaz do projeto, foi utilizado o GitHub
+Projects como plataforma principal para organização e acompanhamento
+das atividades. Esta ferramenta se integra diretamente com as \textit{issues}
+e \textit{pull requests} do repositório, proporcionando uma visão unificada do
+progresso do desenvolvimento e facilitando o controle das entregas.
+
+Um dos recursos mais valiosos para a gestão ágil do projeto foi o
+gráfico de Burn Up, que demonstra o progresso das atividades ao longo
+do tempo, permitindo visualizar tanto o escopo total do projeto
+quanto o trabalho já concluído. Este gráfico foi fundamental para
+identificar tendências de produtividade, mudanças de escopo e
+possíveis gargalos no desenvolvimento, especialmente durante as fases
+críticas de implementação da criptografia e integração dos componentes.
+
+Abaixo é possível visualizar o gráfico de Burn Up do projeto, que
+ilustra a evolução das entregas e o cumprimento dos marcos
+estabelecidos durante o desenvolvimento da aplicação de comunicação segura:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\linewidth]{imagens/burn-up.png}
+  \caption[Gráfico de Burn Up do projeto]{Gráfico de Burn Up do
+    projeto, ilustrando a evolução das entregas e o cumprimento dos
+  marcos estabelecidos.}
+  \label{fig:burn-up-projeto}
+\end{figure}
+
+O gráfico evidencia os períodos de maior intensidade no
+desenvolvimento, particularmente durante a implementação dos módulos
+de segurança e a transição entre as tecnologias de interface gráfica.
+As variações na curva refletem tanto as adaptações metodológicas
+necessárias quanto os desafios técnicos específicos encontrados no
+desenvolvimento de um sistema de comunicação com criptografia de ponta a ponta.
+
+\subsection{Arquitetura implementada}
 
 A arquitetura desenvolvida seguiu o modelo cliente-servidor com
 criptografia de ponta a ponta, onde o servidor atua exclusivamente
