@@ -126,25 +126,28 @@ LISTA DE FIGURAS}}
 % Comando para adicionar link sem os sinais de < e >
 \newcommand{\link}[1]{{\href{#1}{#1}}}
 
-\lstset{ %
-  extendedchars=\true,
-  keepspaces=true,
-  basicstyle=\ttfamily,
-  columns=flexible,
-  backgroundcolor=\color{white},
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{tcc-code-style}{
   commentstyle=\color{codegreen},
   keywordstyle=\color{magenta},
-  numberstyle=\color{codegray},
-  stringstyle=\color{olive},
+  numberstyle=\tiny\color{codegray},
+  stringstyle=\color{codepurple},
+  basicstyle=\ttfamily\footnotesize,
   breakatwhitespace=false,
   breaklines=true,
   captionpos=b,
-  numbersep=5pt,
+  keepspaces=true,
   showspaces=false,
   showstringspaces=false,
   showtabs=false,
-  tabsize=4
+  tabsize=4,
 }
+
+\lstset{style=tcc-code-style}
 
 % Carrega e configura glossário
 \makeglossaries
