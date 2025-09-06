@@ -39,7 +39,6 @@ class StatusSchema(BaseModel):
 automaticamente}\label{schema:codigo-load-env}
 \begin{lstlisting}[language=python]
 from functools import lru_cache
-
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
@@ -51,4 +50,12 @@ class Settings(BaseSettings):
 @lru_cache
 def get_settings():
     return Settings()
+\end{lstlisting}
+
+\subsection{Código da função de hash de \acsp{ID}}\label{hash:codigo-hash-id}
+\begin{lstlisting}[language=python]
+import hashlib
+
+def hash_id(user_id: str) -> str:
+    return hashlib.sha256(user_id.encode('utf-8')).hexdigest()
 \end{lstlisting}
