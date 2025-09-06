@@ -13,7 +13,8 @@ das ferramentas tecnológicas selecionadas para o projeto.
 A necessidade de desenvolver um sistema de comunicação
 verdadeiramente seguro emerge da análise dos problemas identificados
 no contexto atual da comunicação digital. Conforme evidenciado no
-levantamento bibliográfico apresentado no Capítulo 2, os sistemas
+levantamento bibliográfico apresentado no capítulo
+\ref{ch:referencial}, os sistemas
 convencionais de mensagens instantâneas frequentemente falham em
 garantir a privacidade absoluta dos usuários, seja por questões
 arquitetônicas ou por modelos de negócio que dependem da análise de dados.
@@ -42,7 +43,8 @@ a serem incorporadas, dada a vasta gama de recursos disponíveis no
 mercado. Essa etapa crítica de definição de escopo foi fundamental
 para direcionar o desenvolvimento e garantir um caminho claro para a
 execução. Para prototipar as ideias e testar conceitos de interface e
-funcionalidade, optou-se pelo uso da biblioteca Tkinter para a
+funcionalidade, optou-se pelo uso da biblioteca Tkinter\footnote{Tkinter:
+\link{https://docs.python.org/3/library/tkinter.html}} para a
 criação do frontend, permitindo uma visualização rápida da interface
 gráfica da aplicação e seguir com os testes de funcionalidade das mensagens.
 
@@ -69,7 +71,9 @@ construção simultânea de diferentes componentes do sistema.
 A partir dos protótipos iniciais criados com Tkinter, que nos
 ajudaram a validar as ideias de interface, tomamos a decisão de
 migrar para uma ferramenta mais robusta e moderna. A escolha final
-foi a biblioteca PySide6, que oferece funcionalidades mais avançadas
+foi a biblioteca PySide6\footnote{PySide6:
+\link{https://doc.qt.io/qtforpython-6/}}, que oferece funcionalidades
+mais avançadas
 para a construção de uma interface gráfica completa e visualmente
 agradável. Essa transição foi fundamental para elevar a qualidade do
 produto final, garantindo um design mais polido e uma experiência de
@@ -81,7 +85,7 @@ comunicação contemporânea.
 Como foi explicado na contextualização do projeto, o desenvolvimento
 seguiu a metodologia Scrumban, que combina elementos do Scrum e do
 Kanban, muitas vezes referenciada por profissionais como uma
-abordagem híbrida que aproveita os benefícios de ambos os frameworks.
+abordagem híbrida que aproveita os benefícios de ambos os \textit{frameworks}.
 Portanto, o desenvolvimento da aplicação foi dividido em sprints,
 houve um acordo entre a equipe sobre a flexibilidade das mesmas,
 visto que todos os envolvidos teriam que alinhar seus horários para a
@@ -89,7 +93,7 @@ conclusão do projeto, ponderando entre sua vida acadêmica e
 profissional, o que acarretou em reuniões semanais mais dinâmicas,
 mas não em menor desempenho ou qualidade, assim, possibilitando
 manter uma cadência regular sem comprometer a qualidade das entregas
-como sugerido pelo framework Scrum.
+como sugerido pelo \textit{framework} Scrum.
 
 Como o uso do Kanban também estava presente, para cada sprint ser
 iniciada havia requisitos claros: as atividades deveriam ser puxadas
@@ -97,9 +101,9 @@ conforme sua prioridade e importância para o sistema de comunicação
 segura, portanto, com base na relevância dos componentes, tendo como
 foco inicial a conclusão dos módulos de criptografia e comunicação
 básica. Logo que a aplicação atingiu os requisitos mínimos de
-segurança esperados, com a implementação completa da criptografia RSA
+segurança esperados, com a implementação completa da criptografia \acs{RSA}
 e do servidor de mensagens, foi possível realizar testes internos
-entre os membros da equipe, a fim de obter feedbacks sobre a
+entre os membros da equipe, a fim de obter \textit{feedbacks} sobre a
 usabilidade e eficácia do sistema.
 
 \subsubsection{Organização do fluxo de trabalho}
@@ -216,15 +220,19 @@ ferramentas foram fundamentais para manter a consistência do código
 entre os membros da equipe e assegurar que os padrões de segurança
 fossem rigorosamente seguidos.
 
-O Ruff foi utilizado como \textit{linter} principal do projeto, responsável
+O Ruff\footnote{\link{https://docs.astral.sh/ruff/}} foi utilizado
+como \textit{linter} principal do projeto, responsável
 por identificar problemas de estilo, possíveis bugs e violações das
-convenções de código Python (PEP 8). Esta ferramenta, conhecida por
+convenções de código Python (PEP
+8\footnote{\link{https://peps.python.org/pep-0008/}}). Esta
+ferramenta, conhecida por
 sua velocidade e abrangência, permitiu que a equipe mantivesse um
 código limpo e consistente ao longo de todo o desenvolvimento,
 detectando automaticamente problemas que poderiam comprometer a
 legibilidade ou a manutenção futura do sistema.
 
-Para a análise de segurança do código, foi implementado o Bandit, uma
+Para a análise de segurança do código, foi implementado o
+Bandit\footnote{\link{https://bandit.readthedocs.io/en/latest/}}, uma
 ferramenta especializada em identificar vulnerabilidades comuns em
 código Python. Considerando que o projeto envolve implementação de
 criptografia e manipulação de dados sensíveis, o Bandit foi essencial
@@ -232,7 +240,8 @@ para detectar potenciais falhas de segurança, uso inadequado de
 funções criptográficas e outras práticas que poderiam comprometer a
 integridade do sistema de comunicação segura.
 
-A complexidade do código foi monitorada através do Radon, ferramenta
+A complexidade do código foi monitorada através do
+Radon\footnote{\link{https://radon.readthedocs.io/en/latest/}}, ferramenta
 que calcula métricas como complexidade ciclomática, índice de
 manutenibilidade e outras medidas quantitativas da qualidade do
 código. Esta análise foi particularmente importante para os módulos
@@ -240,14 +249,17 @@ de criptografia e gerenciamento de conexões, onde a complexidade
 algorítmica poderia impactar tanto a performance quanto a facilidade
 de manutenção do sistema.
 
-O Taskipy serviu como gerenciador de tarefas do projeto, permitindo a
+O Taskipy\footnote{\link{https://github.com/taskipy/taskipy}} serviu
+como gerenciador de tarefas do projeto, permitindo a
 definição de comandos personalizados para execução automatizada de
-rotinas comuns como testes, \textit{linting}, análise de segurança e deploy.
+rotinas comuns como testes, \textit{linting}, análise de segurança e
+\textit{deploy}.
 Esta ferramenta simplificou significativamente o fluxo de trabalho da
 equipe, padronizando os comandos utilizados e garantindo que todos os
 membros executassem as mesmas verificações antes de cada commit.
 
-Por fim, o Pytest foi adotado como framework de testes,
+Por fim, o Pytest\footnote{\link{https://docs.pytest.org/en/stable/}}
+foi adotado como \textit{framework} de testes,
 proporcionando uma estrutura robusta para a criação e execução de
 testes unitários e de integração. A implementação de testes
 automatizados foi crucial para validar o funcionamento correto dos
@@ -274,7 +286,7 @@ diversos aplicativos clientes diferentes entre si, porém compatíveis
 com o mesmo servidor.
 
 O \textit{back-end} foi desenvolvido totalmente em Python utilizando o FastAPI
-(framework que auxilia no desenvolvimento de \acsp{API} web), o
+(\textit{framework} que auxilia no desenvolvimento de \acsp{API} web), o
 qual, ao ser executado, fornece uma \acs{API} acessível através de uma \acs{URL}
 específica para aplicativos clientes acessarem suas funcionalidades.
 A estrutura do projeto do servidor ficou da seguinte forma:
@@ -292,9 +304,12 @@ algumas dependências ao projeto que facilitaram o desenvolvimento,
 entre elas, é válido destacar as seguintes:
 
 \begin{itemize}
-  \item \textit{psutil}: Biblioteca utilizada para obter informações
+  \item
+    \textit{psutil}\footnote{\link{https://github.com/giampaolo/psutil}}:
+    Biblioteca utilizada para obter informações
     sobre os recursos do hardware no qual o servidor está sendo executado;
-  \item \textit{redis}: Biblioteca para gerenciamento de banco de
+  \item \textit{redis}\footnote{\link{https://redis.io/}}: Biblioteca
+    para gerenciamento de banco de
     dados de cache.
 \end{itemize}
 
@@ -417,7 +432,8 @@ via docker compose são os seguintes:
 \begin{itemize}
   \item Redis - como banco de dados em memória;
   \item Servidor de aplicação FastAPI;
-  \item Servidor web Nginx - atua como proxy reverso, recebendo as
+  \item Servidor web Nginx\footnote{\link{https://www.nginx.com/}} -
+    atua como proxy reverso, recebendo as
     requisições externas e encaminhando-as para o servidor FastAPI.
 \end{itemize}
 
@@ -451,5 +467,144 @@ dados em um volume chamado \texttt{redis\_data}, evitando perda de
 informações em reinicializações. Esse container também está
 configurado para reiniciar automaticamente, assegurando sua
 disponibilidade contínua durante a execução do sistema.
+
+\subsection{Aplicativo cliente \textit{desktop}}
+
+Para prover uma interface amigável e de simples utilização para os
+usuários finais do sistema, foi desenvolvido um aplicativo cliente
+\acs{GUI} (\acl{GUI}) de aparência moderna por meio da
+biblioteca PySide6. Assim como o \textit{back-end}, o \acs{APP}
+cliente final também
+foi desenvolvido totalmente em Python. A estrutura do projeto do \acs{APP}
+ficou da seguinte forma:
+
+O aplicativo integra múltiplas funcionalidades essenciais para um
+sistema de comunicação segura, incluindo o gerenciamento de chaves
+criptográficas \acs{RSA}, estabelecimento e manutenção de conexões
+Websocket com o servidor, criptografia e descriptografia de mensagens
+em tempo real, e uma interface de chat intuitiva que oculta a
+complexidade dos processos de segurança subjacentes. A estrutura do
+projeto do \acs{APP} ficou da seguinte forma:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\linewidth]{imagens/estrutura-projeto-app.png}
+  \caption[Estrutura do projeto do app]{Estrutura do projeto do app}
+  \label{fig:estrutura-projeto-app}
+\end{figure}
+
+A experiência do usuário foi priorizada desde o início do
+desenvolvimento, com foco na simplicidade de uso e na transparência
+dos processos de segurança. O aplicativo apresenta uma interface
+limpa e organizada, onde os usuários podem facilmente iniciar
+conversas, visualizar o status de suas conexões e receber \textit{feedback}
+visual sobre o estado da criptografia de suas mensagens, tudo isso
+sem precisar compreender os aspectos técnicos da implementação \acs{RSA} ou
+dos protocolos de comunicação utilizados.
+
+\subsubsection{\textit{Widgets}}
+
+O PySide6 provê um conjunto de elementos de \acs{UI} que auxiliam no
+desenvolvimentos de interfaces de usuário no estilo desktop, dentre
+eles o principal utilizado no projeto foi o QWidget, utilizado para
+criar cada janela. O \acs{APP} em questão conta com três janelas ao todo,
+uma janela para inserir o nome de usuário de quem está se conectando
+e o endereço do servidor utilizado para a comunicação, uma segunda
+janela para inserir o nome de usuário de destinatário da comunicação
+e por fim a tela de conversação. Veja abaixo as respectivas telas em detalhes.
+
+A primeira tela solicita o nome de usuário que se deseja utilizar, e
+o endereço do servidor que será usado para a comunicação. Vale
+ressaltar que o remetente e o destinatário devem utilizar o mesmo
+servidor para estabelecer uma conexão, caso ambos os usuários se
+conectem a servidores distintos entre si estes não conseguiram se comunicar.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.65\linewidth]{imagens/app-screen1.png}
+  \caption[Tela de login do app]{Tela de login do \acs{APP}, onde o
+    usuário insere seu nome de usuário e o endereço do servidor que
+  será utilizado para a comunicação.}
+  \label{fig:tela-login-app}
+\end{figure}
+
+O endereço de servidor fornecido na primeira tela deve conter o
+protocolo, se é \acs{HTTP} ou \acs{HTTPS}, o domínio do servidor e a
+porta em que
+está sendo executado, um endereço de exemplo poderia ser
+\texttt{https://meuservidor.com:9000}, onde \texttt{https} é o protocolo,
+meuservidor.com o domínio do servidor e \texttt{9000} a porta em que ele está
+sendo executado. Por fim, caso o nome de usuário inserido já esteja
+ou o endereço do servidor não esteja acessível ou até mesmo caso os
+campos sejam deixados em branco, uma janela informando o erro será exibida.
+
+Após clicar em conectar na primeira tela do \acs{APP}, o usuário será
+encaminhado para a segunda tela, em que será solicitado que seja
+inserido o nome de usuário do destinatário, ou seja, o nome de
+usuário da pessoa com a qual se deseja conversar.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.65\linewidth]{imagens/app-screen2.png}
+  \caption[Tela de destinatário do app]{Tela de destinatário do \acs{APP},
+    onde o usuário insere o nome de usuário da pessoa com a qual se
+  deseja comunicar.}
+  \label{fig:tela-destinatario-app}
+\end{figure}
+
+Por fim, ao clicar novamente em conectar o usuário será conectado ao
+usuário de destino e a comunicação poderá ser iniciada, caso o
+usuário de destino ainda não esteja conectado, o primeiro usuário
+deverá aguardar e quando o destinatário será conectado o primeiro
+usuário será notificado. Assim que os dois usuários estiverem
+devidamente conectados eles podem dar sequência a conversa como
+demonstrado na imagem abaixo:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\linewidth]{imagens/app-screen3.png}
+  \caption[Tela de conversação do app]{Tela de conversação do \acs{APP},
+    onde o usuário pode enviar e receber mensagens de texto em tempo
+  real.}
+  \label{fig:tela-conversacao-app}
+\end{figure}
+
+\subsubsection{Integração e entrega contínua com GitHub Actions}
+
+A integração e entrega contínua (\acs{CI}/\acs{CD}) representa uma das práticas
+fundamentais do desenvolvimento de software moderno, permitindo a
+automação de processos de construção, teste e distribuição de
+aplicações de forma eficiente e confiável. No contexto de aplicações
+desktop, essas práticas se tornam ainda mais relevantes devido à
+necessidade de gerar builds específicas para diferentes sistemas
+operacionais e arquiteturas, garantindo que os usuários finais tenham
+acesso facilitado às versões mais atualizadas do software sem
+comprometer a qualidade ou segurança das distribuições.
+
+No projeto do aplicativo desktop oi implementado um pipeline de
+\acs{CI}/\acs{CD}
+que é acionado sempre que uma nova versão do app for lançada e
+enviada para o GitHub\footnote{\link{https://github.com/home}}, esse
+pipeline automatiza o processo de build
+e empacotamento de uma nova versão do app para instaladores nativos
+para os sistemas operacionais Microsoft Windows e as principais
+distribuições Linux, entre elas, Ubuntu, Fedora, Arch Linux, entre
+outras. Após o empacotamento os binários instaladores são anexados à
+publicação de lançamento da versão no GitHub para que os usuários
+possam realizar o download dos mesmos. Na imagem abaixo é possível
+visualizar o status e tempo de execução de cada \acs{CI} de build dos
+instaladores via GitHub Actions, incluindo o total de empacotamento
+de todos os instaladores:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\linewidth]{imagens/ci-build.png}
+  \caption[Status do pipeline de CI/CD via GitHub Actions]{Status
+  do pipeline de \acs{CI}/\acs{CD} via GitHub Actions.}
+  \label{fig:github-actions-ci-cd}
+\end{figure}
+
+Nos apêndices no final deste arquivo é possível ver o código que
+define o workflow de build em "\nameref{ci:codigo-github-actions}”.
 
 \newpage
