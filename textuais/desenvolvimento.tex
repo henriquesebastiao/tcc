@@ -206,6 +206,61 @@ como facilitador de conexões sem acesso ao conteúdo das mensagens,
 este por sua vez pode ser hospedado por usuários voluntários e não
 necessariamente pelos desenvolvedores ou mantenedores.
 
+\subsection{Ferramentas de Desenvolvimento e Qualidade de Código}
+
+Para garantir a qualidade, segurança e manutenibilidade do código
+desenvolvido, foram integradas ao processo de desenvolvimento
+diversas ferramentas especializadas que automatizaram verificações e
+padronizações essenciais para um projeto de comunicação segura. Essas
+ferramentas foram fundamentais para manter a consistência do código
+entre os membros da equipe e assegurar que os padrões de segurança
+fossem rigorosamente seguidos.
+
+O Ruff foi utilizado como \textit{linter} principal do projeto, responsável
+por identificar problemas de estilo, possíveis bugs e violações das
+convenções de código Python (PEP 8). Esta ferramenta, conhecida por
+sua velocidade e abrangência, permitiu que a equipe mantivesse um
+código limpo e consistente ao longo de todo o desenvolvimento,
+detectando automaticamente problemas que poderiam comprometer a
+legibilidade ou a manutenção futura do sistema.
+
+Para a análise de segurança do código, foi implementado o Bandit, uma
+ferramenta especializada em identificar vulnerabilidades comuns em
+código Python. Considerando que o projeto envolve implementação de
+criptografia e manipulação de dados sensíveis, o Bandit foi essencial
+para detectar potenciais falhas de segurança, uso inadequado de
+funções criptográficas e outras práticas que poderiam comprometer a
+integridade do sistema de comunicação segura.
+
+A complexidade do código foi monitorada através do Radon, ferramenta
+que calcula métricas como complexidade ciclomática, índice de
+manutenibilidade e outras medidas quantitativas da qualidade do
+código. Esta análise foi particularmente importante para os módulos
+de criptografia e gerenciamento de conexões, onde a complexidade
+algorítmica poderia impactar tanto a performance quanto a facilidade
+de manutenção do sistema.
+
+O Taskipy serviu como gerenciador de tarefas do projeto, permitindo a
+definição de comandos personalizados para execução automatizada de
+rotinas comuns como testes, \textit{linting}, análise de segurança e deploy.
+Esta ferramenta simplificou significativamente o fluxo de trabalho da
+equipe, padronizando os comandos utilizados e garantindo que todos os
+membros executassem as mesmas verificações antes de cada commit.
+
+Por fim, o Pytest foi adotado como framework de testes,
+proporcionando uma estrutura robusta para a criação e execução de
+testes unitários e de integração. A implementação de testes
+automatizados foi crucial para validar o funcionamento correto dos
+algoritmos de criptografia, da comunicação entre cliente e servidor,
+e da integridade das mensagens transmitidas, garantindo que
+modificações no código não introduzissem regressões no sistema.
+
+A integração dessas ferramentas no pipeline de desenvolvimento criou
+um ambiente onde a qualidade e segurança do código eram continuamente
+monitoradas, permitindo que a equipe focasse na implementação das
+funcionalidades principais com a confiança de que aspectos críticos
+como segurança e manutenibilidade estavam sendo adequadamente controlados.
+
 \subsection{\textit{Back-end}}
 
 O \textit{back-end} é responsável por aceitar as conexões Websocket vindas dos
@@ -318,15 +373,39 @@ Redis. usando configurações externas, Isso permite que qualquer parte
 do sistema, como a autenticação, o Websocket, o cache, utilize o
 mesmo cliente para ler e gravar dados.
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\linewidth]{imagens/redis-client.png}
+  \caption[Código de conexão com o Redis]{Código de conexão com o
+  Redis, utilizando variáveis de ambiente para configuração.}
+  \label{fig:codigo-conexao-redis}
+\end{figure}
+
 O cliente Redis é utilizado principalmente no endpoint Websocket da
 aplicação, para realizar o registro e exclusão de usuários que estão
 online ou que se desconectaram, respectivamente. Os \acsp{ID} dos usuários
 não são salvos em texto claro no Redis, mas sim um hash dos \acsp{ID}, para
 garantir uma maior privacidade dos usuários. Na seção de Apêndice, em
-“Código da função de hash de IDs”, está disponível o código da função
+“\nameref{hash:codigo-hash-id}”, está disponível o código da função
 que converte qualquer \acs{ID} de usuário em um hash SHA-256, hash esse que
 será usado pelo servidor para armazenamento e identificação do
 usuário até o fim de sua conexão.
+
+No módulo settings utilizamos uma funcionalidade do Pydantic que
+possibilita o carregamento automático das variáveis de ambiente
+presentes em um arquivo \texttt{.env}, essas variáveis são necessárias como
+configurações do Redis, sendo elas o endereço do Redis e a porta em
+que está sendo executado. A imagem abaixo mostra o código que obtém
+os valores das variáveis de ambiente.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\linewidth]{imagens/redis-client.png}
+  \caption[Código de carregamento automático de variáveis de
+  ambiente]{Código de carregamento automático de variáveis de
+  ambiente usando Pydantic.}
+  \label{fig:settings-load-env}
+\end{figure}
 
 \subsubsection{Execução via Docker}
 
@@ -357,7 +436,7 @@ O segundo container é o \textit{web}, que executa o servidor Nginx na
 função de proxy reverso. Ele expõe a aplicação externamente através
 da porta 9000 do host, redirecionando as requisições para o servidor
 FastAPI. O Nginx é configurado por meio de um arquivo de configuração
-customizado (\texttt{nginx.conf}), o que possibilita definir regras
+customizado chamado de \texttt{nginx.conf}, o que possibilita definir regras
 específicas para o encaminhamento das requisições e otimizações de
 desempenho. Assim como o servidor de aplicação, esse container também
 está configurado para reiniciar automaticamente e depende do serviço
@@ -366,7 +445,7 @@ está configurado para reiniciar automaticamente e depende do serviço
 O terceiro container é o \textit{redis}, que fornece o banco de dados em
 memória utilizado pela aplicação para armazenamento temporário e
 operações de alta performance. Ele é baseado na imagem oficial do
-Redis em sua versão otimizada \texttt{alpine}, expõe a porta 6379 para
+Redis em sua versão otimizada \textit{alpine}, expõe a porta 6379 para
 permitir a comunicação entre os serviços e mantém a persistência dos
 dados em um volume chamado \texttt{redis\_data}, evitando perda de
 informações em reinicializações. Esse container também está
