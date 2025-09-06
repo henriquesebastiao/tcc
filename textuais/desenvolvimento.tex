@@ -16,7 +16,7 @@ no contexto atual da comunicação digital. Conforme evidenciado no
 levantamento bibliográfico apresentado no Capítulo 2, os sistemas
 convencionais de mensagens instantâneas frequentemente falham em
 garantir a privacidade absoluta dos usuários, seja por questões
-arquiteturais ou por modelos de negócio que dependem da análise de dados.
+arquitetônicas ou por modelos de negócio que dependem da análise de dados.
 
 O desenvolvimento da solução foi orientado pela necessidade de criar
 um sistema de comunicação seguro que garantisse a privacidade das
@@ -69,7 +69,7 @@ construção simultânea de diferentes componentes do sistema.
 A partir dos protótipos iniciais criados com Tkinter, que nos
 ajudaram a validar as ideias de interface, tomamos a decisão de
 migrar para uma ferramenta mais robusta e moderna. A escolha final
-foi a biblioteca PySide6, que ofereceu funcionalidades mais avançadas
+foi a biblioteca PySide6, que oferece funcionalidades mais avançadas
 para a construção de uma interface gráfica completa e visualmente
 agradável. Essa transição foi fundamental para elevar a qualidade do
 produto final, garantindo um design mais polido e uma experiência de
@@ -116,7 +116,7 @@ adaptado para as necessidades do projeto, com as seguintes colunas principais:
 
 \subsubsection{Características de reuniões semanais}
 
-As reuniões semanais estruturavam-se em torno dos seguintes elementos:
+As reuniões semanais estruturaram-se em torno dos seguintes elementos:
 
 \begin{itemize}
   \item \textbf{Sprint Review}: Apresentação dos progressos
@@ -253,11 +253,11 @@ testes unitários e de integração. A implementação de testes
 automatizados foi crucial para validar o funcionamento correto dos
 algoritmos de criptografia, da comunicação entre cliente e servidor,
 e da integridade das mensagens transmitidas, garantindo que
-modificações no código não introduzissem regressões no sistema.
+modificações no código não introduzirem regressões no sistema.
 
 A integração dessas ferramentas no pipeline de desenvolvimento criou
 um ambiente onde a qualidade e segurança do código eram continuamente
-monitoradas, permitindo que a equipe focasse na implementação das
+monitoradas, permitindo que a equipe se mantivesse focada na implementação das
 funcionalidades principais com a confiança de que aspectos críticos
 como segurança e manutenibilidade estavam sendo adequadamente controlados.
 
@@ -268,7 +268,7 @@ clientes (\acsp{APP}) compatíveis com o servidor e realizar o
 encaminhamento de mensagens entre os usuários, garantindo a
 confidencialidade das comunicações, de modo que uma mensagem recebida
 é encaminhada diretamente para o usuário de destino sem ter seu
-conteúdo acessado pelo servidor. Além disso o servidor fornece uma
+conteúdo acessado pelo servidor. Além disso, o servidor fornece uma
 interface intercambiável entre clientes, podendo ser desenvolvidos
 diversos aplicativos clientes diferentes entre si, porém compatíveis
 com o mesmo servidor.
@@ -331,7 +331,7 @@ seguintes arquivos:
 
 Para realizar a validação de dados que entram e saem do servidor por
 meio de requisições em seus endpoints \acs{HTTP} utilizamos a biblioteca
-Pydantic que oferecem modelos de validação robustos e que se integram
+Pydantic que oferece modelos de validação robustos e que se integram
 perfeitamente com \acsp{API} \acs{JSON}, esses modelos são chamados
 de \textit{schemas}.
 
