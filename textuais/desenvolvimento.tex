@@ -273,6 +273,128 @@ monitoradas, permitindo que a equipe se mantivesse focada na implementação das
 funcionalidades principais com a confiança de que aspectos críticos
 como segurança e manutenibilidade estavam sendo adequadamente controlados.
 
+\subsection{Cliente \acs{CLI} para testes e validação}
+
+Antes de iniciar o desenvolvimento do aplicativo com interface
+gráfica, foi necessário criar um cliente de linha de comando \acs{CLI}
+(\acl{CLI}) para testar e validar o funcionamento do
+servidor e dos protocolos de comunicação implementados. Esta
+abordagem seguiu as melhores práticas de desenvolvimento de software,
+onde componentes fundamentais são testados isoladamente antes da
+criação de interfaces mais complexas.
+
+O desenvolvimento do cliente \acs{CLI} teve como objetivo principal
+verificar a integridade da comunicação Websocket, a eficácia dos
+algoritmos de criptografia implementados e a robustez do procedimento
+de troca de chaves desenvolvido. Esta ferramenta de teste permitiu
+que a equipe identificasse e corrigisse problemas na arquitetura do
+sistema antes de investir tempo no desenvolvimento da interface
+gráfica, economizando recursos e garantindo uma base sólida para o
+aplicativo final.
+
+\subsubsection{Arquitetura e funcionalidades do \acs{CLI}}
+
+O cliente \acs{CLI} foi desenvolvido completamente em Python, utilizando
+bibliotecas especializadas para cada aspecto da funcionalidade. A
+biblioteca Typer\footnote{\link{https://typer.tiangolo.com/}} foi
+escolhida para criar a interface de linha de
+comando, proporcionando uma experiência de usuário intuitiva mesmo em
+ambiente terminal. Para a comunicação Websocket, foi utilizada a
+biblioteca
+websockets\footnote{\link{https://websockets.readthedocs.io/en/stable/}},
+que oferece suporte nativo aos protocolos
+assíncronos necessários para a comunicação em tempo real.
+
+A interface de entrada de dados foi aprimorada através da biblioteca
+\textit{prompt-toolkit}\footnote{\link{https://python-prompt-toolkit.readthedocs.io/en/master/}},
+que adiciona funcionalidades avançadas como histórico
+de comandos, auto-completar e sugestões automáticas. Esta escolha foi
+fundamental para facilitar os testes repetitivos durante o
+desenvolvimento, permitindo que os desenvolvedores reutilizassem
+comandos anteriores e navegassem facilmente pelo histórico de interações.
+
+Para a exibição de informações no terminal, foi implementada a
+biblioteca
+Rich\footnote{\link{https://rich.readthedocs.io/en/stable/}}, que
+proporciona formatação colorida e estruturada
+das mensagens. Esta funcionalidade foi essencial para distinguir
+visualmente entre diferentes tipos de mensagens: mensagens do sistema
+em amarelo, mensagens criptografadas recebidas em verde, mensagens em
+texto puro em vermelho, e informações de depuração em azul.
+
+\subsubsection{Processo de comunicação e criptografia}
+
+O cliente \acs{CLI} implementa um protocolo completo de comunicação segura
+que inicia com o estabelecimento da conexão Websocket utilizando um
+\acs{URI} estruturado que inclui os identificadores do usuário remetente e
+destinatário, seguindo o formato \texttt{/ws/{user\_id}@{recipient\_id}}. Uma
+vez conectado ao servidor, o sistema aguarda que ambos os
+participantes da conversação estejam \textit{online} para iniciar
+automaticamente o processo de \textit{handshake} de segurança.
+
+Assim que o destinatário se conecta, o cliente automaticamente inicia
+a troca de chaves públicas \acs{RSA}, onde cada participante envia sua
+chave pública serializada em formato
+base64\footnote{\link{https://en.wikipedia.org/wiki/Base64}},
+utilizando um prefixo
+específico para distinguir este tipo de mensagem das demais
+comunicações. Esta etapa é crucial para estabelecer a base
+criptográfica que permitirá a comunicação segura subsequente.
+
+Após a troca bem-sucedida das chaves públicas \acs{RSA}, um dos clientes,
+determinado pela comparação lexicográfica dos \acsp{ID} dos usuários,
+assume a responsabilidade de gerar uma chave \acs{AES} simétrica. Esta
+chave é então criptografada com a chave pública \acs{RSA} do destinatário e
+enviada de forma segura através do canal Websocket. Esta abordagem
+híbrida combina a segurança da criptografia assimétrica \acs{RSA} com a
+eficiência da criptografia simétrica \acs{AES} para as mensagens
+subsequentes, otimizando tanto a segurança quanto o desempenho da comunicação.
+
+Uma vez estabelecida a chave \acs{AES} compartilhada entre os dois
+participantes, todas as mensagens de usuário são automaticamente
+criptografadas usando \acs{AES} antes do envio e descriptografadas no
+momento do recebimento. Este processo é completamente transparente
+para o usuário, que simplesmente digita suas mensagens em texto
+plano, enquanto o sistema se encarrega de toda a complexidade
+criptográfica nos bastidores, proporcionando comunicação de ponta a
+ponta verdadeiramente segura.
+
+Para organizar e processar adequadamente os diferentes tipos de
+mensagens trafegadas pelo sistema, foi implementado um sistema de
+prefixos que permite a identificação imediata do conteúdo e do
+tratamento necessário para cada mensagem recebida. As mensagens de
+controle do servidor, como notificações de conexão e desconexão de
+usuários, são identificadas pelo prefixo de sistema, permitindo que o
+cliente exiba informações relevantes sobre o estado da conexão.
+Durante o \textit{handshake} inicial, as mensagens contendo chaves públicas
+\acs{RSA} são marcadas com um prefixo específico de troca de chaves,
+enquanto a transmissão da chave \acs{AES} criptografada utiliza seu próprio
+identificador. Por fim, todas as mensagens de usuário criptografadas
+com a chave \acs{AES} estabelecida recebem um prefixo que indica ao
+receptor a necessidade de descriptografia antes da exibição.
+
+\subsubsection{Validação e testes realizados}
+
+O cliente \acs{CLI} permitiu a realização de testes abrangentes que
+validaram aspectos críticos do sistema, incluindo a capacidade do
+servidor de gerenciar múltiplas conexões simultâneas, o funcionamento
+correto dos algoritmos de criptografia \acs{RSA} e \acs{AES}, a robustez do
+sistema em cenários de falha de rede e desconexões abruptas, além do
+comportamento adequado com múltiplos usuários enviando mensagens
+simultaneamente. Esses testes foram fundamentais para identificar e
+corrigir problemas relacionados ao gerenciamento de estado
+assíncrono, tratamento de exceções e sincronização entre processos,
+garantindo que o protocolo desenvolvido fosse robusto o suficiente
+para suportar a implementação na interface gráfica do aplicativo final.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\linewidth]{imagens/cli-chat.png}
+  \caption[Cliente CLI em execução]{Cliente CLI em execução, ilustrando a
+  interação do usuário com o sistema de mensagens.}
+  \label{fig:cli-chat}
+\end{figure}
+
 \subsection{\textit{Back-end}}
 
 O \textit{back-end} é responsável por aceitar as conexões Websocket vindas dos
@@ -365,7 +487,7 @@ seção de Apêndice, os schemas desenvolvidos até este ponto estão disponíve
 
 \subsubsection{Banco de dados em memória}
 
-No sistema desenvolvido, existe a necessidade de controlar quais
+No sistema do servidor, existe a necessidade de controlar quais
 usuários estão conectados em tempo real. Esse controle é fundamental
 para evitar que o mesmo usuário estabeleça múltiplas sessões
 simultâneas e para possibilitar a correta entrega de mensagens entre
@@ -383,18 +505,12 @@ simplificar as operações de inserção e remoção. Dessa forma, o Redis
 atendeu plenamente aos requisitos de baixa latência, simplicidade e
 desempenho em tempo real exigidos pelo sistema.
 
-O trecho de código abaixo cria uma conexão assíncrona global com o
-Redis. usando configurações externas, Isso permite que qualquer parte
+No trecho de código presente nos apêndices na seção
+"\nameref{redis:codigo-redis-client}" é criada uma conexão assíncrona
+global com o Redis, usando configurações externas. Isso permite que
+qualquer parte
 do sistema, como a autenticação, o Websocket, o cache, utilize o
 mesmo cliente para ler e gravar dados.
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=1\linewidth]{imagens/redis-client.png}
-  \caption[Código de conexão com o Redis]{Código de conexão com o
-  Redis, utilizando variáveis de ambiente para configuração.}
-  \label{fig:codigo-conexao-redis}
-\end{figure}
 
 O cliente Redis é utilizado principalmente no endpoint Websocket da
 aplicação, para realizar o registro e exclusão de usuários que estão
@@ -410,17 +526,9 @@ No módulo settings utilizamos uma funcionalidade do Pydantic que
 possibilita o carregamento automático das variáveis de ambiente
 presentes em um arquivo \texttt{.env}, essas variáveis são necessárias como
 configurações do Redis, sendo elas o endereço do Redis e a porta em
-que está sendo executado. A imagem abaixo mostra o código que obtém
-os valores das variáveis de ambiente.
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=1\linewidth]{imagens/redis-client.png}
-  \caption[Código de carregamento automático de variáveis de
-  ambiente]{Código de carregamento automático de variáveis de
-  ambiente usando Pydantic.}
-  \label{fig:settings-load-env}
-\end{figure}
+que está sendo executado. O código que obtém os valores das variáveis
+de ambiente está disponível nos apêndices na seção
+"\nameref{schema:codigo-load-env}".
 
 \subsubsection{Execução via Docker}
 
@@ -568,6 +676,35 @@ demonstrado na imagem abaixo:
   real.}
   \label{fig:tela-conversacao-app}
 \end{figure}
+
+O protocolo de comunicação e criptografia implementado no aplicativo
+de interface gráfica mantém exatamente a mesma arquitetura e
+procedimentos validados anteriormente no cliente \acs{CLI}. Todo o fluxo de
+estabelecimento de conexão Websocket, handshake de chaves públicas
+RSA, geração e troca segura de chaves \acs{AES}, além do sistema de
+prefixos para classificação de mensagens, foi integralmente
+preservado na implementação do aplicativo desktop. Esta consistência
+arquitetural garantiu que a robustez e segurança comprovadas durante
+os testes com o cliente \acs{CLI} fossem mantidas na versão final do
+produto, proporcionando aos usuários finais o mesmo nível de proteção
+criptográfica em uma interface amigável e intuitiva. A reutilização
+deste protocolo também permitiu que o foco do desenvolvimento da
+interface gráfica fosse direcionado exclusivamente para a experiência
+do usuário e funcionalidades visuais, uma vez que os aspectos
+críticos de segurança já haviam sido extensivamente testados e validados.
+
+Além disso, como ambas as implementações seguem exatamente o mesmo
+protocolo de comunicação, existe total interoperabilidade entre os
+clientes, permitindo que um usuário utilizando o cliente \acs{CLI} se
+comunique perfeitamente com outro usuário que esteja usando o
+aplicativo de interface gráfica, e vice-versa. Esta compatibilidade
+cruzada demonstra a solidez do protocolo desenvolvido e oferece
+flexibilidade aos usuários na escolha da interface que melhor se
+adequa às suas necessidades ou preferências. A reutilização deste
+protocolo também permitiu que o foco do desenvolvimento da interface
+gráfica fosse direcionado exclusivamente para a experiência do
+usuário e funcionalidades visuais, uma vez que os aspectos críticos
+de segurança já haviam sido extensivamente testados e validados.
 
 \subsubsection{Integração e entrega contínua com GitHub Actions}
 
