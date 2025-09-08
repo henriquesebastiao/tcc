@@ -16,6 +16,6 @@ md:
 	pandoc -s tcc.tex -o tcc.md --bibliography bibliografia.bib
 
 html:
-	pandoc tcc-html.tex -o tcc.html --toc --bibliography bibliografia.bib --metadata title="Trabalho de Conclusão de Curso" --standalone --mathjax && ./format-html.sh tcc.html && prettier tcc.html --write
+	pandoc tcc-html.tex -o index.html --toc --bibliography bibliografia.bib --metadata title="Trabalho de Conclusão de Curso" --standalone --mathjax && ./format-html.sh index.html && prettier index.html --write
 
 .PHONY: all clean build lint format md html
