@@ -1,7 +1,7 @@
 all: clean build
 
 clean:
-	find . -type f \( -name "*.aux" -o -name "*.acn" -o -name "*.ist" -o -name "*.brf" -o -name "*.glg" -o -name "*.glo" -o -name "*.gls" -o -name "*.xdy" -o -name "*.bbl" -o -name "*.blg" -o -name "*.log" -o -name "*.dvi" -o -name "*.lof" -o -name "*.lot" -o -name "*.out" -o -name "*.toc" -o -name "*.fls" -o -name "*.synctex.gz" -o -name "*.fdb_latexmk" -o -name "*.xdv" \) -delete;
+	find . -type f \( -name "*.aux" -o -name "*.acn" -o -name "*.ist" -o -name "*.brf" -o -name "*.glg" -o -name "*.glo" -o -name "*.gls" -o -name "*.xdy" -o -name "*.bbl" -o -name "*.blg" -o -name "*.log" -o -name "*.dvi" -o -name "*.lof" -o -name "*.lot" -o -name "*.out" -o -name "*.toc" -o -name "*.fls" -o -name "*.synctex.gz" -o -name "*.fdb_latexmk" -o -name "*.xdv" -o -name "tcc-html.pdf" \) -delete;
 
 lint:
 	find . -type f -name "*.tex" -exec tex-fmt --check {} \;
@@ -13,6 +13,9 @@ build:
 	latexmk -pdfxe tcc.tex
 
 md:
-	pandoc -s tcc.tex -o tcc.md
+	pandoc -s tcc.tex -o tcc.md --bibliography bibliografia.bib
 
-.PHONY: all clean build lint format md
+html:
+	pandoc tcc-html.tex -o tcc.html --toc --bibliography bibliografia.bib --metadata title="Trabalho de Conclusão de Curso" --standalone --mathjax && ./format-html.sh tcc.html && prettier tcc.html --write
+
+.PHONY: all clean build lint format md html

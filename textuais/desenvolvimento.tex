@@ -1,0 +1,818 @@
+\section{DESENVOLVIMENTO DA APLICAÇÃO}
+
+Este capítulo explora o processo de criação do sistema de comunicação
+com criptografia de ponta a ponta, abrangendo desde a estruturação do
+ambiente técnico até os procedimentos metodológicos aplicados durante
+a implementação. Apresentam-se as problemáticas identificadas no
+curso do desenvolvimento e as medidas adotadas para resolvê-las,
+complementado por uma visão ampla das funcionalidades implementadas e
+das ferramentas tecnológicas selecionadas para o projeto.
+
+\subsection{Contextualização e Escopo da Implementação}
+
+A necessidade de desenvolver um sistema de comunicação
+verdadeiramente seguro emerge da análise dos problemas identificados
+no contexto atual da comunicação digital. Conforme evidenciado no
+levantamento bibliográfico apresentado no capítulo
+\ref{ch:referencial}, os sistemas
+convencionais de mensagens instantâneas frequentemente falham em
+garantir a privacidade absoluta dos usuários, seja por questões
+arquitetônicas ou por modelos de negócio que dependem da análise de dados.
+
+O desenvolvimento da solução foi orientado pela necessidade de criar
+um sistema de comunicação seguro que garantisse a privacidade das
+mensagens sem depender de infraestruturas centralizadas de terceiros.
+A implementação resultou em dois componentes principais: um servidor
+intermediário para roteamento de conexões e uma aplicação cliente
+desktop para interface com o usuário.
+
+O sistema desenvolvido endereça especificamente os seguintes aspectos
+identificados na análise do problema:
+
+\begin{itemize}
+  \item Eliminação de pontos centrais de acesso ao conteúdo das mensagens;
+  \item Implementação de criptografia robusta no lado cliente;
+  \item Simplificação da experiência do usuário para adoção por
+    não-especialistas;
+  \item Transparência através de código fonte aberto para auditoria.
+\end{itemize}
+
+O processo de planejamento inicial do projeto foi marcado por
+desafios significativos, especialmente na escolha das funcionalidades
+a serem incorporadas, dada a vasta gama de recursos disponíveis no
+mercado. Essa etapa crítica de definição de escopo foi fundamental
+para direcionar o desenvolvimento e garantir um caminho claro para a
+execução. Para prototipar as ideias e testar conceitos de interface e
+funcionalidade, optou-se pelo uso da biblioteca Tkinter\footnote{Tkinter:
+\link{https://docs.python.org/3/library/tkinter.html}} para a
+criação do frontend, permitindo uma visualização rápida da interface
+gráfica da aplicação e seguir com os testes de funcionalidade das mensagens.
+
+Concomitantemente, a segurança foi um pilar central desde o início. A
+implementação do backend focou em garantir a confidencialidade das
+comunicações. Para isso, foi utilizada a biblioteca Cryptography, com
+ênfase na implementação do algoritmo de criptografia \acs{RSA}, um método
+de criptografia assimétrica. Essa abordagem manual de criptografia,
+em vez de depender de protocolos de segurança de transporte como o
+\acs{HTTPS}, oferece maior controle sobre a gestão de chaves e o processo
+de autenticação, adaptando-se perfeitamente aos requisitos
+específicos do nosso sistema e garantindo uma comunicação segura e
+privada entre os usuários, conquanto que a nossa aplicação transmite
+as mensagens de ponto a ponto reforça a transparência para o
+servidor, cujo a função é apenas entregar as mensagens de um lado para o outro.
+
+O desenvolvimento da aplicação foi um processo colaborativo e
+estruturado. Para garantir o progresso contínuo e a coesão da equipe,
+foram realizadas reuniões semanais. Nesses encontros, discutimos os
+desafios e progressos, além de dividir as tarefas entre os
+integrantes, o que permitiu um fluxo de trabalho eficiente e a
+construção simultânea de diferentes componentes do sistema.
+
+A partir dos protótipos iniciais criados com Tkinter, que nos
+ajudaram a validar as ideias de interface, tomamos a decisão de
+migrar para uma ferramenta mais robusta e moderna. A escolha final
+foi a biblioteca PySide6\footnote{PySide6:
+\link{https://doc.qt.io/qtforpython-6/}}, que oferece funcionalidades
+mais avançadas
+para a construção de uma interface gráfica completa e visualmente
+agradável. Essa transição foi fundamental para elevar a qualidade do
+produto final, garantindo um design mais polido e uma experiência de
+usuário aprimorada, alinhada com as expectativas de uma aplicação de
+comunicação contemporânea.
+
+\subsection{Metodologia de desenvolvimento e gestão de \textit{sprints}}
+
+Como foi explicado na contextualização do projeto, o desenvolvimento
+seguiu a metodologia Scrumban, que combina elementos do Scrum e do
+Kanban, muitas vezes referenciada por profissionais como uma
+abordagem híbrida que aproveita os benefícios de ambos os \textit{frameworks}.
+Portanto, o desenvolvimento da aplicação foi dividido em sprints,
+houve um acordo entre a equipe sobre a flexibilidade das mesmas,
+visto que todos os envolvidos teriam que alinhar seus horários para a
+conclusão do projeto, ponderando entre sua vida acadêmica e
+profissional, o que acarretou em reuniões semanais mais dinâmicas,
+mas não em menor desempenho ou qualidade, assim, possibilitando
+manter uma cadência regular sem comprometer a qualidade das entregas
+como sugerido pelo \textit{framework} Scrum.
+
+Como o uso do Kanban também estava presente, para cada sprint ser
+iniciada havia requisitos claros: as atividades deveriam ser puxadas
+conforme sua prioridade e importância para o sistema de comunicação
+segura, portanto, com base na relevância dos componentes, tendo como
+foco inicial a conclusão dos módulos de criptografia e comunicação
+básica. Logo que a aplicação atingiu os requisitos mínimos de
+segurança esperados, com a implementação completa da criptografia \acs{RSA}
+e do servidor de mensagens, foi possível realizar testes internos
+entre os membros da equipe, a fim de obter \textit{feedbacks} sobre a
+usabilidade e eficácia do sistema.
+
+\subsubsection{Organização do fluxo de trabalho}
+
+O fluxo de trabalho seguiu uma estrutura baseada em quadro Kanban
+adaptado para as necessidades do projeto, com as seguintes colunas principais:
+
+\begin{itemize}
+  \item \textbf{A Fazer}: Tarefas priorizadas e prontas para desenvolvimento;
+  \item \textbf{Em Andamento}: Atividades em execução pelos membros da equipe;
+  \item \textbf{Em Teste}: Componentes em fase de revisão e testes;
+  \item \textbf{Concluído}: Funcionalidades concluídas e integradas.
+\end{itemize}
+
+\subsubsection{Características de reuniões semanais}
+
+As reuniões semanais estruturaram-se em torno dos seguintes elementos:
+
+\begin{itemize}
+  \item \textbf{Sprint Review}: Apresentação dos progressos
+    alcançados na semana anterior, com demonstrações práticas das
+    funcionalidades implementadas, especialmente relacionadas aos
+    avanços na criptografia e interface gráfica.
+  \item \textbf{Identificação de Impedimentos}: Discussão
+    colaborativa dos desafios técnicos encontrados, particularmente
+    aqueles relacionados à integração entre os componentes de
+    segurança, servidor e cliente.
+  \item \textbf{Planejamento da Próxima Sprint}: Seleção das tarefas
+    prioritárias do backlog, considerando as dependências entre
+    componentes e a disponibilidade dos membros da equipe.
+  \item \textbf{Retrospectiva}: Avaliação do processo de
+    desenvolvimento, identificando oportunidades de melhoria na
+    metodologia aplicada e nos fluxos de comunicação da equipe.
+\end{itemize}
+
+\subsubsection{Adaptações metodológicas}
+
+O projeto exigiu algumas adaptações específicas da metodologia
+Scrumban para atender às necessidades particulares do desenvolvimento
+de um sistema de comunicação segura. As sprints mantiveram duração de
+uma semana, mas com flexibilidade para estender discussões técnicas
+quando necessário, especialmente durante decisões críticas sobre a
+arquitetura de segurança e implementação dos protocolos de
+criptografia. Esta flexibilidade temporal mostrou-se essencial para
+garantir que questões complexas relacionadas à segurança fossem
+adequadamente discutidas e resolvidas.
+
+O \textit{backlog} foi constantemente refinado para refletir as descobertas
+técnicas e os requisitos emergentes do sistema de criptografia,
+permitindo ajustes de prioridade sem comprometer o cronograma geral.
+Essa priorização dinâmica revelou-se fundamental durante a transição
+de Tkinter para PySide6 e nas decisões sobre a implementação manual
+da criptografia \acs{RSA}, onde novas necessidades técnicas emergiram e
+demandaram reajustes nas prioridades estabelecidas.
+
+A abordagem Kanban facilitou a integração contínua dos componentes
+desenvolvidos paralelamente, essencial para um sistema onde \textit{back-end}, \
+\textit{front-end} e criptografia precisavam funcionar harmoniosamente. O fluxo
+contínuo de trabalho permitiu que ajustes em um componente fossem
+rapidamente comunicados e integrados aos demais, mantendo a
+consistência arquitetural e evitando retrabalhos significativos.
+
+\subsubsection{Acompanhamento de progresso e métricas}
+
+Para o gerenciamento eficaz do projeto, foi utilizado o GitHub
+Projects como plataforma principal para organização e acompanhamento
+das atividades. Esta ferramenta se integra diretamente com as \textit{issues}
+e \textit{pull requests} do repositório, proporcionando uma visão unificada do
+progresso do desenvolvimento e facilitando o controle das entregas.
+
+Um dos recursos mais valiosos para a gestão ágil do projeto foi o
+gráfico de Burn Up, que demonstra o progresso das atividades ao longo
+do tempo, permitindo visualizar tanto o escopo total do projeto
+quanto o trabalho já concluído. Este gráfico foi fundamental para
+identificar tendências de produtividade, mudanças de escopo e
+possíveis gargalos no desenvolvimento, especialmente durante as fases
+críticas de implementação da criptografia e integração dos componentes.
+
+Abaixo é possível visualizar o gráfico de Burn Up do projeto, que
+ilustra a evolução das entregas e o cumprimento dos marcos
+estabelecidos durante o desenvolvimento da aplicação de comunicação segura:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\linewidth]{imagens/burn-up.png}
+  \caption[Gráfico de Burn Up do projeto]{Gráfico de Burn Up do
+    projeto, ilustrando a evolução das entregas e o cumprimento dos
+  marcos estabelecidos.}
+  \label{fig:burn-up-projeto}
+\end{figure}
+
+O gráfico evidencia os períodos de maior intensidade no
+desenvolvimento, particularmente durante a implementação dos módulos
+de segurança e a transição entre as tecnologias de interface gráfica.
+As variações na curva refletem tanto as adaptações metodológicas
+necessárias quanto os desafios técnicos específicos encontrados no
+desenvolvimento de um sistema de comunicação com criptografia de ponta a ponta.
+
+\subsection{Arquitetura implementada}
+
+A arquitetura desenvolvida seguiu o modelo cliente-servidor com
+criptografia de ponta a ponta, onde o servidor atua exclusivamente
+como facilitador de conexões sem acesso ao conteúdo das mensagens,
+este por sua vez pode ser hospedado por usuários voluntários e não
+necessariamente pelos desenvolvedores ou mantenedores.
+
+\subsection{Ferramentas de Desenvolvimento e Qualidade de Código}
+
+Para garantir a qualidade, segurança e manutenibilidade do código
+desenvolvido, foram integradas ao processo de desenvolvimento
+diversas ferramentas especializadas que automatizaram verificações e
+padronizações essenciais para um projeto de comunicação segura. Essas
+ferramentas foram fundamentais para manter a consistência do código
+entre os membros da equipe e assegurar que os padrões de segurança
+fossem rigorosamente seguidos.
+
+O Ruff\footnote{Ruff: \link{https://docs.astral.sh/ruff/}} foi utilizado
+como \textit{linter} principal do projeto, responsável
+por identificar problemas de estilo, possíveis bugs e violações das
+convenções de código Python (PEP
+8\footnote{PEP 8: \link{https://peps.python.org/pep-0008/}}). Esta
+ferramenta, conhecida por
+sua velocidade e abrangência, permitiu que a equipe mantivesse um
+código limpo e consistente ao longo de todo o desenvolvimento,
+detectando automaticamente problemas que poderiam comprometer a
+legibilidade ou a manutenção futura do sistema.
+
+Para a análise de segurança do código, foi implementado o
+Bandit\footnote{Bandit: \link{https://bandit.readthedocs.io/en/latest/}}, uma
+ferramenta especializada em identificar vulnerabilidades comuns em
+código Python. Considerando que o projeto envolve implementação de
+criptografia e manipulação de dados sensíveis, o Bandit foi essencial
+para detectar potenciais falhas de segurança, uso inadequado de
+funções criptográficas e outras práticas que poderiam comprometer a
+integridade do sistema de comunicação segura.
+
+A complexidade do código foi monitorada através do
+Radon\footnote{Radon:
+\link{https://radon.readthedocs.io/en/latest/}}, ferramenta
+que calcula métricas como complexidade ciclomática, índice de
+manutenibilidade e outras medidas quantitativas da qualidade do
+código. Esta análise foi particularmente importante para os módulos
+de criptografia e gerenciamento de conexões, onde a complexidade
+algorítmica poderia impactar tanto a performance quanto a facilidade
+de manutenção do sistema.
+
+O Taskipy\footnote{Taskipy: \link{https://github.com/taskipy/taskipy}} serviu
+como gerenciador de tarefas do projeto, permitindo a
+definição de comandos personalizados para execução automatizada de
+rotinas comuns como testes, \textit{linting}, análise de segurança e
+\textit{deploy}.
+Esta ferramenta simplificou significativamente o fluxo de trabalho da
+equipe, padronizando os comandos utilizados e garantindo que todos os
+membros executassem as mesmas verificações antes de cada commit.
+
+Por fim, o Pytest\footnote{PyTest: \link{https://docs.pytest.org/en/stable/}}
+foi adotado como \textit{framework} de testes,
+proporcionando uma estrutura robusta para a criação e execução de
+testes unitários e de integração. A implementação de testes
+automatizados foi crucial para validar o funcionamento correto dos
+algoritmos de criptografia, da comunicação entre cliente e servidor,
+e da integridade das mensagens transmitidas, garantindo que
+modificações no código não introduzirem regressões no sistema.
+
+A integração dessas ferramentas no pipeline de desenvolvimento criou
+um ambiente onde a qualidade e segurança do código eram continuamente
+monitoradas, permitindo que a equipe se mantivesse focada na implementação das
+funcionalidades principais com a confiança de que aspectos críticos
+como segurança e manutenibilidade estavam sendo adequadamente controlados.
+
+\subsection{\textit{Back-end}}
+
+O \textit{back-end} é responsável por aceitar as conexões Websocket vindas dos
+clientes (\acsp{APP}) compatíveis com o servidor e realizar o
+encaminhamento de mensagens entre os usuários, garantindo a
+confidencialidade das comunicações, de modo que uma mensagem recebida
+é encaminhada diretamente para o usuário de destino sem ter seu
+conteúdo acessado pelo servidor. Além disso, o servidor fornece uma
+interface intercambiável entre clientes, podendo ser desenvolvidos
+diversos aplicativos clientes diferentes entre si, porém compatíveis
+com o mesmo servidor.
+
+O \textit{back-end} foi desenvolvido totalmente em Python utilizando o FastAPI
+(\textit{framework} que auxilia no desenvolvimento de \acsp{API} web), o
+qual, ao ser executado, fornece uma \acs{API} acessível através de uma \acs{URL}
+específica para aplicativos clientes acessarem suas funcionalidades.
+A estrutura do projeto do servidor ficou da seguinte forma:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\linewidth]{imagens/estrutura-projeto-servidor.png}
+  \caption[Estrutura do projeto ao fim da (numero) sprint]{Estrutura
+  do projeto ao fim da (numero) sprint.}
+  \label{fig:estrutura-projeto-servidor}
+\end{figure}
+
+Outro ponto importante é que neste momento já foram adicionadas
+algumas dependências ao projeto que facilitaram o desenvolvimento,
+entre elas, é válido destacar as seguintes:
+
+\begin{itemize}
+  \item
+    \textit{psutil}\footnote{psutil:
+    \link{https://github.com/giampaolo/psutil}}:
+    Biblioteca utilizada para obter informações
+    sobre os recursos do hardware no qual o servidor está sendo executado;
+  \item \textit{redis}\footnote{Redis: \link{https://redis.io/}}: Biblioteca
+    para gerenciamento de banco de
+    dados de cache.
+\end{itemize}
+
+\subsubsection{\textit{Endpoints}}
+
+No diretório routers ficam localizadas as definições das regras de
+negócio do servidor, a maneira como ele recebe a mensagens e as
+retransmite para os demais usuários, na pasta routers temos os
+seguintes arquivos:
+
+\begin{itemize}
+  \item \texttt{online\_users.py}: Define um endpoint \acs{HTTP} que
+    verifica se um determinado nome de usuário está disponível para
+    uso, ou seja, se não há nenhum usuário online no momento que
+    esteja utilizando este nome de usuário. Caso o nome de usuário
+    esteja disponível a resposta \acs{HTTP} terá um código de status 200,
+    caso contrário terá um código de status 409. Dessa forma, o
+    código garante a integridade dos nomes de usuário ativos,
+    evitando duplicidade e eventuais erros devido a conflitos de
+    nomes de usuários;
+  \item \texttt{status.py}: Define um endpoint \acs{HTTP} que retorna
+    informações sobre o status dos recursos da máquina em que o
+    servidor está sendo executado, como o uso da \acs{CPU}, frequência dos
+    processadores, uso da memória, entre outras coisas;
+  \item \texttt{ws.py}: Módulo principal do servidor, onde é definido
+    o endpoint Websocket que trata todas as comunicações que chegam e
+    saem do servidor. A rota definida aqui realiza tarefas cruciais
+    para o funcionamento de todo o sistema, como armazenamento de
+    conexões, usuários online, túneis de comunicação ativos,
+    retransmissão de mensagens, entre outras tarefas.
+\end{itemize}
+
+\subsubsection{Esquemas de validação de dados}
+
+Para realizar a validação de dados que entram e saem do servidor por
+meio de requisições em seus endpoints \acs{HTTP} utilizamos a biblioteca
+Pydantic que oferece modelos de validação robustos e que se integram
+perfeitamente com \acsp{API} \acs{JSON}, esses modelos são chamados
+de \textit{schemas}.
+
+O diretório \texttt{schemas} tem como finalidade, centralizar e gerenciar
+os modelos de dados utilizados pelos \textit{endpoints} \acs{HTTP} do servidor.
+Ela atua como um acordo técnico padronizado sobre os tipos de dados
+que devem ser enviados e/ou recebidos entre quem realiza uma requisição a
+determinado endpoint \acs{HTTP} e o servidor, garantindo validação,
+consistência, segurança e documentação automática por meio do FastAPI.
+
+Nos apêndices, o trecho de código em
+"\nameref{schema:codigo-schema-status}", define alguns dos schemas de
+dados usados
+pelo FastAPI com o Pydantic no servidor. No fim deste arquivo, na
+seção de Apêndice, os schemas desenvolvidos até este ponto estão disponíveis.
+
+\subsubsection{Banco de dados em memória}
+
+No sistema do servidor, existe a necessidade de controlar quais
+usuários estão conectados em tempo real. Esse controle é fundamental
+para evitar que o mesmo usuário estabeleça múltiplas sessões
+simultâneas e para possibilitar a correta entrega de mensagens entre
+os pares conectados. Como essas informações são voláteis e
+temporárias, válidas apenas enquanto a conexão permanece ativa, não
+se justifica armazená-las em um banco de dados relacional
+tradicional, que implicaria em maior consumo de recursos e
+complexidade desnecessária.
+
+Diante disso, optamos pelo uso do Redis, um banco de dados NoSQL em
+memória, projetado para lidar com informações temporárias de forma
+rápida, leve e eficiente. Sua estrutura baseada em conjuntos permite
+verificar de forma imediata se um usuário está online, além de
+simplificar as operações de inserção e remoção. Dessa forma, o Redis
+atendeu plenamente aos requisitos de baixa latência, simplicidade e
+desempenho em tempo real exigidos pelo sistema.
+
+No trecho de código presente nos apêndices na seção
+"\nameref{redis:codigo-redis-client}" é criada uma conexão assíncrona
+global com o Redis, usando configurações externas. Isso permite que
+qualquer parte
+do sistema, como a autenticação, o Websocket, o cache, utilize o
+mesmo cliente para ler e gravar dados.
+
+O cliente Redis é utilizado principalmente no endpoint Websocket da
+aplicação, para realizar o registro e exclusão de usuários que estão
+online ou que se desconectaram, respectivamente. Os \acsp{ID} dos usuários
+não são salvos em texto claro no Redis, mas sim um hash dos \acsp{ID}, para
+garantir uma maior privacidade dos usuários. Na seção de Apêndice, em
+“\nameref{hash:codigo-hash-id}”, está disponível o código da função
+que converte qualquer \acs{ID} de usuário em um hash SHA-256, hash esse que
+será usado pelo servidor para armazenamento e identificação do
+usuário até o fim de sua conexão.
+
+No módulo settings utilizamos uma funcionalidade do Pydantic que
+possibilita o carregamento automático das variáveis de ambiente
+presentes em um arquivo \texttt{.env}, essas variáveis são necessárias como
+configurações do Redis, sendo elas o endereço do Redis e a porta em
+que está sendo executado. O código que obtém os valores das variáveis
+de ambiente está disponível nos apêndices na seção
+"\nameref{schema:codigo-load-env}".
+
+\subsubsection{Execução via Docker}
+
+A execução do servidor está configurada podendo ser executada via
+docker compose, garantindo que todos os serviços dos quais o servidor
+depende sejam iniciados simultaneamente. Os três containers iniciados
+via docker compose são os seguintes:
+
+\begin{itemize}
+  \item Redis - como banco de dados em memória;
+  \item Servidor de aplicação FastAPI;
+  \item Servidor web Nginx\footnote{Nginx: \link{https://www.nginx.com/}} -
+    atua como proxy reverso, recebendo as
+    requisições externas e encaminhando-as para o servidor FastAPI.
+\end{itemize}
+
+O arquivo \texttt{docker-compose.yml} define três containers que compõem a
+arquitetura da aplicação. O primeiro é o \textit{server}, responsável por
+executar a aplicação FastAPI. Esse container é construído a partir do
+código-fonte local, recebe as variáveis de ambiente necessárias para
+se conectar ao Redis e está configurado para reiniciar
+automaticamente em caso de falhas. Além disso, ele monta o diretório
+do projeto dentro do container, permitindo que o código seja
+atualizado sem necessidade de reconstrução da imagem, e estabelece
+dependência direta do serviço Redis, garantindo que o banco de dados
+em memória esteja disponível antes de sua inicialização.
+
+O segundo container é o \textit{web}, que executa o servidor Nginx na
+função de proxy reverso. Ele expõe a aplicação externamente através
+da porta 9000 do \textit{host}, redirecionando as requisições para o servidor
+FastAPI. O Nginx é configurado por meio de um arquivo de configuração
+customizado chamado de \texttt{nginx.conf}, o que possibilita definir regras
+específicas para o encaminhamento das requisições e otimizações de
+desempenho. Assim como o servidor de aplicação, esse container também
+está configurado para reiniciar automaticamente e depende do serviço
+\texttt{server}, de forma que só inicia após a aplicação estar em funcionamento.
+
+O terceiro container é o \textit{redis}, que fornece o banco de dados em
+memória utilizado pela aplicação para armazenamento temporário e
+operações de alta performance. Ele é baseado na imagem oficial do
+Redis em sua versão otimizada \textit{alpine}, expõe a porta 6379 para
+permitir a comunicação entre os serviços e mantém a persistência dos
+dados em um volume chamado \texttt{redis\_data}, evitando perda de
+informações em reinicializações. Esse container também está
+configurado para reiniciar automaticamente, assegurando sua
+disponibilidade contínua durante a execução do sistema.
+
+\subsection{Cliente \acs{CLI} para testes e validação}
+
+Antes de iniciar o desenvolvimento do aplicativo com interface
+gráfica, foi necessário criar um cliente de linha de comando \acs{CLI}
+(\acl{CLI}) para testar e validar o funcionamento do
+servidor e dos protocolos de comunicação implementados. Esta
+abordagem seguiu as melhores práticas de desenvolvimento de software,
+onde componentes fundamentais são testados isoladamente antes da
+criação de interfaces mais complexas.
+
+O desenvolvimento do cliente \acs{CLI} teve como objetivo principal
+verificar a integridade da comunicação Websocket, a eficácia dos
+algoritmos de criptografia implementados e a robustez do procedimento
+de troca de chaves desenvolvido. Esta ferramenta de teste permitiu
+que a equipe identificasse e corrigisse problemas na arquitetura do
+sistema antes de investir tempo no desenvolvimento da interface
+gráfica, economizando recursos e garantindo uma base sólida para o
+aplicativo final.
+
+\subsubsection{Arquitetura e funcionalidades do \acs{CLI}}
+
+O cliente \acs{CLI} foi desenvolvido completamente em Python, utilizando
+bibliotecas especializadas para cada aspecto da funcionalidade. A
+biblioteca Typer\footnote{Typer: \link{https://typer.tiangolo.com/}} foi
+escolhida para criar a interface de linha de
+comando, proporcionando uma experiência de usuário intuitiva mesmo em
+ambiente terminal. Para a comunicação Websocket, foi utilizada a
+biblioteca
+websockets\footnote{Websockets:
+\link{https://websockets.readthedocs.io/en/stable/}},
+que oferece suporte nativo aos protocolos
+assíncronos necessários para a comunicação em tempo real.
+
+A interface de entrada de dados foi aprimorada através da biblioteca
+\textit{prompt-toolkit}\footnote{Prompt Toolkit:
+\link{https://python-prompt-toolkit.readthedocs.io/en/master/}},
+que adiciona funcionalidades avançadas como histórico
+de comandos, auto-completar e sugestões automáticas. Esta escolha foi
+fundamental para facilitar os testes repetitivos durante o
+desenvolvimento, permitindo que os desenvolvedores reutilizassem
+comandos anteriores e navegassem facilmente pelo histórico de interações.
+
+Para a exibição de informações no terminal, foi implementada a
+biblioteca
+Rich\footnote{Rich: \link{https://rich.readthedocs.io/en/stable/}}, que
+proporciona formatação colorida e estruturada
+das mensagens. Esta funcionalidade foi essencial para distinguir
+visualmente entre diferentes tipos de mensagens: mensagens do sistema
+em amarelo, mensagens criptografadas recebidas em verde, mensagens em
+texto puro em vermelho, e informações de depuração em azul.
+
+\subsubsection{Processo de comunicação e criptografia}
+
+O cliente \acs{CLI} implementa um protocolo completo de comunicação segura
+que inicia com o estabelecimento da conexão Websocket utilizando um
+\acs{URI} estruturado que inclui os identificadores do usuário remetente e
+destinatário, seguindo o formato \texttt{/ws/{user\_id}@{recipient\_id}}. Uma
+vez conectado ao servidor, o sistema aguarda que ambos os
+participantes da conversação estejam \textit{online} para iniciar
+automaticamente o processo de \textit{handshake} de segurança.
+
+Assim que o destinatário se conecta, o cliente automaticamente inicia
+a troca de chaves públicas \acs{RSA}, onde cada participante envia sua
+chave pública serializada em formato
+base64\footnote{Base64: \link{https://en.wikipedia.org/wiki/Base64}},
+utilizando um prefixo
+específico para distinguir este tipo de mensagem das demais
+comunicações. Esta etapa é crucial para estabelecer a base
+criptográfica que permitirá a comunicação segura subsequente.
+
+Após a troca bem-sucedida das chaves públicas \acs{RSA}, um dos clientes,
+determinado pela comparação lexicográfica dos \acsp{ID} dos usuários,
+assume a responsabilidade de gerar uma chave \acs{AES} simétrica. Esta
+chave é então criptografada com a chave pública \acs{RSA} do destinatário e
+enviada de forma segura através do canal Websocket. Esta abordagem
+híbrida combina a segurança da criptografia assimétrica \acs{RSA} com a
+eficiência da criptografia simétrica \acs{AES} para as mensagens
+subsequentes, otimizando tanto a segurança quanto o desempenho da comunicação.
+
+Uma vez estabelecida a chave \acs{AES} compartilhada entre os dois
+participantes, todas as mensagens de usuário são automaticamente
+criptografadas usando \acs{AES} antes do envio e descriptografadas no
+momento do recebimento. Este processo é completamente transparente
+para o usuário, que simplesmente digita suas mensagens em texto
+plano, enquanto o sistema se encarrega de toda a complexidade
+criptográfica nos bastidores, proporcionando comunicação de ponta a
+ponta verdadeiramente segura.
+
+Para organizar e processar adequadamente os diferentes tipos de
+mensagens trafegadas pelo sistema, foi implementado um sistema de
+prefixos que permite a identificação imediata do conteúdo e do
+tratamento necessário para cada mensagem recebida. As mensagens de
+controle do servidor, como notificações de conexão e desconexão de
+usuários, são identificadas pelo prefixo de sistema, permitindo que o
+cliente exiba informações relevantes sobre o estado da conexão.
+Durante o \textit{handshake} inicial, as mensagens contendo chaves públicas
+\acs{RSA} são marcadas com um prefixo específico de troca de chaves,
+enquanto a transmissão da chave \acs{AES} criptografada utiliza seu próprio
+identificador. Por fim, todas as mensagens de usuário criptografadas
+com a chave \acs{AES} estabelecida recebem um prefixo que indica ao
+receptor a necessidade de descriptografia antes da exibição.
+
+\subsubsection{Validação e testes realizados}
+
+O cliente \acs{CLI} permitiu a realização de testes abrangentes que
+validaram aspectos críticos do sistema, incluindo a capacidade do
+servidor de gerenciar múltiplas conexões simultâneas, o funcionamento
+correto dos algoritmos de criptografia \acs{RSA} e \acs{AES}, a robustez do
+sistema em cenários de falha de rede e desconexões abruptas, além do
+comportamento adequado com múltiplos usuários enviando mensagens
+simultaneamente. Esses testes foram fundamentais para identificar e
+corrigir problemas relacionados ao gerenciamento de estado
+assíncrono, tratamento de exceções e sincronização entre processos,
+garantindo que o protocolo desenvolvido fosse robusto o suficiente
+para suportar a implementação na interface gráfica do aplicativo final.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\linewidth]{imagens/cli-chat.png}
+  \caption[Cliente CLI em execução]{Cliente CLI em execução, ilustrando a
+  interação do usuário com o sistema de mensagens.}
+  \label{fig:cli-chat}
+\end{figure}
+
+A validação da criptografia das mensagens e do intercâmbio de chaves
+no início da conexão foi realizada com o auxílio do
+Wireshark\footnote{Wireshark: \link{https://www.wireshark.org/}}, um
+software amplamente reconhecido para análise de tráfego de rede. Essa
+ferramenta nos permitiu visualizar a formação dos pacotes de rede,
+baseando-se nas camadas do modelo
+\acs{OSI}\footnote{Modelo OSI: \link{https://en.wikipedia.org/wiki/OSI\_model}}.
+Assim, conseguimos confirmar a
+troca inicial das chaves públicas \acs{RSA} e a chave \acs{AES} entre
+os \textit{hosts}
+até o momento completo da troca de mensagens estarem criptografadas,
+conforme demonstrado na imagem.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\linewidth]{imagens/wireshark1.png}
+  \caption[Captura de tela do Wireshark durante o estabelecimento
+  inicial da conexão entre os \textit{peers}]{Captura de tela do
+    Wireshark durante o estabelecimento inicial da conexão entre os
+  \textit{peers}, conforme texto do campo \textit{Payload}.}
+  \label{fig:wireshark1}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\linewidth]{imagens/wireshark2.png}
+  \caption[Captura de tela do Wireshark durante a troca de chaves públicas
+  \acs{RSA} sendo realizada entre os \textit{peers}.]{Captura de tela
+    do Wireshark durante a troca de chaves públicas \acs{RSA} sendo realizada
+  entre os \textit{peers}.}
+  \label{fig:wireshark2}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\linewidth]{imagens/wireshark3.png}
+  \caption[Captura de tela do Wireshark mostrando a troca da chave
+  \acs{AES} entre os \textit{peers}.]{Captura de tela do Wireshark
+  mostrando a troca da chave \acs{AES} entre os \textit{peers}.}
+  \label{fig:wireshark3}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\linewidth]{imagens/wireshark3.png}
+  \caption[Captura de tela de tela do Wireshark mostrando mensagens
+    já sendo transmitidas encriptadas com criptografia \acs{AES} entre
+    os dois \textit{hosts}, a partir daqui ambos contém a chave para
+  descriptografar a comunicação.]{Mensagens já sendo transmitidas
+    encriptadas com criptografia \acs{AES} entre os dois
+    \textit{hosts}, a partir daqui ambos contém a chave para
+  descriptografar a comunicação.}
+  \label{fig:wireshark4}
+\end{figure}
+
+O processo de troca dos prefixos é visualizado no \textit{payload} do
+\textit{frame} de
+dados. Isso ocorre porque o protocolo Websocket utiliza o \textit{opcode Text}
+para indicar que o conteúdo do \textit{frame} é uma mensagem de texto,
+permitindo a transmissão de dados como as nossas troca de prefixos
+configuradas previamente. Além disso, é possível observar os \textit{frames}
+de controle PING e PONG\footnote{Ping e pong no Websockets:
+\link{https://www.turfemon.com/websocket-ping-pong}}, que são nativos
+do protocolo e têm a função
+de verificar a atividade e a disponibilidade dos \textit{hosts}, garantindo
+que a conexão permaneça estável.
+
+\subsection{Aplicativo cliente \textit{desktop}}
+
+Para prover uma interface amigável e de simples utilização para os
+usuários finais do sistema, foi desenvolvido um aplicativo cliente
+\acs{GUI} (\acl{GUI}) de aparência moderna por meio da
+biblioteca PySide6. Assim como o \textit{back-end}, o \acs{APP}
+cliente final também
+foi desenvolvido totalmente em Python. A estrutura do projeto do \acs{APP}
+ficou da seguinte forma:
+
+O aplicativo integra múltiplas funcionalidades essenciais para um
+sistema de comunicação segura, incluindo o gerenciamento de chaves
+criptográficas \acs{RSA}, estabelecimento e manutenção de conexões
+Websocket com o servidor, criptografia e descriptografia de mensagens
+em tempo real, e uma interface de chat intuitiva que oculta a
+complexidade dos processos de segurança subjacentes. A estrutura do
+projeto do \acs{APP} ficou da seguinte forma:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\linewidth]{imagens/estrutura-projeto-app.png}
+  \caption[Estrutura do projeto do app]{Estrutura do projeto do app}
+  \label{fig:estrutura-projeto-app}
+\end{figure}
+
+A experiência do usuário foi priorizada desde o início do
+desenvolvimento, com foco na simplicidade de uso e na transparência
+dos processos de segurança. O aplicativo apresenta uma interface
+limpa e organizada, onde os usuários podem facilmente iniciar
+conversas, visualizar o status de suas conexões e receber \textit{feedback}
+visual sobre o estado da criptografia de suas mensagens, tudo isso
+sem precisar compreender os aspectos técnicos da implementação \acs{RSA} ou
+dos protocolos de comunicação utilizados.
+
+\subsubsection{\textit{Widgets}}
+
+O PySide6 provê um conjunto de elementos de \acs{UI} que auxiliam no
+desenvolvimentos de interfaces de usuário no estilo desktop, dentre
+eles o principal utilizado no projeto foi o QWidget, utilizado para
+criar cada janela. O \acs{APP} em questão conta com três janelas ao todo,
+uma janela para inserir o nome de usuário de quem está se conectando
+e o endereço do servidor utilizado para a comunicação, uma segunda
+janela para inserir o nome de usuário de destinatário da comunicação
+e por fim a tela de conversação. Veja abaixo as respectivas telas em detalhes.
+
+A primeira tela solicita o nome de usuário que se deseja utilizar, e
+o endereço do servidor que será usado para a comunicação. Vale
+ressaltar que o remetente e o destinatário devem utilizar o mesmo
+servidor para estabelecer uma conexão, caso ambos os usuários se
+conectem a servidores distintos entre si estes não conseguiram se comunicar.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.65\linewidth]{imagens/app-screen1.png}
+  \caption[Tela de login do app]{Tela de login do \acs{APP}, onde o
+    usuário insere seu nome de usuário e o endereço do servidor que
+  será utilizado para a comunicação.}
+  \label{fig:tela-login-app}
+\end{figure}
+
+O endereço de servidor fornecido na primeira tela deve conter o
+protocolo, se é \acs{HTTP} ou \acs{HTTPS}, o domínio do servidor e a
+porta em que
+está sendo executado, um endereço de exemplo poderia ser
+\texttt{https://meuservidor.com:9000}, onde \texttt{https} é o protocolo,
+meuservidor.com o domínio do servidor e \texttt{9000} a porta em que ele está
+sendo executado. Por fim, caso o nome de usuário inserido já esteja
+ou o endereço do servidor não esteja acessível ou até mesmo caso os
+campos sejam deixados em branco, uma janela informando o erro será exibida.
+
+Após clicar em conectar na primeira tela do \acs{APP}, o usuário será
+encaminhado para a segunda tela, em que será solicitado que seja
+inserido o nome de usuário do destinatário, ou seja, o nome de
+usuário da pessoa com a qual se deseja conversar.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.65\linewidth]{imagens/app-screen2.png}
+  \caption[Tela de destinatário do app]{Tela de destinatário do \acs{APP},
+    onde o usuário insere o nome de usuário da pessoa com a qual se
+  deseja comunicar.}
+  \label{fig:tela-destinatario-app}
+\end{figure}
+
+Por fim, ao clicar novamente em conectar o usuário será conectado ao
+usuário de destino e a comunicação poderá ser iniciada, caso o
+usuário de destino ainda não esteja conectado, o primeiro usuário
+deverá aguardar e quando o destinatário será conectado o primeiro
+usuário será notificado. Assim que os dois usuários estiverem
+devidamente conectados eles podem dar sequência a conversa como
+demonstrado na imagem abaixo:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\linewidth]{imagens/app-screen3.png}
+  \caption[Tela de conversação do app]{Tela de conversação do \acs{APP},
+    onde o usuário pode enviar e receber mensagens de texto em tempo
+  real.}
+  \label{fig:tela-conversacao-app}
+\end{figure}
+
+O protocolo de comunicação e criptografia implementado no aplicativo
+de interface gráfica mantém exatamente a mesma arquitetura e
+procedimentos validados anteriormente no cliente \acs{CLI}. Todo o fluxo de
+estabelecimento de conexão Websocket, handshake de chaves públicas
+RSA, geração e troca segura de chaves \acs{AES}, além do sistema de
+prefixos para classificação de mensagens, foi integralmente
+preservado na implementação do aplicativo desktop. Esta consistência
+arquitetural garantiu que a robustez e segurança comprovadas durante
+os testes com o cliente \acs{CLI} fossem mantidas na versão final do
+produto, proporcionando aos usuários finais o mesmo nível de proteção
+criptográfica em uma interface amigável e intuitiva. A reutilização
+deste protocolo também permitiu que o foco do desenvolvimento da
+interface gráfica fosse direcionado exclusivamente para a experiência
+do usuário e funcionalidades visuais, uma vez que os aspectos
+críticos de segurança já haviam sido extensivamente testados e validados.
+
+Além disso, como ambas as implementações seguem exatamente o mesmo
+protocolo de comunicação, existe total interoperabilidade entre os
+clientes, permitindo que um usuário utilizando o cliente \acs{CLI} se
+comunique perfeitamente com outro usuário que esteja usando o
+aplicativo de interface gráfica, e vice-versa. Esta compatibilidade
+cruzada demonstra a solidez do protocolo desenvolvido e oferece
+flexibilidade aos usuários na escolha da interface que melhor se
+adequa às suas necessidades ou preferências. A reutilização deste
+protocolo também permitiu que o foco do desenvolvimento da interface
+gráfica fosse direcionado exclusivamente para a experiência do
+usuário e funcionalidades visuais, uma vez que os aspectos críticos
+de segurança já haviam sido extensivamente testados e validados.
+
+\subsubsection{Integração e entrega contínua com GitHub Actions}
+
+A integração e entrega contínua (\acs{CI}/\acs{CD}) representa uma das práticas
+fundamentais do desenvolvimento de software moderno, permitindo a
+automação de processos de construção, teste e distribuição de
+aplicações de forma eficiente e confiável. No contexto de aplicações
+desktop, essas práticas se tornam ainda mais relevantes devido à
+necessidade de gerar builds específicas para diferentes sistemas
+operacionais e arquiteturas, garantindo que os usuários finais tenham
+acesso facilitado às versões mais atualizadas do software sem
+comprometer a qualidade ou segurança das distribuições.
+
+No projeto do aplicativo desktop oi implementado um pipeline de
+\acs{CI}/\acs{CD}
+que é acionado sempre que uma nova versão do app for lançada e
+enviada para o GitHub\footnote{GitHub: \link{https://github.com/home}}, esse
+pipeline automatiza o processo de build
+e empacotamento de uma nova versão do app para instaladores nativos
+para os sistemas operacionais Microsoft Windows e as principais
+distribuições Linux, entre elas, Ubuntu, Fedora, Arch Linux, entre
+outras. Após o empacotamento os binários instaladores são anexados à
+publicação de lançamento da versão no GitHub para que os usuários
+possam realizar o download dos mesmos. Na imagem abaixo é possível
+visualizar o status e tempo de execução de cada \acs{CI} de build dos
+instaladores via GitHub Actions, incluindo o total de empacotamento
+de todos os instaladores:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\linewidth]{imagens/ci-build.png}
+  \caption[Status do pipeline de CI/CD via GitHub Actions]{Status
+  do pipeline de \acs{CI}/\acs{CD} via GitHub Actions.}
+  \label{fig:github-actions-ci-cd}
+\end{figure}
+
+Nos apêndices no final deste arquivo é possível ver o código que
+define o workflow de build em "\nameref{ci:codigo-github-actions}”.
+
+\newpage

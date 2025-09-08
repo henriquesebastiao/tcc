@@ -1,7 +1,7 @@
 \section{METODOLOGIA DE PESQUISA}
 
 Neste capítulo foi feita uma abordagem sobre como atender as
-necessidades do usuário, identificando, analisando e deliberando a cerca da
+necessidades do usuário, identificando, analisando e deliberando acerca da
 causa raiz do problema. Foram examinadas as diversas etapas da
 elaboração do sistema, para de fato atender o objetivo do projeto com
 a finalidade de assegurar uma comunicação segura e eficiente.
@@ -15,64 +15,51 @@ central do projeto.
 
 \subsection{Arquitetura de Comunicação}
 
-Apresentando nosso servidor e aplicação que oferecem uma solução robusta
-e eficiente para a comunicação segura entre clientes, mostraremos
-como as aplicações de mercado deveriam se comportar no nível superior
-aos cuidados de segurança da informação. A estrutura da nossa
-aplicação é composta por duas etapas fundamentais que garantem um
-processo de conexão transparente e seguro. Inicialmente, os clientes
-solicitam o endereço \acs{IP} externo de forma transparente, enquanto o
-servidor cuida da gestão dessa informação por meio de uma chave
-aleatória gerada e armazenada no \textit{\gls{back-end}}.
+O processo de conexão começa com o cliente, que gera um hash de
+\acs{ID} exclusivo para identificá-lo. Este identificador, em vez do
+endereço \acs{IP}, é enviado para o servidor. O servidor recebe esse
+hash de \acs{ID} e o armazena em um banco de dados Redis, onde
+permanece ativo enquanto o usuário estiver conectado. Durante este
+processo, o servidor verifica se o hash do \acs{ID} já existe para
+evitar usuários duplicados, garantindo a unicidade de cada conexão.
 
-A função da chave é armazenar o identificador do destino de forma
-segura, uma vez que o endereço \acs{IP} do cliente não é visível
-diretamente ao usuário, sua confidencialidade é preservada.
+Essa abordagem preserva a confidencialidade do cliente, já que o
+endereço \acs{IP} não é exposto diretamente. O hash do \acs{ID} se
+torna a chave de acesso, permitindo que o cliente se conecte ao
+destino de forma controlada e segura.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.8\linewidth]{imagens/arquitetura-etapa1.png}
-  \caption[Primeira etapa da conexão com o servidor, onde o
-    cliente solicita ao servidor que o conecte com o usuário de
-  destino]{O cliente solicita ao servidor que o conecte com o usuário
-  de destino.}
+  \caption[Primeira etapa da conexão com o servidor, onde o cliente
+  solicita ao servidor que o conecte com o usuário de destino]{O
+    cliente solicita ao servidor que o conecte com o usuário de destino
+  e estabeleça a comunicação inicial para troca de mensagens.}
   \label{fig:arquitetura_etapa1}
 \end{figure}
 
-O cliente tendo a chave em mãos, tentará estabelecer uma conexão
-com o destino. Se este estiver online, o servidor atua como um
-identificador exclusivo, assegurando que a comunicação seja iniciada
-de maneira controlada e segura.
+Uma vez estabelecida a conexão, todas as mensagens transitam
+exclusivamente pelo servidor. É importante ressaltar que toda a
+comunicação é criptografada, garantindo que os dados não sejam
+armazenados durante a transferência. O servidor atua como um
+transportador ágil e seguro, encaminhando as informações diretamente
+para o destinatário.
 
-À medida que as mensagens são trocadas, elas transitam exclusivamente
-pelo servidor, que se torna o meio principal para a interface com o
-destinatário. Importante destacar que toda comunicação realizada
-através do sistema é criptografada. Isso significa que os dados
-não são armazenados pelo servidor durante sua transferência, em vez
-disso, ele simplesmente transporta a informação até a outra ponta de
-forma ágil e segura.
+Ao final da sessão, a aplicação informa ao servidor sobre o
+encerramento da comunicação. Os dados do usuário, incluindo o \textit{hash} do
+\acs{ID}, são mantidos no banco de dados Redis enquanto o cliente
+estiver ativo. Eles são excluídos apenas quando o usuário se
+desconecta, garantindo a limpeza e a segurança dos dados.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.8\linewidth]{imagens/arquitetura-etapa2.png}
-  \caption[Segunda etapa da conexão com o servidor, a comunicação é
-  estabelecida com sucesso entre ambos os usuários]{A comunicação é
-  estabelecida com sucesso entre ambos os usuários.}
+  \caption[Segunda etapa da conexão com o servidor, onde o primeiro
+    usuário que desconectar é fechada a conexão do lado que sai, e o
+  servidor limpa seus dados salvos temporariamente.]{O primeiro
+    usuário que desconectar é fechada a conexão do lado que sai, e o
+  servidor limpa seus dados salvos temporariamente.}
   \label{fig:arquitetura_etapa2}
-\end{figure}
-
-No encerramento da comunicação na 3ª etapa, a aplicação informa ao
-servidor para iniciar a contagem de 12 horas para exclusão da chave e
-do \acs{IP} externo do usuário, caso não haja interação durante esse
-período pós fechamento da aplicação.
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.8\linewidth]{imagens/arquitetura-etapa3.png}
-  \caption[Terceira etapa da conexão com o servidor, os usuários são
-  desconectados após 12 horas de inatividade]{Os usuários são
-  desconectados após 12 horas de inatividade.}
-  \label{fig:arquitetura_etapa3}
 \end{figure}
 
 \subsection{Prototipagem da Interface Gráfica}
@@ -89,7 +76,7 @@ integrantes da equipe e como ferramenta de análise das necessidades
 práticas do projeto. A partir dessa ambientação visual, foi possível
 ajustar funcionalidades e alinhar as decisões de design às metas de
 confiabilidade e usabilidade do sistema. Este levantamento está
-parelelo com os princípios da metodologia ágil, ao unir interações
+paralelo com os princípios da metodologia ágil, ao unir interações
 rápidas e \textit{feedback} contínuo, promovendo um processo de
 desenvolvimento centrado no usuário e tecnicamente fundamentado.
 
@@ -230,7 +217,9 @@ necessidades. Mas normalmente são utilizadas três:
 \end{enumerate}
 
 A seguir, apresenta-se uma demonstração do quadro de atividades do
-projeto, gerenciado por meio da plataforma GitHub Projects.
+projeto, gerenciado por meio da plataforma GitHub
+Projects\footnote{GitHub Projects:
+\link{https://encurtador.com.br/A6PVc}}.
 Essa ferramenta foi selecionada por sua capacidade de
 integração com \textit{issues} e \textit{pull requests}, o que
 permite acompanhar o
