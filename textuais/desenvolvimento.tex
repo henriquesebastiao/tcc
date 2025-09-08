@@ -220,11 +220,11 @@ ferramentas foram fundamentais para manter a consistência do código
 entre os membros da equipe e assegurar que os padrões de segurança
 fossem rigorosamente seguidos.
 
-O Ruff\footnote{\link{https://docs.astral.sh/ruff/}} foi utilizado
+O Ruff\footnote{Ruff: \link{https://docs.astral.sh/ruff/}} foi utilizado
 como \textit{linter} principal do projeto, responsável
 por identificar problemas de estilo, possíveis bugs e violações das
 convenções de código Python (PEP
-8\footnote{\link{https://peps.python.org/pep-0008/}}). Esta
+8\footnote{PEP 8: \link{https://peps.python.org/pep-0008/}}). Esta
 ferramenta, conhecida por
 sua velocidade e abrangência, permitiu que a equipe mantivesse um
 código limpo e consistente ao longo de todo o desenvolvimento,
@@ -232,7 +232,7 @@ detectando automaticamente problemas que poderiam comprometer a
 legibilidade ou a manutenção futura do sistema.
 
 Para a análise de segurança do código, foi implementado o
-Bandit\footnote{\link{https://bandit.readthedocs.io/en/latest/}}, uma
+Bandit\footnote{Bandit: \link{https://bandit.readthedocs.io/en/latest/}}, uma
 ferramenta especializada em identificar vulnerabilidades comuns em
 código Python. Considerando que o projeto envolve implementação de
 criptografia e manipulação de dados sensíveis, o Bandit foi essencial
@@ -241,7 +241,8 @@ funções criptográficas e outras práticas que poderiam comprometer a
 integridade do sistema de comunicação segura.
 
 A complexidade do código foi monitorada através do
-Radon\footnote{\link{https://radon.readthedocs.io/en/latest/}}, ferramenta
+Radon\footnote{Radon:
+\link{https://radon.readthedocs.io/en/latest/}}, ferramenta
 que calcula métricas como complexidade ciclomática, índice de
 manutenibilidade e outras medidas quantitativas da qualidade do
 código. Esta análise foi particularmente importante para os módulos
@@ -249,7 +250,7 @@ de criptografia e gerenciamento de conexões, onde a complexidade
 algorítmica poderia impactar tanto a performance quanto a facilidade
 de manutenção do sistema.
 
-O Taskipy\footnote{\link{https://github.com/taskipy/taskipy}} serviu
+O Taskipy\footnote{Taskipy: \link{https://github.com/taskipy/taskipy}} serviu
 como gerenciador de tarefas do projeto, permitindo a
 definição de comandos personalizados para execução automatizada de
 rotinas comuns como testes, \textit{linting}, análise de segurança e
@@ -258,7 +259,7 @@ Esta ferramenta simplificou significativamente o fluxo de trabalho da
 equipe, padronizando os comandos utilizados e garantindo que todos os
 membros executassem as mesmas verificações antes de cada commit.
 
-Por fim, o Pytest\footnote{\link{https://docs.pytest.org/en/stable/}}
+Por fim, o Pytest\footnote{PyTest: \link{https://docs.pytest.org/en/stable/}}
 foi adotado como \textit{framework} de testes,
 proporcionando uma estrutura robusta para a criação e execução de
 testes unitários e de integração. A implementação de testes
@@ -272,128 +273,6 @@ um ambiente onde a qualidade e segurança do código eram continuamente
 monitoradas, permitindo que a equipe se mantivesse focada na implementação das
 funcionalidades principais com a confiança de que aspectos críticos
 como segurança e manutenibilidade estavam sendo adequadamente controlados.
-
-\subsection{Cliente \acs{CLI} para testes e validação}
-
-Antes de iniciar o desenvolvimento do aplicativo com interface
-gráfica, foi necessário criar um cliente de linha de comando \acs{CLI}
-(\acl{CLI}) para testar e validar o funcionamento do
-servidor e dos protocolos de comunicação implementados. Esta
-abordagem seguiu as melhores práticas de desenvolvimento de software,
-onde componentes fundamentais são testados isoladamente antes da
-criação de interfaces mais complexas.
-
-O desenvolvimento do cliente \acs{CLI} teve como objetivo principal
-verificar a integridade da comunicação Websocket, a eficácia dos
-algoritmos de criptografia implementados e a robustez do procedimento
-de troca de chaves desenvolvido. Esta ferramenta de teste permitiu
-que a equipe identificasse e corrigisse problemas na arquitetura do
-sistema antes de investir tempo no desenvolvimento da interface
-gráfica, economizando recursos e garantindo uma base sólida para o
-aplicativo final.
-
-\subsubsection{Arquitetura e funcionalidades do \acs{CLI}}
-
-O cliente \acs{CLI} foi desenvolvido completamente em Python, utilizando
-bibliotecas especializadas para cada aspecto da funcionalidade. A
-biblioteca Typer\footnote{\link{https://typer.tiangolo.com/}} foi
-escolhida para criar a interface de linha de
-comando, proporcionando uma experiência de usuário intuitiva mesmo em
-ambiente terminal. Para a comunicação Websocket, foi utilizada a
-biblioteca
-websockets\footnote{\link{https://websockets.readthedocs.io/en/stable/}},
-que oferece suporte nativo aos protocolos
-assíncronos necessários para a comunicação em tempo real.
-
-A interface de entrada de dados foi aprimorada através da biblioteca
-\textit{prompt-toolkit}\footnote{\link{https://python-prompt-toolkit.readthedocs.io/en/master/}},
-que adiciona funcionalidades avançadas como histórico
-de comandos, auto-completar e sugestões automáticas. Esta escolha foi
-fundamental para facilitar os testes repetitivos durante o
-desenvolvimento, permitindo que os desenvolvedores reutilizassem
-comandos anteriores e navegassem facilmente pelo histórico de interações.
-
-Para a exibição de informações no terminal, foi implementada a
-biblioteca
-Rich\footnote{\link{https://rich.readthedocs.io/en/stable/}}, que
-proporciona formatação colorida e estruturada
-das mensagens. Esta funcionalidade foi essencial para distinguir
-visualmente entre diferentes tipos de mensagens: mensagens do sistema
-em amarelo, mensagens criptografadas recebidas em verde, mensagens em
-texto puro em vermelho, e informações de depuração em azul.
-
-\subsubsection{Processo de comunicação e criptografia}
-
-O cliente \acs{CLI} implementa um protocolo completo de comunicação segura
-que inicia com o estabelecimento da conexão Websocket utilizando um
-\acs{URI} estruturado que inclui os identificadores do usuário remetente e
-destinatário, seguindo o formato \texttt{/ws/{user\_id}@{recipient\_id}}. Uma
-vez conectado ao servidor, o sistema aguarda que ambos os
-participantes da conversação estejam \textit{online} para iniciar
-automaticamente o processo de \textit{handshake} de segurança.
-
-Assim que o destinatário se conecta, o cliente automaticamente inicia
-a troca de chaves públicas \acs{RSA}, onde cada participante envia sua
-chave pública serializada em formato
-base64\footnote{\link{https://en.wikipedia.org/wiki/Base64}},
-utilizando um prefixo
-específico para distinguir este tipo de mensagem das demais
-comunicações. Esta etapa é crucial para estabelecer a base
-criptográfica que permitirá a comunicação segura subsequente.
-
-Após a troca bem-sucedida das chaves públicas \acs{RSA}, um dos clientes,
-determinado pela comparação lexicográfica dos \acsp{ID} dos usuários,
-assume a responsabilidade de gerar uma chave \acs{AES} simétrica. Esta
-chave é então criptografada com a chave pública \acs{RSA} do destinatário e
-enviada de forma segura através do canal Websocket. Esta abordagem
-híbrida combina a segurança da criptografia assimétrica \acs{RSA} com a
-eficiência da criptografia simétrica \acs{AES} para as mensagens
-subsequentes, otimizando tanto a segurança quanto o desempenho da comunicação.
-
-Uma vez estabelecida a chave \acs{AES} compartilhada entre os dois
-participantes, todas as mensagens de usuário são automaticamente
-criptografadas usando \acs{AES} antes do envio e descriptografadas no
-momento do recebimento. Este processo é completamente transparente
-para o usuário, que simplesmente digita suas mensagens em texto
-plano, enquanto o sistema se encarrega de toda a complexidade
-criptográfica nos bastidores, proporcionando comunicação de ponta a
-ponta verdadeiramente segura.
-
-Para organizar e processar adequadamente os diferentes tipos de
-mensagens trafegadas pelo sistema, foi implementado um sistema de
-prefixos que permite a identificação imediata do conteúdo e do
-tratamento necessário para cada mensagem recebida. As mensagens de
-controle do servidor, como notificações de conexão e desconexão de
-usuários, são identificadas pelo prefixo de sistema, permitindo que o
-cliente exiba informações relevantes sobre o estado da conexão.
-Durante o \textit{handshake} inicial, as mensagens contendo chaves públicas
-\acs{RSA} são marcadas com um prefixo específico de troca de chaves,
-enquanto a transmissão da chave \acs{AES} criptografada utiliza seu próprio
-identificador. Por fim, todas as mensagens de usuário criptografadas
-com a chave \acs{AES} estabelecida recebem um prefixo que indica ao
-receptor a necessidade de descriptografia antes da exibição.
-
-\subsubsection{Validação e testes realizados}
-
-O cliente \acs{CLI} permitiu a realização de testes abrangentes que
-validaram aspectos críticos do sistema, incluindo a capacidade do
-servidor de gerenciar múltiplas conexões simultâneas, o funcionamento
-correto dos algoritmos de criptografia \acs{RSA} e \acs{AES}, a robustez do
-sistema em cenários de falha de rede e desconexões abruptas, além do
-comportamento adequado com múltiplos usuários enviando mensagens
-simultaneamente. Esses testes foram fundamentais para identificar e
-corrigir problemas relacionados ao gerenciamento de estado
-assíncrono, tratamento de exceções e sincronização entre processos,
-garantindo que o protocolo desenvolvido fosse robusto o suficiente
-para suportar a implementação na interface gráfica do aplicativo final.
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.6\linewidth]{imagens/cli-chat.png}
-  \caption[Cliente CLI em execução]{Cliente CLI em execução, ilustrando a
-  interação do usuário com o sistema de mensagens.}
-  \label{fig:cli-chat}
-\end{figure}
 
 \subsection{\textit{Back-end}}
 
@@ -427,10 +306,11 @@ entre elas, é válido destacar as seguintes:
 
 \begin{itemize}
   \item
-    \textit{psutil}\footnote{\link{https://github.com/giampaolo/psutil}}:
+    \textit{psutil}\footnote{psutil:
+    \link{https://github.com/giampaolo/psutil}}:
     Biblioteca utilizada para obter informações
     sobre os recursos do hardware no qual o servidor está sendo executado;
-  \item \textit{redis}\footnote{\link{https://redis.io/}}: Biblioteca
+  \item \textit{redis}\footnote{Redis: \link{https://redis.io/}}: Biblioteca
     para gerenciamento de banco de
     dados de cache.
 \end{itemize}
@@ -540,7 +420,7 @@ via docker compose são os seguintes:
 \begin{itemize}
   \item Redis - como banco de dados em memória;
   \item Servidor de aplicação FastAPI;
-  \item Servidor web Nginx\footnote{\link{https://www.nginx.com/}} -
+  \item Servidor web Nginx\footnote{Nginx: \link{https://www.nginx.com/}} -
     atua como proxy reverso, recebendo as
     requisições externas e encaminhando-as para o servidor FastAPI.
 \end{itemize}
@@ -558,7 +438,7 @@ em memória esteja disponível antes de sua inicialização.
 
 O segundo container é o \textit{web}, que executa o servidor Nginx na
 função de proxy reverso. Ele expõe a aplicação externamente através
-da porta 9000 do host, redirecionando as requisições para o servidor
+da porta 9000 do \textit{host}, redirecionando as requisições para o servidor
 FastAPI. O Nginx é configurado por meio de um arquivo de configuração
 customizado chamado de \texttt{nginx.conf}, o que possibilita definir regras
 específicas para o encaminhamento das requisições e otimizações de
@@ -575,6 +455,197 @@ dados em um volume chamado \texttt{redis\_data}, evitando perda de
 informações em reinicializações. Esse container também está
 configurado para reiniciar automaticamente, assegurando sua
 disponibilidade contínua durante a execução do sistema.
+
+\subsection{Cliente \acs{CLI} para testes e validação}
+
+Antes de iniciar o desenvolvimento do aplicativo com interface
+gráfica, foi necessário criar um cliente de linha de comando \acs{CLI}
+(\acl{CLI}) para testar e validar o funcionamento do
+servidor e dos protocolos de comunicação implementados. Esta
+abordagem seguiu as melhores práticas de desenvolvimento de software,
+onde componentes fundamentais são testados isoladamente antes da
+criação de interfaces mais complexas.
+
+O desenvolvimento do cliente \acs{CLI} teve como objetivo principal
+verificar a integridade da comunicação Websocket, a eficácia dos
+algoritmos de criptografia implementados e a robustez do procedimento
+de troca de chaves desenvolvido. Esta ferramenta de teste permitiu
+que a equipe identificasse e corrigisse problemas na arquitetura do
+sistema antes de investir tempo no desenvolvimento da interface
+gráfica, economizando recursos e garantindo uma base sólida para o
+aplicativo final.
+
+\subsubsection{Arquitetura e funcionalidades do \acs{CLI}}
+
+O cliente \acs{CLI} foi desenvolvido completamente em Python, utilizando
+bibliotecas especializadas para cada aspecto da funcionalidade. A
+biblioteca Typer\footnote{Typer: \link{https://typer.tiangolo.com/}} foi
+escolhida para criar a interface de linha de
+comando, proporcionando uma experiência de usuário intuitiva mesmo em
+ambiente terminal. Para a comunicação Websocket, foi utilizada a
+biblioteca
+websockets\footnote{Websockets:
+\link{https://websockets.readthedocs.io/en/stable/}},
+que oferece suporte nativo aos protocolos
+assíncronos necessários para a comunicação em tempo real.
+
+A interface de entrada de dados foi aprimorada através da biblioteca
+\textit{prompt-toolkit}\footnote{Prompt Toolkit:
+\link{https://python-prompt-toolkit.readthedocs.io/en/master/}},
+que adiciona funcionalidades avançadas como histórico
+de comandos, auto-completar e sugestões automáticas. Esta escolha foi
+fundamental para facilitar os testes repetitivos durante o
+desenvolvimento, permitindo que os desenvolvedores reutilizassem
+comandos anteriores e navegassem facilmente pelo histórico de interações.
+
+Para a exibição de informações no terminal, foi implementada a
+biblioteca
+Rich\footnote{Rich: \link{https://rich.readthedocs.io/en/stable/}}, que
+proporciona formatação colorida e estruturada
+das mensagens. Esta funcionalidade foi essencial para distinguir
+visualmente entre diferentes tipos de mensagens: mensagens do sistema
+em amarelo, mensagens criptografadas recebidas em verde, mensagens em
+texto puro em vermelho, e informações de depuração em azul.
+
+\subsubsection{Processo de comunicação e criptografia}
+
+O cliente \acs{CLI} implementa um protocolo completo de comunicação segura
+que inicia com o estabelecimento da conexão Websocket utilizando um
+\acs{URI} estruturado que inclui os identificadores do usuário remetente e
+destinatário, seguindo o formato \texttt{/ws/{user\_id}@{recipient\_id}}. Uma
+vez conectado ao servidor, o sistema aguarda que ambos os
+participantes da conversação estejam \textit{online} para iniciar
+automaticamente o processo de \textit{handshake} de segurança.
+
+Assim que o destinatário se conecta, o cliente automaticamente inicia
+a troca de chaves públicas \acs{RSA}, onde cada participante envia sua
+chave pública serializada em formato
+base64\footnote{Base64: \link{https://en.wikipedia.org/wiki/Base64}},
+utilizando um prefixo
+específico para distinguir este tipo de mensagem das demais
+comunicações. Esta etapa é crucial para estabelecer a base
+criptográfica que permitirá a comunicação segura subsequente.
+
+Após a troca bem-sucedida das chaves públicas \acs{RSA}, um dos clientes,
+determinado pela comparação lexicográfica dos \acsp{ID} dos usuários,
+assume a responsabilidade de gerar uma chave \acs{AES} simétrica. Esta
+chave é então criptografada com a chave pública \acs{RSA} do destinatário e
+enviada de forma segura através do canal Websocket. Esta abordagem
+híbrida combina a segurança da criptografia assimétrica \acs{RSA} com a
+eficiência da criptografia simétrica \acs{AES} para as mensagens
+subsequentes, otimizando tanto a segurança quanto o desempenho da comunicação.
+
+Uma vez estabelecida a chave \acs{AES} compartilhada entre os dois
+participantes, todas as mensagens de usuário são automaticamente
+criptografadas usando \acs{AES} antes do envio e descriptografadas no
+momento do recebimento. Este processo é completamente transparente
+para o usuário, que simplesmente digita suas mensagens em texto
+plano, enquanto o sistema se encarrega de toda a complexidade
+criptográfica nos bastidores, proporcionando comunicação de ponta a
+ponta verdadeiramente segura.
+
+Para organizar e processar adequadamente os diferentes tipos de
+mensagens trafegadas pelo sistema, foi implementado um sistema de
+prefixos que permite a identificação imediata do conteúdo e do
+tratamento necessário para cada mensagem recebida. As mensagens de
+controle do servidor, como notificações de conexão e desconexão de
+usuários, são identificadas pelo prefixo de sistema, permitindo que o
+cliente exiba informações relevantes sobre o estado da conexão.
+Durante o \textit{handshake} inicial, as mensagens contendo chaves públicas
+\acs{RSA} são marcadas com um prefixo específico de troca de chaves,
+enquanto a transmissão da chave \acs{AES} criptografada utiliza seu próprio
+identificador. Por fim, todas as mensagens de usuário criptografadas
+com a chave \acs{AES} estabelecida recebem um prefixo que indica ao
+receptor a necessidade de descriptografia antes da exibição.
+
+\subsubsection{Validação e testes realizados}
+
+O cliente \acs{CLI} permitiu a realização de testes abrangentes que
+validaram aspectos críticos do sistema, incluindo a capacidade do
+servidor de gerenciar múltiplas conexões simultâneas, o funcionamento
+correto dos algoritmos de criptografia \acs{RSA} e \acs{AES}, a robustez do
+sistema em cenários de falha de rede e desconexões abruptas, além do
+comportamento adequado com múltiplos usuários enviando mensagens
+simultaneamente. Esses testes foram fundamentais para identificar e
+corrigir problemas relacionados ao gerenciamento de estado
+assíncrono, tratamento de exceções e sincronização entre processos,
+garantindo que o protocolo desenvolvido fosse robusto o suficiente
+para suportar a implementação na interface gráfica do aplicativo final.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\linewidth]{imagens/cli-chat.png}
+  \caption[Cliente CLI em execução]{Cliente CLI em execução, ilustrando a
+  interação do usuário com o sistema de mensagens.}
+  \label{fig:cli-chat}
+\end{figure}
+
+A validação da criptografia das mensagens e do intercâmbio de chaves
+no início da conexão foi realizada com o auxílio do
+Wireshark\footnote{Wireshark: \link{https://www.wireshark.org/}}, um
+software amplamente reconhecido para análise de tráfego de rede. Essa
+ferramenta nos permitiu visualizar a formação dos pacotes de rede,
+baseando-se nas camadas do modelo
+\acs{OSI}\footnote{Modelo OSI: \link{https://en.wikipedia.org/wiki/OSI\_model}}.
+Assim, conseguimos confirmar a
+troca inicial das chaves públicas \acs{RSA} e a chave \acs{AES} entre
+os \textit{hosts}
+até o momento completo da troca de mensagens estarem criptografadas,
+conforme demonstrado na imagem.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\linewidth]{imagens/wireshark1.png}
+  \caption[Captura de tela do Wireshark durante o estabelecimento
+  inicial da conexão entre os \textit{peers}]{Captura de tela do
+    Wireshark durante o estabelecimento inicial da conexão entre os
+  \textit{peers}, conforme texto do campo \textit{Payload}.}
+  \label{fig:wireshark1}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\linewidth]{imagens/wireshark2.png}
+  \caption[Captura de tela do Wireshark durante a troca de chaves públicas
+  \acs{RSA} sendo realizada entre os \textit{peers}.]{Captura de tela
+    do Wireshark durante a troca de chaves públicas \acs{RSA} sendo realizada
+  entre os \textit{peers}.}
+  \label{fig:wireshark2}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\linewidth]{imagens/wireshark3.png}
+  \caption[Captura de tela do Wireshark mostrando a troca da chave
+  \acs{AES} entre os \textit{peers}.]{Captura de tela do Wireshark
+  mostrando a troca da chave \acs{AES} entre os \textit{peers}.}
+  \label{fig:wireshark3}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\linewidth]{imagens/wireshark3.png}
+  \caption[Captura de tela de tela do Wireshark mostrando mensagens
+    já sendo transmitidas encriptadas com criptografia \acs{AES} entre
+    os dois \textit{hosts}, a partir daqui ambos contém a chave para
+  descriptografar a comunicação.]{Mensagens já sendo transmitidas
+    encriptadas com criptografia \acs{AES} entre os dois
+    \textit{hosts}, a partir daqui ambos contém a chave para
+  descriptografar a comunicação.}
+  \label{fig:wireshark4}
+\end{figure}
+
+O processo de troca dos prefixos é visualizado no \textit{payload} do
+\textit{frame} de
+dados. Isso ocorre porque o protocolo Websocket utiliza o \textit{opcode Text}
+para indicar que o conteúdo do \textit{frame} é uma mensagem de texto,
+permitindo a transmissão de dados como as nossas troca de prefixos
+configuradas previamente. Além disso, é possível observar os \textit{frames}
+de controle PING e PONG\footnote{Ping e pong no Websockets:
+\link{https://www.turfemon.com/websocket-ping-pong}}, que são nativos
+do protocolo e têm a função
+de verificar a atividade e a disponibilidade dos \textit{hosts}, garantindo
+que a conexão permaneça estável.
 
 \subsection{Aplicativo cliente \textit{desktop}}
 
@@ -721,7 +792,7 @@ comprometer a qualidade ou segurança das distribuições.
 No projeto do aplicativo desktop oi implementado um pipeline de
 \acs{CI}/\acs{CD}
 que é acionado sempre que uma nova versão do app for lançada e
-enviada para o GitHub\footnote{\link{https://github.com/home}}, esse
+enviada para o GitHub\footnote{GitHub: \link{https://github.com/home}}, esse
 pipeline automatiza o processo de build
 e empacotamento de uma nova versão do app para instaladores nativos
 para os sistemas operacionais Microsoft Windows e as principais
