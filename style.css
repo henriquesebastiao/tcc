@@ -17,7 +17,13 @@ body {
   overflow-wrap: break-word;
   text-rendering: optimizeLegibility;
   font-kerning: normal;
+  font-family: "Times New Roman", Times, serif;
 }
+
+p {
+  text-align: justify;
+}
+
 @media (max-width: 600px) {
   body {
     font-size: 0.9em;
@@ -59,6 +65,14 @@ a:visited {
 }
 img {
   max-width: 100%;
+  display: block;
+  margin: 0 auto;
+}
+figure {
+  text-align: center;
+}
+figcaption {
+  margin-top: 1em;
 }
 svg {
   height: auto;
