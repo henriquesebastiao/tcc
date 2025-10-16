@@ -8,6 +8,7 @@ lint:
 
 format:
 	find . -type f \( -name "*.tex" -o -name "*.cls" -o -name "*.bib" \) -exec tex-fmt {} \;
+	prettier "**/*.{css,html}" --write;
 
 build:
 	latexmk -pdfxe tcc.tex
