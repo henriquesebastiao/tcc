@@ -5,6 +5,7 @@
 
 \RequirePackage[brazil]{babel}
 \RequirePackage{changepage}
+\RequirePackage[utf8]{inputenc}
 \RequirePackage{csquotes}
 \RequirePackage{fontspec}
 \RequirePackage[a4paper, left=3cm, right=2.5cm, top=3cm, bottom=2cm]{geometry}
@@ -28,8 +29,7 @@
 ]{hyperref}
 \RequirePackage[none]{hyphenat}
 \RequirePackage{indentfirst}
-\RequirePackage[utf8]{inputenc}
-\RequirePackage{microtype}
+\RequirePackage[final,nopatch=footnote]{microtype}
 \RequirePackage{sectsty}
 \RequirePackage{setspace}
 \RequirePackage{tocloft}
@@ -41,11 +41,12 @@
 \RequirePackage[printonlyused, withpage]{acronym}
 \RequirePackage{titlesec}
 \RequirePackage[flushmargin]{footmisc}
-\RequirePackage{graphicx}
+\RequirePackage[pdftex]{graphicx}
 \RequirePackage{float}
 \RequirePackage{listings}
 \RequirePackage[dvipsnames]{xcolor}
 \RequirePackage[titletoc,toc,page]{appendix}
+\RequirePackage{pdfpages}
 
 % Configurações
 \setmainfont{times-new-roman}[
@@ -112,6 +113,16 @@ LISTA DE FIGURAS}}
   \sectionmark{#1}  % Add section mark (header)
   \addcontentsline{toc}{section}{#1}  % Add section to ToC
 }
+
+\newenvironment{fichacatalografica}{%
+    \clearpage
+    \thispagestyle{empty}
+    \singlespacing
+    \footnotesize
+}{%   
+    \onehalfspacing
+    \normalsize
+}%
 
 \addtolength{\footnotesep}{2mm}
 
