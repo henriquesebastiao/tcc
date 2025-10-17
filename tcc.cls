@@ -115,13 +115,13 @@ LISTA DE FIGURAS}}
 }
 
 \newenvironment{fichacatalografica}{%
-    \clearpage
-    \thispagestyle{empty}
-    \singlespacing
-    \footnotesize
-}{%   
-    \onehalfspacing
-    \normalsize
+  \clearpage
+  \thispagestyle{empty}
+  \singlespacing
+  \footnotesize
+}{%
+  \onehalfspacing
+  \normalsize
 }%
 
 \addtolength{\footnotesep}{2mm}
