@@ -13,9 +13,6 @@ format:
 build:
 	latexmk -pdfxe tcc.tex
 
-md:
-	pandoc -s tcc.tex -o tcc.md --bibliography bibliografia.bib
-
 html:
 	pandoc tcc-html.tex -o index.html --metadata title="Trabalho de Conclusão de Curso" --css=style.css --standalone && ./format-html.sh index.html && prettier index.html style.css --write
 
@@ -24,4 +21,4 @@ mermaid:
 	mmdc -i mermaid/fluxo-2.mmd -o imagens/fluxo-2.png -b transparent;
 	mmdc -i mermaid/fluxo-3.mmd -o imagens/fluxo-3.png -b transparent;
 
-.PHONY: all clean build lint format md html mermaid
+.PHONY: all clean build lint format html mermaid
