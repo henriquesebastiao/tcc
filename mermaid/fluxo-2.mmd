@@ -1,0 +1,9 @@
+sequenceDiagram
+    participant Cliente A
+    participant Servidor
+    participant Cliente B   
+    Note over Cliente A, Cliente B: Ambos já compartilharam a chave simétrica
+    Cliente A->>Servidor: Envia mensagem criptografada
+    Servidor-->>Cliente B: Encaminha mensagem criptografada
+    Cliente B->>Cliente B: Descriptografa mensagem usando chave simétrica
+    Cliente B->>Cliente B: Exibe mensagem descriptografada

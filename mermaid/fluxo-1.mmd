@@ -1,0 +1,20 @@
+sequenceDiagram
+    participant Cliente A
+    participant Servidor
+    participant Cliente B
+
+    Note over Cliente A, Cliente B: Ambos estão conectados ao servidor
+
+    Cliente A->>Servidor: Solicita conexão com Cliente B
+    Servidor-->>Cliente A: Cliente B está disponível
+    Servidor-->>Cliente B: Cliente A deseja se conectar
+
+    Note over Cliente A: Gera par de chaves (pública, privada)
+    Cliente A->>Cliente B: Envia chave pública (A_pub)
+
+    Note over Cliente B: Gera chave simétrica (AES) e criptografa com A_pub
+    Cliente B->>Cliente A: Envia chave simétrica criptografada
+
+    Note over Cliente A: Usa chave privada para descriptografar AES
+
+    Note over Cliente A, Cliente B: Ambos agora compartilham a mesma chave simétrica para criptografia de mensagens

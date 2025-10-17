@@ -69,6 +69,104 @@ descriptografia retroativa de mensagens e atende aos requisitos de
 sigilo efêmero (\textit{ephemeral secrecy}) e não-reutilização de chaves,
 práticas consideradas fundamentais na segurança de comunicações contemporâneas.
 
+\subsection{Fluxo Lógico da Comunicação}
+
+A comunicação na aplicação é fundamentada em uma arquitetura
+cliente-servidor que utiliza o protocolo Websocket para estabelecer
+um canal de comunicação bidirecional e em tempo real entre os
+usuários. A escolha por Websockets permite que o servidor atue como
+um intermediário de sinalização e retransmissão, gerenciando as
+sessões ativas e garantindo a entrega eficiente de mensagens. Essa
+abordagem é particularmente eficaz para contornar restrições de rede,
+como as impostas por \acsp{NAT} (\acl{NAT}), que frequentemente
+impedem conexões diretas entre dispositivos.
+
+O fluxo de comunicação envolve quatro etapas principais: a conexão
+inicial do usuário, a troca segura de chaves criptográficas, o envio
+e recebimento de mensagens e, por fim, o encerramento da conexão.
+
+\subsubsection{Conexão do Usuário ao Servidor}
+
+O processo é iniciado quando um usuário se conecta ao servidor,
+fornecendo seu nome de usuário, que serve como identificador único, e
+o endereço do servidor. O servidor valida se o nome de usuário já
+está em uso; caso esteja, a conexão é recusada. Em seguida, o usuário
+informa o nome do destinatário com quem deseja se comunicar. Com
+essas informações, o cliente estabelece uma requisição Websocket a um
+endpoint específico, que identifica tanto o remetente quanto o destinatário.
+
+\subsubsection{Troca de Chaves Criptográficas}
+
+Uma vez que ambos os usuários estejam conectados, o sistema inicia o
+processo de estabelecimento de um canal de comunicação seguro. Para
+isso, adota-se um modelo de criptografia híbrida. Primeiramente,
+utiliza-se a criptografia assimétrica para a troca segura de uma
+chave de criptografia simétrica. A criptografia simétrica, por ser
+mais eficiente, é então empregada para cifrar todas as mensagens subsequentes.
+
+O fluxo de troca de chaves ocorre da seguinte maneira:
+
+\begin{itemize}
+  \item O cliente que iniciou a conexão gera um par de chaves
+    assimétricas (pública e privada) e envia sua chave pública ao
+    destinatário por meio do servidor.
+  \item O destinatário recebe a chave pública, gera uma chave
+    simétrica, criptografa esta chave simétrica com a chave pública
+    recebida e a envia de volta ao remetente.
+  \item O remetente, ao receber a chave simétrica criptografada,
+    utiliza sua chave privada para descriptografá-la.
+\end{itemize}
+
+Ao final deste processo, ambos os usuários possuem a mesma chave
+simétrica compartilhada, permitindo o início da comunicação segura. O
+fluxograma abaixo ilustra esta etapa.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{imagens/fluxo-1.png}
+  \caption[Fluxograma do processo de troca de chaves
+  criptográficas]{Fluxo de troca de chaves criptográficas.}
+  \label{fig:fluxo-1}
+\end{figure}
+
+\subsubsection{Envio e Recebimento de Mensagens}
+
+Com o canal seguro estabelecido, os usuários podem trocar mensagens
+com confidencialidade. Toda a criptografia é realizada no aplicativo
+cliente, sem exigir ação do usuário. O remetente criptografa a
+mensagem usando a chave simétrica compartilhada e a envia ao
+servidor. O servidor atua exclusivamente como um retransmissor: ele
+recebe a mensagem cifrada e a encaminha imediatamente ao
+destinatário, sem ter a capacidade de acessar seu conteúdo. O
+destinatário, por sua vez, recebe a mensagem e utiliza a mesma chave
+simétrica para descriptografá-la, exibindo o conteúdo original em sua
+interface. É fundamental ressaltar que o servidor não armazena as
+mensagens nem as chaves criptográficas, garantindo a privacidade da comunicação.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{imagens/fluxo-2.png}
+  \caption[Fluxograma do processo de envio de mensagens]{Fluxo de
+  envio de mensagens.}
+  \label{fig:fluxo-2}
+\end{figure}
+
+\subsubsection{Encerramento da Conexão}
+
+Ao final da conversa, qualquer um dos usuários pode iniciar o
+processo de encerramento. Para isso, o cliente envia uma mensagem de
+encerramento ao servidor, que a retransmite ao outro participante.
+Após a notificação, ambas as partes finalizam suas respectivas
+conexões com o servidor.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\linewidth]{imagens/fluxo-3.png}
+  \caption[Fluxograma de encerramento da conexão]{Fluxo de
+  encerramento da conexão.}
+  \label{fig:fluxo-3}
+\end{figure}
+
 \subsection{Experimentos Realizados}
 
 \subsubsection{Experimento 1 – Troca de chaves públicas \acs{RSA}}
