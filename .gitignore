@@ -320,3 +320,5 @@ TSWLatexianTemp*
 .vscode
 *.ist
 authors.txt
+
+!ficha-catalografica.pdf

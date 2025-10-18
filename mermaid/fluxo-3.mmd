@@ -1,0 +1,8 @@
+sequenceDiagram
+    participant Cliente A
+    participant Servidor
+    participant Cliente B
+    Cliente A->>Servidor: Envia mensagem de encerramento
+    Servidor-->>Cliente B: Notifica encerramento da conversa
+    Cliente B->>Cliente B: Finaliza conexão
+    Cliente A->>Cliente A: Finaliza conexão
