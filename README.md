@@ -21,7 +21,7 @@ Em um cenário marcado por crescentes preocupações com a proteção de dados p
 
 Com o crescimento vertiginoso das interações online e o aumento de crimes cibernéticos, vazamentos de dados e fraudes, surge a necessidade de sistemas que priorizem a segurança e privacidade do usuário final. O projeto foi motivado por:
 
-- **Vulnerabilidades cibernéticas**: Ataques como "Man in the Middle" têm comprometido dados de milhões de usuários
+- **Vulnerabilidades cibernéticas**: Ataques como "Man-in-the-Middle" têm comprometido dados de milhões de usuários
 - **Importância da privacidade**: A comunicação digital precisa garantir confidencialidade e autenticidade
 - **Software livre**: Possibilitar que qualquer pessoa audite o código-fonte e verifique a segurança da aplicação
 
@@ -134,7 +134,7 @@ Abaixo está uma explicação dos principais pacotes LaTeX utilizados no documen
 **Sumário e Listas:**
 - [tocloft](https://ctan.org/pkg/tocloft) - Personaliza a aparência do sumário
 - [tocbibind](https://ctan.org/pkg/tocbibind) - Adiciona referências e outros elementos ao sumário
-- [enumitem](https://ctan.org/pkg/enumitem) - Controla formatação de listas e remove identação
+- [enumitem](https://ctan.org/pkg/enumitem) - Controla formatação de listas e remove indentação
 - [etaremune](https://ctan.org/pkg/etaremune) - Cria listas enumeradas em ordem decrescente
 
 **Referências e Citações (ABNT):**
