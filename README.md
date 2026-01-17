@@ -7,17 +7,17 @@
 
 > Trabalho de Conclusão de Curso (TCC) do curso de Ciência da Computação
 
-## 📖 Sobre o Projeto
+## Sobre o Projeto
 
 Este repositório contém o Trabalho de Conclusão de Curso desenvolvido como requisito para a obtenção do grau de Bacharel em Ciência da Computação. O trabalho aborda o desenvolvimento de um sistema de comunicação digital que utiliza **criptografia de ponta a ponta (E2EE)** para garantir a privacidade e a segurança das mensagens trocadas entre os usuários.
 
-### 🎯 Tema
+### Tema
 
 **Desenvolvimento de um Sistema de Comunicação com Criptografia de Ponta a Ponta**
 
 Em um cenário marcado por crescentes preocupações com a proteção de dados pessoais e a vigilância digital, soluções que asseguram a confidencialidade das comunicações tornam-se cada vez mais relevantes. Este projeto apresenta uma solução prática e acessível para comunicação segura, utilizando técnicas modernas de criptografia.
 
-### 🔍 Contexto e Motivação
+### Contexto e Motivação
 
 Com o crescimento vertiginoso das interações online e o aumento de crimes cibernéticos, vazamentos de dados e fraudes, surge a necessidade de sistemas que priorizem a segurança e privacidade do usuário final. O projeto foi motivado por:
 
@@ -25,7 +25,7 @@ Com o crescimento vertiginoso das interações online e o aumento de crimes cibe
 - **Importância da privacidade**: A comunicação digital precisa garantir confidencialidade e autenticidade
 - **Software livre**: Possibilitar que qualquer pessoa audite o código-fonte e verifique a segurança da aplicação
 
-### 🎯 Objetivos
+### Objetivos
 
 **Objetivo Principal:**
 Desenvolver um sistema de comunicação de software livre, utilizando um modelo híbrido de criptografia simétrica e assimétrica para assegurar a privacidade na troca de mensagens, além da implementação do não repúdio, garantindo a autenticidade da comunicação.
@@ -44,21 +44,21 @@ O sistema foi desenvolvido utilizando tecnologias modernas e amplamente adotadas
 - **Linguagem**: Python
 - **Protocolo de Comunicação**: WebSocket (comunicação bidirecional em tempo real)
 - **Criptografia**: 
-  - RSA (2048 bits) para troca segura de chaves
+  - RSA para troca segura de chaves
   - AES (256 bits) para criptografia de mensagens
   - Perfect Forward Secrecy (PFS) para sigilo efêmero
-- **Bibliotecas**: Cryptography, Typer, Flask
+- **Princiapis Bibliotecas**: [Cryptography](https://cryptography.io/en/latest/), [Typer](https://typer.tiangolo.com/), [FastAPI](https://fastapi.tiangolo.com/)
 - **Frontend**: HTML, CSS, JavaScript
 
-### 📊 Resultados e Contribuições
+### Resultados e Contribuições
 
 O projeto alcançou resultados significativos:
 
-- ✅ **Sistema funcional**: Plataforma operacional de troca de mensagens com criptografia E2EE
-- ✅ **Segurança robusta**: Implementação de PFS garante que chaves comprometidas não afetam sessões anteriores
-- ✅ **Arquitetura eficiente**: Servidor intermediário apenas roteia mensagens, sem acesso ao conteúdo descriptografado
-- ✅ **Código aberto**: Todo o código-fonte disponível para auditoria e contribuições
-- ✅ **Documentação completa**: Trabalho acadêmico detalhando fundamentos teóricos e práticos
+- **Sistema funcional**: Plataforma operacional de troca de mensagens com criptografia E2EE
+- **Segurança robusta**: Implementação de PFS garante que chaves comprometidas não afetam sessões anteriores
+- **Arquitetura eficiente**: Servidor intermediário apenas roteia mensagens, sem acesso ao conteúdo descriptografado
+- **Código aberto**: Todo o código-fonte disponível para auditoria e contribuições
+- **Documentação completa**: Trabalho acadêmico detalhando fundamentos teóricos e práticos
 
 **Principais contribuições:**
 - Disseminação do conhecimento sobre criptografia aplicada
@@ -66,7 +66,7 @@ O projeto alcançou resultados significativos:
 - Reforço da importância da proteção da privacidade em sistemas de comunicação
 - Material de referência para estudos futuros em segurança da informação
 
-### 👥 Autores
+### Autores
 
 - Emanuel Chagas Pinheiro Mattos
 - Henrique Sebastião Silva Rosa
@@ -74,13 +74,13 @@ O projeto alcançou resultados significativos:
 - Valério Gonçalves Vieira Junior
 - Wanderson Amorim Pinheiro
 
-### 📄 Palavras-chave
+### Palavras-chave
 
 Comunicação, Criptografia, Privacidade, Segurança, Desenvolvimento de Software, Python, E2EE, Perfect Forward Secrecy, WebSocket.
 
 ---
 
-## 🚀 Como Utilizar este Repositório
+## Como Utilizar este Repositório
 
 Este repositório contém todo o código LaTeX necessário para compilar o documento do TCC em PDF. Abaixo, você encontrará informações sobre as ferramentas e pacotes utilizados.
 
